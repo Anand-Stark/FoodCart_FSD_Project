@@ -15,11 +15,12 @@ body{
 }
 
 .container-fluid img{
-  height: 7rem !important;
-  width: 7rem !important;
+  height: 6rem !important;
+  width: 6rem !important;
   outline: none;
   border: none;
   margin-left : 1.5rem;
+  padding-top: 0.5rem;
 }
 /* .navbar-text:hover{
     box-shadow: -3px 5px 15px rgba(0,0,0,0.47);
@@ -38,7 +39,9 @@ body{
    background-color:transparent !important;
    
 }
-
+.container-fluid {
+  height: 50px !important;
+}
 .nav-link{
   color:black;
 }

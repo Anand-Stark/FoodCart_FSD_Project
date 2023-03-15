@@ -1,31 +1,21 @@
-const mongoose = require('mongoose');
+const Sequelize = require('sequelize');
+const sequelize = require('../util/database');
 
-const Schema = mongoose.Schema ; 
-
-const userSchema = new Schema({
+const User = sequelize.define('user',{
+      id:{
+         type:Sequelize.INTEGER,
+         allowNull:false,
+         autoIncrement:true,
+         primaryKey:true
+      },
       userName :{
-          type:String,
-          required:true
+          type:Sequelize.STRING,
+          allowNull:false
       },
       email:{
-         type:String,
-         required:true
-      },
-      cart:{
-         items:[
-            {
-                 productId:{
-                    type:Schema.Types.ObjectId,
-                    required:true,
-                    ref:'AdminProducts'
-                 },
-                 Quantity:{
-                     type:Number,
-                      
-                 }
-            }
-         ]
+         type:Sequelize.STRING,
+         allowNull:false
       }
 })
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = User;

@@ -28,9 +28,9 @@
                     <%= product.description %>
                   </p>
                   <div class="edit-delete">
-                    <a href="/admin/edit-product/<%= product._id %>" class="btn btn-outline-warning edit-delete-btns edit-btn">edit</a>
+                    <a href="/admin/edit-product/<%= product.id %>" class="btn btn-outline-warning edit-delete-btns edit-btn">edit</a>
                     <form  action="/admin/delete-product" method="post">
-                      <input type="hidden" value="<%= product._id %>" name="productId">
+                      <input type="hidden" value="<%= product.id %>" name="productId">
                        <button class="btn btn-outline-warning edit-delete-btns delete-btn">Delete</button>
                     </form>
                     

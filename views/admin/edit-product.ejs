@@ -36,7 +36,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <input type="text" name="description" value="<%= product.description %>" class="form-control childLoginStyle" id="description" rows="5" placeholder="description">
             <label for="description">Description</label>
           </div>
-          <input type="hidden" value="<%= product._id %> " name = 'productId'>
+          <input type="hidden" value="<%= product.id %> " name = 'productId'>
         <div class="form-floating ">
           <button type="submit" class="btn btn-outline-warning btn-addproduct buttonMain">Update</button>
         </div>
