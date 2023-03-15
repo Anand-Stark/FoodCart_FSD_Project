@@ -1,0 +1,49 @@
+body{
+    margin: 0px;
+}
+
+.navbar-text{
+   display: flex;
+   justify-content:flex-start;
+
+   padding: 0px 10px 7px;
+   border-radius: 1rem;
+   background-color: transparent;
+}
+
+
+.navbar-brand{
+    padding-left: 2rem;
+}
+
+.navbar-text img{
+    padding-top: 0.5rem;
+    height: 200px;
+}
+
+
+.container-fluid {
+    height: 70px !important;
+}
+
+
+.container-fluid img{
+    height: 100px !important;
+    width: 100px !important;
+}
+
+
+.navbar-heading{
+    padding-top: 25px;
+    padding-left: 4px;
+}
+
+.navbar-main{
+   background-color:#FFDB58 !important;
+}
+
+.other-items-size{
+    font-size: large;
+}
+
+

@@ -1,0 +1,63 @@
+<%- include('../includes/start') %>
+  
+    <link rel="stylesheet" href="/css/adminProducts.css">
+  <link rel="stylesheet" href="/css/productPage.css">
+  </head>
+
+  <body>
+
+    <%- include('../includes/navigation') %>
+     
+     
+
+          <% if( products.length> 0) { %>
+            <div class="ok-image">
+            <div class="ok-container">
+  
+              <% for(let product of products ) { %>
+                <div class="ok-product">
+                  <img src="<%= product.imageUrl %>" alt="products" >
+                  <figcaption>
+                    <%= product.title %>
+                  </figcaption>
+                  <figcaption>Price - <%= product.price %>
+                  </figcaption>
+                  <figcaption>Rating - <%= product.rating %>
+                  </figcaption>
+                  <p>
+                    <%= product.description %>
+                  </p>
+                  <div class="edit-delete">
+                    <a href="/admin/edit-product/<%= product._id %>" class="btn btn-outline-warning edit-delete-btns edit-btn">edit</a>
+                    <form  action="/admin/delete-product" method="post">
+                      <input type="hidden" value="<%= product._id %>" name="productId">
+                       <button class="btn btn-outline-warning edit-delete-btns delete-btn">Delete</button>
+                    </form>
+                    
+                  </div>
+  
+                </div>
+                <% } %>
+            </div>
+          </div>
+            <% } else { %>
+  
+              
+              <div class="p-5 mb-4 bg-light rounded-3">
+                <div class="container-fluid py-5">
+                  <h1 class="display-5 fw-bold">No Products To Show ! 🥲</h1>
+                  <p class="col-md-8 fs-4">Please press the below button to try again or be redirected to the Add Product Page </p>
+                  <a href="/admin/add-product"   class="btn btn-outline-warning btn-lg re-add-product-btn">Add Product</a>
+                </div>
+              </div>
+            
+              <% } %>
+  
+  
+  
+  
+            
+     
+
+
+      <%- include('../includes/end') %>
