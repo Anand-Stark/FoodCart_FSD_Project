@@ -11,38 +11,48 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <body>
 <%- include('../includes/navigation.ejs') %>
 <main >
-    <div class="formContainer">
-      <form action="/admin/edit-product" method="POST">
-        <div class="form-floating mb-3 ">
-          <input type="text" class="form-control childLoginStyle" value="<%= product.title %>" name="title" id="tile" placeholder="Title">
-          <label for="title">Title</label>
-        </div>
-        <div class="form-floating mb-3 " role="status">
-            <input type="text" name="imageUrl" class="form-control childLoginStyle" value="<%= product.imageUrl %>" id="imageUrl"
-            placeholder="imageUrl">
-          <label for="imageUrl">imageUrl</label>
-          </div>
-          <div class="form-floating mb-3 ">
-            <input type="number" name="price" value="<%= product.price %>" class="form-control childLoginStyle" id="price"
-            placeholder="price">
-          <label for="price">Price</label>
-          </div>
-          <div class="form-floating mb-3 ">
-            <input type="number" name="rating" value="<%= product.rating %>" class="form-control childLoginStyle" id="rating"
-            placeholder="rating">
-          <label for="rating">Rating</label>
-          </div>
-          <div class="form-floating mb-3 child">
-            <input type="text" name="description" value="<%= product.description %>" class="form-control childLoginStyle" id="description" rows="5" placeholder="description">
-            <label for="description">Description</label>
-          </div>
-          <input type="hidden" value="<%= product.id %> " name = 'productId'>
-        <div class="form-floating ">
-          <button type="submit" class="btn btn-outline-warning btn-addproduct buttonMain">Update</button>
-        </div>
-      </form>
-    </div>
+    <div class="form-image">
     
+      <div class="formContainer">
+        <form action="/admin/edit-product" method="POST">
+          <div class="form-floating mb-3 ">
+            <input type="text" class="form-control childLoginStyle" value="<%= product.title %>" name="title" id="tile" placeholder="Title">
+            <label for="title">Title</label>
+          </div>
+          <div class="form-floating mb-3 " role="status">
+              <input type="text" name="imageUrl" class="form-control childLoginStyle" value="<%= product.imageUrl %>" id="imageUrl"
+              placeholder="imageUrl">
+            <label for="imageUrl">imageUrl</label>
+            </div>
+            <div class="form-floating mb-3 ">
+              <input type="number" name="price" value="<%= product.price %>" class="form-control childLoginStyle" id="price"
+              placeholder="price">
+            <label for="price">Price</label>
+            </div>
+            <div class="form-floating mb-3 ">
+              <input type="number" name="rating" value="<%= product.rating %>" class="form-control childLoginStyle" id="rating"
+              placeholder="rating">
+            <label for="rating">Rating</label>
+            </div>
+            <div class="form-floating mb-3 child">
+              <input type="text" name="description" value="<%= product.description %>" class="form-control childLoginStyle" id="description" rows="5" placeholder="description">
+              <label for="description">Description</label>
+            </div>
+            <input type="hidden" value="<%= product.id %> " name = 'productId'>
+          <div class="form-floating ">
+            <button type="submit" class="btn btn-outline-warning btn-addproduct buttonMain">Update</button>
+          </div>
+        </form>
+      </div>
+       
+      
+
+    </div>
+
+   <div> 
+        <!-- <img src="css/images/4676729.jpg" alt="form-image"> -->
+        <h2 style="color:white">Hello Admin, Add your Products Here 😊</h2>
+      </div>
 
   </main>
 
