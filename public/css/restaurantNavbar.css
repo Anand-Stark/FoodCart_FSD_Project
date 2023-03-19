@@ -1,0 +1,106 @@
+body{
+    margin: 0px;
+}
+
+.navbar-text{
+   display: flex;
+   justify-content:flex-start;
+
+   padding: 0px 10px 7px;
+   border-radius: 1rem;
+   background-color: transparent;
+}
+
+
+.navbar-brand{
+    padding-left: 2rem;
+}
+
+.navbar-text img{
+    padding-top: 0.5rem;
+    height: 200px;
+}
+
+
+.container-fluid {
+    height: 50px !important;
+}
+
+
+.container-fluid img{
+    height: 100px !important;
+    width: 100px !important;
+}
+
+
+.navbar-heading{
+    padding-top: 25px;
+    padding-left: 4px;
+}
+
+.navbar-main{
+   background-color:#FFDB58 !important;
+}
+
+.other-items-size{
+    font-size: large;
+}
+
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown button */
+  .dropdown button {
+    /* background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 2rem; */
+    background-color:#4CAF50;
+    border-radius: 1rem;
+    color:white;
+    padding: 8px 40px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 10px;
+    background-color: #f1f1f1;
+    min-width: 140px;
+    z-index: 1;
+    border-radius: 0.5rem;
+    margin-top: 0.1rem;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration:none;
+    display: block;
+    border-radius: 0.5rem;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover button {background-color: #3e8e41;}
+  
+ 

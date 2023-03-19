@@ -13,8 +13,8 @@ routes.post('/add-product',restaurants.postAddProduct);
 routes.get('/products',restaurants.getProducts);
 
 // get /restaurant/edit-product
-routes.get('/edit-product/:productId',restaurants.getEditProduct);
-routes.post('edit-product',restaurants.postEditProduct);
+routes.get('/edit-product/:restaurantId',restaurants.getEditProduct);
+routes.post('/edit-product',restaurants.postEditProduct);
 
 // post /restaurant/delete-products
 routes.post('/delete-product',restaurants.postDeleteProduct);

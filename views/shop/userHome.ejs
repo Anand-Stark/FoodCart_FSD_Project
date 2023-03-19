@@ -5,10 +5,335 @@ integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6
 integrity="sha512-E378bwaeZf1nwXeJGIwTB58A5gPt5jFU3u6aTGja4ZdRFJeo/N/REKnBgNZOZlH6JdnOPO98vg2AnSGaNfCMFQ=="
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="/css/homePage.css">
+<link rel="stylesheet" href="/css/styles-home.css">
+<script src="https://kit.fontawesome.com/19aa95eec0.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
+  
 <%- include('../includes/navigation.ejs') %>
+
+<section class="grid">
+    <div class="content">
+      <div class="content-left">
+        <div class="top-content">
+          <div class="info">
+            <h1>Fastest Online <br>Food Delivery Service</h1>
+            <p>we are most fastest and favourite food delivery service all over the india.<br>
+              Search for your favourite food in your area</p>
+          </div>
+          <div class="deliver">
+            <img src="/css/images/delivery-guy.png" alt="">
+          </div>
+        </div>
+
+
+        <div class="large-image">
+          <img src="/css/images/hamburger.jpg" alt="burger-image">
+        </div>
+
+        <div class="content-right">
+        </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="content-left">
+        <div class="info ">
+          <div class="info2">
+            <h1>Limited Offer By<br>Using Promocode<br>Only<b>$10</b></h1>
+            <div class="copyfield">
+              <form>
+                <label for="promocode">Promo</label>
+                <input type="text" name="promo" id="promocode">
+                <button type="submit">Apply</button>
+              </form>
+            </div>
+          </div>
+          <div class="discount-image">
+            <img src="/css/images/Discount-bro.svg" alt="discount-image">
+          </div>
+
+          <script>
+            var copybtn = document.getElementById("copy-btn");
+            var link = document.getElementById("link");
+
+            copybtn.onclick = function () {
+              navigator.clipbord.writeText(link.innerHTML);
+            }
+          </script>
+        </div>
+  </section>
+  <section>
+    <div class="container food-section">
+      <h2>Explore Your Nearby Restaurants' Favourite Dish</h2>
+      <div class="gallery">
+        <img src="/css/images/Pizza.jpg">
+        <div class="desc"> pizza </div>
+      </div>
+      <div class="gallery">
+        <img src="/css/images/Butter Chicken">
+        <div class="desc"> Butter Chicken </div>
+      </div>
+      <div class="gallery">
+          <div class="desc"> Chicken Biryani </div>
+        </div>
+        <div class="gallery">
+            <div class="desc"> Momos </div>
+            <img src="/css/images/Chicken Biryani.avif">
+        </div>
+        <div class="gallery">
+            <img src="images\penne pasta">
+            <img src="/css/images/Momos">
+        <div class="desc"> Penne pasta </div>
+      </div>
+      <div class="gallery">
+        <img src="/css/images\grilled chicken">
+        <div class="desc"> Grilled chicken </div>
+      </div>
+      <div class="gallery">
+        <img src="/css/images\paneer-curry">
+        <div class="desc"> Paneer curry </div>
+      </div>
+      <div class="gallery">
+          <div class="desc"> Explore More </div>
+        </div>
+    </div>
+</section>
+<img src="/css/images/Restaurant">
+  <section>
+    <div class="page-2">
+      <div class="order-image">
+        <img src="/css/images/order-via-phone.svg" alt="image">
+      </div>
+      <div class="content" style="padding-left:100px">
+        <p>
+        <h2>Place your order by following these steps</h2>
+        </p>
+        <ul>
+          <li><i class="fa-solid fa-location-dot"></i>Set your location first</li>
+          <li><i class="fa-solid fa-circle-check"></i>Choose the food you want to order</li>
+          <li><i class="fa-sharp fa-solid fa-circle-dollar-to-slot"></i>Confirm order with payment method</li>
+          <li><i class="fa-solid fa-bowl-food"></i>Within 30 minutes you will get your food</li>
+          <button class="buttons" onClick="window.location.href='https://www.apple.com/in/app-store/';">Place your
+            order</button>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <div class="page-3">
+    <h2>Most Ordered Food</h2>
+    <div class="container">
+      <div class="most">
+        <div class="food">
+          <div class="order">
+            <img src="/css/images/chicken-curry.jpg">
+          </div>
+          <div class="or-des" style="align-items: center">
+            <h3>Chicken curry</h3>
+            <i class="fa-solid fa-location-dot"></i>6391 Elign St Celina Delware 10299
+            <b>$87</b>
+          </div>
+          <div class="shop">
+            <button class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
+          </div>
+        </div>
+        <div class="food">
+          <div class="order">
+            <img src="/css/images/french-fries.jpg">
+          </div>
+          <div class="or-des">
+            <h3>French fries</h3>
+            <i class="fa-solid fa-location-dot"></i>6391 Elign St Celina Delware 10299
+            <b>$87</b>
+          </div>
+          <div class="shop">
+            <button class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="most">
+        <div class="food">
+          <div class="order">
+            <img src="/css/images/pudding.jpg">
+          </div>
+          <div class="or-des">
+            <h3>Pudding</h3>
+            <i class="fa-solid fa-location-dot"></i>6391 Elign St Celina Delware 10299
+            <b>$87</b>
+          </div>
+          <div class="shop">
+            <button class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
+          </div>
+        </div>
+        <div class="food">
+          <div class="order">
+            <img src="/css/images/vegetable-salad.jpg">
+          </div>
+          <div class="or-des">
+            <h3>Vegetable-salad</h3>
+            <i class="fa-solid fa-location-dot"></i>6391 Elign St Celina Delware 10299
+            <b>$87</b>
+          </div>
+          <div class="shop">
+            <button class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="most">
+        <div class="food">
+          <div class="order">
+            <img src="/css/images/pasta.jpg">
+          </div>
+          <div class="or-des">
+            <h3>Pasta</h3>
+            <i class="fa-solid fa-location-dot"></i>6391 Elign St Celina Delware 10299
+            <b>$87</b>
+          </div>
+          <div class="shop">
+            <button class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
+          </div>
+        </div>
+        <div class="food">
+          <div class="order">
+            <img src="/css/images/Pizza.jpg">
+          </div>
+          <div class="or-des">
+            <h3>Chicken pizza</h3>
+            <i class="fa-solid fa-location-dot"></i>6391 Elign St Celina Delware 10299
+            <b>$87</b>
+          </div>
+          <div class="shop">
+            <button class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="next">
+        <button class="buttons" style="border-radius:15px"
+          onClick="window.location.href='https://www.apple.com/in/app-store/';">See More Foods</button>
+      </div>
+    </div>
+  </div>
+  <section>
+    <div class="container container2">
+      <div class="content-left content-left2">
+        <div class="info">
+          <h1>Want To Earn <br> Extra ! Join as a <br>Delivery Boy With Us </h1>
+          <div class="recruit">
+            <p>We are most fastest and favourite food delivery service<br>all over the india.Search for your favourite
+              food or <br>restaurant in your area</p>
+            <div>
+              <input class="ApplyNow" type="submit" value="Apply Now" name="Apply Now">
+            </div>
+          </div>
+        </div>
+        <div class="content-right">
+        </div>
+  </section>
+  <div class="page-4">
+    <div class="content" style="text-align: center">
+      <h2>it is more easy to order by using our apps</h2>
+      <p>All you need to do is download one of the best food delivery apps, make a and most companies are opting for
+        mobile app development for food delivery </p>
+      <button type="button" class="btn btn-dark btn-lg download-button"
+        onClick="window.location.href='https://www.apple.com/in/app-store/';"><i class="fa-brands fa-apple"></i>
+      </button>
+      <button type="button" class="btn btn-outline-light btn-lg download-button"
+        onClick="window.location.href='https://play.google.com/';"><i class="fa-brands fa-google-play"></i> </button>
+    </div>
+
+    <div class="mobile-image">
+      <img src="/css/images/mobile-app.svg">
+    </div>
+  </div>
+  <div class="page-5">
+    <h2>We are available in</h2>
+    <div class="avail">
+      <div class="available">
+        <div class="city">
+          <img src="">
+          <h3><i class="fa-solid fa-location-dot"></i>Amaravati</h3>
+        </div>
+        <div class="city">
+          <img src="">
+          <h3><i class="fa-solid fa-location-dot"></i>Ahmedabad</h3>
+        </div>
+        <div class="city">
+          <img src="">
+          <h3><i class="fa-solid fa-location-dot"></i>Bangalore</h3>
+        </div>
+        <div class="city">
+          <img src="">
+          <h3><i class="fa-solid fa-location-dot"></i>Chennai</h3>
+        </div>
+        <div class="city">
+          <img src="">
+          <h3><i class="fa-solid fa-location-dot"></i>Delhi</h3>
+        </div>
+      </div>
+      <div class="available">
+        <div class="city">
+          <img src="">
+          <h3><i class="fa-solid fa-location-dot"></i>Guwahati</h3>
+        </div>
+        <div class="city">
+          <img src="">
+          <h3><i class="fa-solid fa-location-dot"></i>Hyderabad</h3>
+        </div>
+        <div class="city">
+          <img src="">
+          <h3><i class="fa-solid fa-location-dot"></i>Kolkata</h3>
+        </div>
+        <div class="city">
+          <img src="">
+          <h3><i class="fa-solid fa-location-dot"></i>Mumbai</h3>
+        </div>
+        <div class="city">
+          <img src="">
+          <h3><i class="fa-solid fa-location-dot"></i>Lucknow</h3>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="part-1">
+      <img src="">
+      <p>Connect With Us !</p>
+      <div class="icons" style="display:flex">
+        <i class="fa-brands fa-facebook facebook-class" ></i>
+        <i class="fa-brands fa-square-twitter twitter-class"></i>
+        <i class="fa-brands fa-square-instagram instagram-class"></i>
+        <i class="fa-brands fa-youtube youtube-class" ></i>
+      </div>
+    </div>
+    <div class="part-2">
+      <h3>Service</h3>
+      <p>Online Order</p>
+      <p>Pre-Reservation</p>
+      <p>24/7 Services</p>
+    </div>
+    <div class="part-3">
+      <h3>Quick Links</h3>
+      <p>Restaurants</p>
+      <p>Reviews</p>
+      <p>Blogs</p>
+      <p>Order Foods</p>
+    </div>
+    <div class="part-4">
+      <h3>About</h3>
+      <p>Our Story</p>
+      <p>Benifits</p>
+      <p>Careers</p>
+    </div>
+    <div class="part-5">
+      <h3>Help</h3>
+      <p>Contact</p>
+      <p>Support</p>
+      <p>FAQ</p>
+    </div>
+  </div>
+
 
 <%- include('../includes/end.ejs') %>
