@@ -184,7 +184,8 @@ input{
     border: none;
     font-size: 20px;
     align-items: center;
-    margin-left: 3rem;
+    margin-left: 5rem;
+
 }
 
 .copyfield label{
@@ -449,18 +450,23 @@ input{
 .available{
     display:flex;
     /* padding-left: 100px; */
-    padding-right: 7rem;
+    padding-right: 20rem !important;
+    
     /* justify-content:flex-start !important; */
 }
- .available .country{
+ /* .available .country{
    margin-left: 130px;
    display:flex;
    justify-content: space-around;
    align-items: center;
+} */
+.available .city{
+    margin-right: 2rem;
+   
 }
-
 .avail{
-    margin-left:6rem;
+    margin-left:5rem;
+    
 }
 
 .page-5{
