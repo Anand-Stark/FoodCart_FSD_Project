@@ -4,7 +4,7 @@ integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js"
 integrity="sha512-E378bwaeZf1nwXeJGIwTB58A5gPt5jFU3u6aTGja4ZdRFJeo/N/REKnBgNZOZlH6JdnOPO98vg2AnSGaNfCMFQ=="
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/restaurant-styles.css">
 
 </head>
 
@@ -13,10 +13,10 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <main >
 <div class="form-image">
   <div class="formContainer">
-    <form action="/admin/add-product" method="POST">
-      <div class="form-floating mb-3 ">
-        <input type="text" class="form-control childLoginStyle" name="title" id="tile" placeholder="Title">
-        <label for="title">Title</label>
+    <form action="/restaurant/add-product" method="POST">
+      <div class="form-floating mb-3 "> 
+        <input type="text" class="form-control childLoginStyle" name="name" id="name" placeholder="Restaurant Name">
+        <label for="name">Restaurant Name</label>
       </div>
       <div class="form-floating mb-3 ">
           <input type="text" name="imageUrl" class="form-control childLoginStyle" id="imageUrl"
@@ -24,18 +24,22 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <label for="imageUrl">imageUrl</label>
         </div>
         <div class="form-floating mb-3 ">
-          <input type="number" name="price" class="form-control childLoginStyle" id="price"
-          placeholder="price">
-        <label for="price">Price(₹)</label>
+          <input type="text" name="location" class="form-control childLoginStyle" id="location"
+          placeholder="location">
+        <label for="location">Location</label>
         </div>
         <div class="form-floating mb-3 ">
-          <input type="number" name="rating" class="form-control childLoginStyle" id="rating"
+          <input type="number" name="employee" class="form-control childLoginStyle" id="employee"
           placeholder="rating">
-        <label for="rating">Rating</label>
+        <label for="employee">No of Employees</label>
         </div>
         <div class="form-floating mb-3 child">
-          <input type="text" name="description" class="form-control childLoginStyle" id="description" rows="5" placeholder="description">
-          <label for="description">Description</label>
+          <input type="number" name="foodItemsVeg" class="form-control childLoginStyle" id="foodItemsVeg" rows="5" placeholder="foodItemsVeg">
+          <label for="foodItemsVeg">Veg Food(No.)</label>
+        </div>
+        <div class="form-floating mb-3 child">
+          <input type="number" name="foodItemsNonVeg" class="form-control childLoginStyle" id="foodItemsNonVeg" rows="5" placeholder="foodItemsNonVeg">
+          <label for="foodItemsNonVeg">NonVeg Food(No.)</label>
         </div>
       <div class="form-floating ">
         <button type="submit" class="btn btn-outline-warning btn-addproduct buttonMain">Add Product</button>
@@ -45,7 +49,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    
   <div> 
     <!-- <img src="css/images/4676729.jpg" alt="form-image"> -->
-    <p style="color:white; font-size: 4rem; padding-top: 10rem;">Hello, The Most delicious Products on TastyBite are added here ! 😊</p>
+    <p style="color:white; font-size: 4rem; padding-top: 10rem;">Register Your Restaurant ! Come fetch the best food price with us! 🍕</p>
   </div>
 
 </div>

@@ -6,7 +6,7 @@ const path = require("path");
 // aquiring from all the routes
 const userShop = require("./routes/shop");
 const adminProducts = require("./routes/admin");
-const vendorProducts = require("./routes/vendor");
+const restaurants = require("./routes/restaurant");
 
 // using Sequelize for connecting databases :
 const sequelize = require("./util/database");
@@ -52,7 +52,7 @@ app.use((req,res,next)=>{
 
 app.use("/admin", adminProducts);
 app.use(userShop);
-app.use("/vendor", vendorProducts);
+app.use("/restaurant", restaurants);
 
 // establishing the relations user - adminProducts:
 
