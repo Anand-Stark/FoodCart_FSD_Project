@@ -31,7 +31,7 @@ body{
     /* padding-top: 13px;
     padding-left: 4px; */
     align-items: center;
-    padding-top: 1.7rem;
+    padding-top: 2.8rem !important;
     
 }
 /* .navbar-items{
@@ -39,8 +39,10 @@ body{
     /* justify-content:right; */
 .navbar-main{
    background-color: transparent !important;
+  
    
 }
+
 .container-fluid {
   height: 50px !important;
  
@@ -61,6 +63,7 @@ body{
 .dropdown {
   position: relative;
   display: inline-block;
+  padding-top: 0.5rem;
 }
 
 /* Dropdown button */
@@ -73,6 +76,7 @@ body{
   border: none;
   cursor: pointer;
   margin-left: 5px;
+  
 }
 
 /* Dropdown content (hidden by default) */
@@ -84,6 +88,7 @@ body{
   min-width: 160px;
   z-index: 1;
   border-radius: 0.8rem;
+  
 }
 
 /* Links inside the dropdown */
