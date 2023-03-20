@@ -287,6 +287,10 @@ input{
     color: black;
 }
 
+.page-3 .container{
+    margin-top: -2rem;
+}
+
 a{
     text-decoration: none;
 }
@@ -470,8 +474,17 @@ input{
 .page-4{
     padding:100px;
     display:flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    font-size: 20px;
+}
+
+.page-4 h2{
+    margin-left: -2rem;
+}
+
+.page-4 .content{
+    margin-left: -3rem;
 }
 .available{
     display:flex;
@@ -490,17 +503,20 @@ input{
     margin-right: 2rem;
    
 }
-.avail{
-    margin-left:5rem;
-    
+
+
+.page-5 .city{
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.page-5{
-    padding-left: 40px;
-}
+
 
 .page-5 h2{
-    margin-left: -3rem;
+   margin-bottom: 3.5rem !important;
 }
 
 .footer{
@@ -512,6 +528,12 @@ input{
 .part-1, .part-2, .part-3, .part-4, .part-5{
     flex-basis: 20%;
     text-align: center;
+}
+
+.footer .part-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 @media only screen and (max-width:600px){
@@ -557,8 +579,10 @@ input{
  }
 
  .mobile-image img{
-    height: 50vh;
-    width: 50vh;
+    height: 55vh;
+    width: 55vh;
+    margin-bottom: -1rem;
+    margin-right: -2rem;
  }
 
  .page-4 button {
@@ -566,7 +590,7 @@ input{
     --color : #F99417;
     font-family: inherit;
     display: inline-block;
-    width: 6em;
+    width: 8em;
     height: 2.6em;
     line-height: 2.5em;
     overflow: hidden;
@@ -577,6 +601,11 @@ input{
     border: 2px solid var(--color);
     border-radius: 6px;
     position: relative;
+    padding-bottom: 3rem !important;
+  }
+
+  .fa-brands{
+    margin-top: -2rem !important;
   }
   
   .page-4 button::before {
