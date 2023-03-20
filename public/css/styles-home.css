@@ -373,7 +373,7 @@ a{
     background-color:white;
     border-radius: 1rem;
     width: fit-content; 
-    background-color:#FFF6C3 ;
+    /* background-color:#FFF6C3 ; */
 }
 .container .food{
     flex-basis:50%;
