@@ -5,5 +5,11 @@ const userShop = require('../controllers/userShop');
 
 routes.get('/',userShop.userHomePage);
 
+// creating the cart routes here
+routes.get('/cart',userShop.getCart);
+
+// posting the 
+
+
 module.exports = routes;
 

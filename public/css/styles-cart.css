@@ -38,8 +38,7 @@ body{
     display: flex;
     /* justify-content:right; */
 .navbar-main{
-   background-color: #fff6c3 !important;
-   margin: 0 !important;
+   background-color: transparent !important;
   
    
 }

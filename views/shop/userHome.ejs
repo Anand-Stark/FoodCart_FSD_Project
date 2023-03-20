@@ -6,7 +6,6 @@ integrity="sha512-E378bwaeZf1nwXeJGIwTB58A5gPt5jFU3u6aTGja4ZdRFJeo/N/REKnBgNZOZl
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="/css/homePage.css">
 <link rel="stylesheet" href="/css/styles-home.css">
-<script src="https://kit.fontawesome.com/19aa95eec0.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -126,21 +125,39 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <div class="page-3">
     <h2>Most Ordered Food</h2>
     <div class="container">
+
       <div class="most">
-        <div class="food">
+
+       <% for(let product of products){ %> 
+        
+       <div class="food">
+        <div class="foodDescription">
           <div class="order">
-            <img src="/css/images/chicken-curry.jpg">
+            <img src="<%= product.imageUrl %>">
           </div>
           <div class="or-des" style="align-items: center">
-            <h3>Chicken curry</h3>
+            <h3><%= product.title %></h3>
             <i class="fa-solid fa-location-dot"></i>6391 Elign St Celina Delware 10299
-            <b>$87</b>
-          </div>
-          <div class="shop">
-            <button class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
+            <strong><%= product.price %></strong>
           </div>
         </div>
-        <div class="food">
+        <div class="shop">
+          <form action="/add-to-cart" method="post">
+            <!-- <button type="submit" class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button> -->
+            <button type="submit" class="cartButton" onclick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
+          </form>    
+        </div>
+      </div>
+
+    <% } %>  
+
+      </div>
+
+      
+     
+      
+        
+        <!-- <div class="food">
           <div class="order">
             <img src="/css/images/french-fries.jpg">
           </div>
@@ -152,9 +169,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
           <div class="shop">
             <button class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
           </div>
-        </div>
+        </div> -->
       </div>
-      <div class="most">
+      <!-- <div class="most">
         <div class="food">
           <div class="order">
             <img src="/css/images/pudding.jpg">
@@ -209,14 +226,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <button class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <div class="next">
-        <button class="buttons" style="border-radius:15px"
-          onClick="window.location.href='https://www.apple.com/in/app-store/';">See More Foods</button>
-      </div>
+      
     </div>
-  </div>
+  
   <section>
     <div class="container container2">
       <div class="content-left content-left2">
@@ -337,5 +351,6 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </div>
   </div>
 
+  <script src="https://kit.fontawesome.com/19aa95eec0.js" crossorigin="anonymous"></script>
 
 <%- include('../includes/end.ejs') %>
