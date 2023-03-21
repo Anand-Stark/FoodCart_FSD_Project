@@ -54,7 +54,8 @@ body{
 }
 
 .nav-link:hover{
-  color: lightgrey;
+  color: #e8915e;
+  transform: scale(1.1);
 }
 
 /* .other-items-size{
