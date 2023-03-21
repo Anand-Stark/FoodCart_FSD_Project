@@ -1,5 +1,6 @@
 const Product = require('../models/productAdmin');
-const Cart = require('../models/cart');
+// const Cart = require('../models/cart');
+
 exports.userHomePage = (req,res,next)=>{
      
       Product.findAll()

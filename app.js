@@ -7,6 +7,7 @@ const path = require("path");
 const userShop = require("./routes/shop");
 const adminProducts = require("./routes/admin");
 const restaurants = require("./routes/restaurant");
+const authentication = require("./routes/auth");
 
 // using Sequelize for connecting databases :
 const sequelize = require("./util/database");
@@ -60,7 +61,7 @@ app.use((req,res,next)=>{
 app.use("/admin", adminProducts);
 app.use(userShop);
 app.use("/restaurant", restaurants);
-
+app.use(authentication);
 // establishing the relations user - adminProducts:
 
 // synchronizing all the models :

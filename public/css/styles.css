@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 body {
   margin: 0px;
   background-image: url("./images/grilled-meat-skewers-chicken-shish-kebab-with-zucchini-tomatoes-red-onions.png");
@@ -8,46 +10,60 @@ body {
   font-family: "Montserrat", sans-serif;
   min-height: 100vh;
 }
-.navbar-text {
-  display: flex;
-  justify-content: flex-start;
-  /* padding: 0px 10px; */
-  border-radius: 1rem;
-  background-color: transparent;
+
+.navbar-text{
+   display: flex;
+   justify-content:flex-start;
+   /* padding: 0px 10px; */
+   border-radius: 1rem;
+   background-color:transparent;
+
+   
 }
 
-.container-fluid img {
+.container-fluid img{
   height: 6rem !important;
   width: 6rem !important;
   outline: none;
   border: none;
-  margin-left: 1.5rem;
+  margin : 1.5rem;
   padding-top: 0.5rem;
 }
 /* .navbar-text:hover{
     box-shadow: -3px 5px 15px rgba(0,0,0,0.47);
 } */
-.navbar-heading {
-  /* padding-top: 13px;
+.navbar-heading{
+    /* padding-top: 13px;
     padding-left: 4px; */
-  align-items: center;
-  padding-top: 1.7rem;
+    align-items: center;
+    padding-top: 2.8rem !important;
+    
 }
 /* .navbar-items{
     display: flex;
     /* justify-content:right; */
-.navbar-main {
-  background-color: #ffdb58  !important;
-}
-.container-fluid {
-  height: 50px !important;
-}
-.nav-link {
-  color: black;
+.navbar-main{
+   background-color: 			#ffde66!important;
+   margin: 0 !important;
+   height: 5rem;
+   
 }
 
-.nav-link:hover {
-  color: lightgrey;
+.container-fluid {
+  height: 50px !important;
+ 
+  
+}
+.nav-link{
+  color:black;
+  padding: 1rem;
+  margin-left: 1.5rem;
+  font-size: large;
+}
+
+.nav-link:hover{
+  color: #e8915e;
+  transform: scale(1.1);
 }
 
 /* .other-items-size{
@@ -57,18 +73,22 @@ body {
 .dropdown {
   position: relative;
   display: inline-block;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /* Dropdown button */
 .dropdown button {
-  background-color:#4CAF50;
+  background-color:dimgrey;
   border-radius: 1rem;
-  color: white;
+  color:white;
   padding: 8px 40px;
   font-size: 16px;
   border: none;
   cursor: pointer;
   margin-left: 5px;
+  
 }
 
 /* Dropdown content (hidden by default) */
@@ -76,10 +96,11 @@ body {
   display: none;
   position: absolute;
   right: 10px;
-  background-color: white;
+  background-color:white;
   min-width: 160px;
   z-index: 1;
   border-radius: 0.8rem;
+  
 }
 
 /* Links inside the dropdown */
@@ -92,19 +113,14 @@ body {
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
+.dropdown-content a:hover {background-color: #ddd;}
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+.dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover button {
-  background-color:#3e8e41;
-}
+.dropdown:hover button {background-color:dimgray;}
+
 
 .formContainer {
   /* border: 1px solid black; */
