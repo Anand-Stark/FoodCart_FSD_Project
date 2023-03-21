@@ -8,8 +8,8 @@ routes.get('/',userShop.userHomePage);
 // creating the cart routes here
 routes.get('/cart',userShop.getCart);
 
-// posting the 
-
+// posting the cart
+routes.post('/add-to-cart',userShop.postCart)
 
 module.exports = routes;
 

@@ -10,7 +10,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <body>
 <%- include('../includes/navigation.ejs') %>
-
-
+<% for(let product of products) {%>
+<h1><%= product.cartItems.quantity  %></h1>
+<p><%= product.description %></p>
+<% } %>
 
 <%- include('../includes/end.ejs') %>

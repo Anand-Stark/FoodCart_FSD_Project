@@ -1,8 +1,8 @@
-const product = require('../models/productAdmin');
-
+const Product = require('../models/productAdmin');
+const Cart = require('../models/cart');
 exports.userHomePage = (req,res,next)=>{
      
-      product.findAll()
+      Product.findAll()
              .then(products =>{
                   res.render('shop/userHome',{
                         pageTitle:'User Home Page',
@@ -14,7 +14,54 @@ exports.userHomePage = (req,res,next)=>{
 }; 
 
 exports.getCart =  (req,res,next) =>{
-        res.render('shop/myCart',{
-             pageTitle:'My Cart'
+      
+       req.user
+          .getCart()
+          .then(cart =>{
+                return cart.getProducts()
+           })
+           .then(products =>{
+               res.render('shop/myCart',{
+                     pageTitle:'My Cart',
+                     products:products
+               })
+           })
+        
+}
+
+exports.postCart = (req,res,next) =>{
+     const prodId = req.body.productId;
+     console.log('id is '+prodId);
+     let updatedCart;
+     let newQuantity = 1; 
+     req.user
+        .getCart()
+        .then(cart =>{
+           updatedCart = cart;
+           return cart.getProducts({where:{id:prodId}});
         })
+        .then(products =>{
+          let product ;
+             if(products.length > 0){
+                 product = products[0];
+             }
+
+             if(product){
+               const oldQuantity = product.cartItems.quantity;
+                 newQuantity = oldQuantity + 1;
+                 return product
+             }
+
+             return Product.findByPk(prodId);
+        })
+        .then(product =>{
+           return updatedCart.addProduct(product, {
+               through: { quantity: newQuantity }
+             });
+        })
+        .then(result =>{
+           res.redirect('/cart');
+        })
+        .catch(err =>
+           console.log(err));
 }

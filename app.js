@@ -15,6 +15,8 @@ const sequelize = require("./util/database");
 const Admin = require("./models/admin");
 const User = require("./models/user");
 const Product = require("./models/productAdmin");
+const Cart = require('./models/cart');
+const cartItems = require('./models/cartItems');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -25,6 +27,11 @@ app.set("views", "views");
 // storing the newly made user and the admin in the req.user format in the body of the document .
 Product.belongsTo(User, {constraints: true, onDelete: 'CASCADE'})
 User.hasMany(Product);
+User.hasOne(Cart);
+Cart.hasOne(User);
+Cart.belongsToMany(Product, {through: 'cartItems'});
+Product.belongsToMany(Cart,{through:'cartItems'});
+
 
 app.use((req, res, next) => {
   User.findByPk(1)
@@ -58,16 +65,27 @@ app.use("/restaurant", restaurants);
 
 // synchronizing all the models :
 sequelize
+  // .sync({force:true})
   .sync()
   .then((result) => {
     //if no user exists then create one
     User.findByPk(1).then((user) => {
       if (!user) {
-        User.create({
+            return  User.create({
           email: "zeeshan.m21@iiits.in",
           userName: "Zeeshan",
         });
+       
       }
+      return user;
+    })
+    .then(user =>{
+        user.createCart();
+    })
+    .catch(err =>{
+       console.log(err);
+    })
+    
 
       // if no admin exits then create one
       Admin.findByPk(1).then((admin) => {
@@ -82,8 +100,8 @@ sequelize
       app.listen(3000, () => {
         console.log("Running on port number 3000 and database connected");
       });
-    });
-  })
+    })
+  
   .catch((err) => {
     console.log(err);
   });

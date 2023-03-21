@@ -139,6 +139,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <div class="shop">
           <form action="/add-to-cart" method="post">
             <!-- <button type="submit" class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button> -->
+            <input type="hidden" name = 'productId' value = '<%= product.id %>'>
             <button type="submit" class="cartButton" onclick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
           </form>    
         </div>
