@@ -14,21 +14,21 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 			<form action="#" method="POST">
 			  <div class="input-group">
 				<label for="username">Username:</label>
-				<input type="text" autocomplete="off" id="username" name="username" required>
+				<input type="text" autocomplete="off" id="username" name="username" required style="border: 1px solid black; border-radius: 5px;">
 				<span class="error-msg" id="username-error"></span>
 			  </div>
 			  <div class="input-group">
 				<label for="email">Email</label>
-				<input type="text" autocomplete="off"  id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
-				<span class="error-msg" id="username-error"></span>
+				<input type="text" autocomplete="off"  id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required style="border: 1px solid black; border-radius: 5px;">
+				<span class="error-msg" id="username-error"></span> 
 			  </div>
 			  <div class="input-group">
 				<label for="password">Password:</label>
-				<input type="password" autocomplete="off" pattern=^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$ id="password" name="password" required>
+				<input type="password" autocomplete="off" pattern=^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$ id="password" name="password" required style="border: 1px solid black; border-radius: 5px;">
 				<span class="error-msg" id="password-error"></span>
 			  </div>
 			  <div class="input-group">
-				<button type="submit" id="submit-btn">Signup</button>
+				<button type="submit" id="submit-btn" style="width:100%;">Signup</button>
 			  </div>
 			</form>
 		  </div>
