@@ -4,16 +4,56 @@ integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js"
 integrity="sha512-E378bwaeZf1nwXeJGIwTB58A5gPt5jFU3u6aTGja4ZdRFJeo/N/REKnBgNZOZlH6JdnOPO98vg2AnSGaNfCMFQ=="
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="/css/styles-cart-nav.css">
 <link rel="stylesheet" href="/css/styles-cart.css">
-
 </head>
 
 <body>
 <%- include('../includes/navigation.ejs') %>
 
-<% for(let product of products) {%>
-<h1><%= product.cartItems.quantity  %></h1>
-<p><%= product.description %></p>
-<% } %>
+<h1 style="text-align: center; color: white;  padding-top: 100px; ">My Cart</h1> 
+
+<% if( products.length> 0) { %>
+    <div class="ok-image">
+    <div class="ok-container">
+
+      <% for(let product of products ) { %>
+        <div class="ok-product">
+          <img src="<%= product.imageUrl %>" alt="products" >
+          <figcaption>
+            <%= product.title %>
+          </figcaption>
+          <figcaption>Price : <%= product.price %>
+          </figcaption>
+          <figcaption>Added Quantity : <%= product.cartItems.quantity %>
+
+          </figcaption>
+          <p>
+            <%= product.description %>
+          </p>
+          
+
+        </div>
+        <% } %>
+    </div>
+  </div>
+    <% } else { %>
+
+      
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">No Products Added To Cart ! 🥲</h1>
+          <p class="col-md-8 fs-4">Please press the below button to add Products to your Cart </p>
+          <a href="/"   class="btn btn-outline-warning btn-lg re-add-product-btn">Add Product</a>
+        </div>
+      </div>
+    
+      <% } %>
+
+
+
+
+
+
 
 <%- include('../includes/end.ejs') %>
