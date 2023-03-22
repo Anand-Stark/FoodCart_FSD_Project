@@ -18,6 +18,6 @@ routes.post('/edit-product',adminProducts.postEditProduct);
 
 // post /admin/delete-products
 routes.post('/delete-product',adminProducts.postDeleteProduct);
-
+routes.get('/restaurants',adminProducts.getRestraunts)
 
 module.exports = routes; 

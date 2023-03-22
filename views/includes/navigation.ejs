@@ -21,30 +21,34 @@
         <li class="nav-item">
           <a class="nav-link my-cart" href="/cart">My Cart</a>
         </li>
-
-        <li class="nav-item">
+       <% if (!authentication) { %>
+         <li class="nav-item">
           <a class="nav-link my-cart" href="/auth-login">Login</a>
         </li>
-        <li class="nav-item">
+       <% } %>
+       
+        <!-- <li class="nav-item">
           <a class="nav-link my-cart" href="/auth-signup">SignUp</a>
-        </li>
-
-        <div class="dropdown">
-          <button>Admin</button>
-          <div class="dropdown-content">
-            <a href="/restaurant/add-product">Add Restaurant</a>
-            <a href="/restaurant/products">Show Restaurants</a>
-            <a href="/admin/restaurants">Restaurants Collaborating</a>
+        </li> -->
+        <% if (!authentication) { %>
+          <div class="dropdown">
+            <button>Admin</button>
+            <div class="dropdown-content">
+              <a href="/restaurant/add-product">Add Restaurant</a>
+              <a href="/restaurant/products">Show Restaurants</a>
+              <a href="/admin/restaurants">Restaurants Collaborating</a>
+            </div>
           </div>
-        </div>
+          
+          <div class="dropdown">
+            <button>Restaurants</button>
+            <div class="dropdown-content">
+              <a href="/admin/add-product">Add Products</a>
+              <a href="/admin/products">Products</a>
+            </div> 
+          </div>
+        <% } %>
         
-        <div class="dropdown">
-          <button>Restaurants</button>
-          <div class="dropdown-content">
-            <a href="/admin/add-product">Add Products</a>
-            <a href="/admin/products">Products</a>
-          </div> 
-        </div>
 
        
 

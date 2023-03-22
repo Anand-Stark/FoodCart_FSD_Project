@@ -11,7 +11,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
       <div class="container">
         <h1>Login</h1>
-        <form action="#" method="POST">
+        <form action="/auth-login" method="POST">
           <div class="input-group">
             <label for="email">Email</label>
             <input type="text" autocomplete="off"  id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required style="border: 1px solid black; border-radius: 5px;">
@@ -25,6 +25,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
           <div class="input-group">
             <button type="submit" id="submit-btn" style="width: 100%;">Login</button>
           </div>
+          <p style="text-align: center;">
+            Don't have an account ? <a href="/auth-signup">Signup</a> here
+          </p>
         </form>
       </div>
       <script src="./login-validation.js"></script>

@@ -5,7 +5,7 @@ exports.getAddProduct = (req,res,next)=>{
     // here we have to get the add product page 
     res.render('restaurant/add-product',{
          pageTitle:'Add Restaurant',
-         
+         authentication:req.authentication
     })
 
 }
@@ -40,7 +40,8 @@ exports.getProducts =(req,res,next)=>{
                   .then(restraunts =>{
                       res.render('restaurant/product',{
                              pageTitle:'Restaurants',
-                             products:restraunts
+                             products:restraunts,
+                             authentication:req.authentication
                       })
                   })
                   .catch(err =>{
@@ -54,7 +55,8 @@ exports.getEditProduct = (req,res,next)=>{
                   .then(restaurant =>{
                         res.render('restaurant/edit-product',{
                               pageTitle:'Edit Your Restaurant',
-                              restaurant:restaurant
+                              restaurant:restaurant,
+                              authentication:req.authentication
                         })
                   })
                   .catch(err =>{

@@ -1,14 +1,16 @@
 const Product = require("../models/productAdmin");
 const mongo = require("mongodb");
 const mongoose = require("mongoose");
-
+const restaurant = require('../models/restaurant');
 // just for animation
 
 //    ---------------------------------------
 
 exports.getAddProduct = (req, res, next) => {
+  
   res.render("admin/add-product", {
     pageTitle: "Add Product",
+    authentication:req.authentication
   });
 };
 
@@ -46,6 +48,7 @@ exports.getProducts = (req, res, next) => {
       res.render("admin/product", {
         pageTitle: "Admin Product Page",
         products: products,
+        authentication:req.authentication
       });
     })
     .catch((err) => {
@@ -61,6 +64,7 @@ exports.getEditProduct = (req, res, next) => {
       res.render("admin/edit-product", {
         product: product,
         pageTitle: "Edit Products",
+        authentication:req.authentication
       });
     })
     .catch((err) => {
@@ -110,3 +114,16 @@ exports.postDeleteProduct = (req, res, next) => {
       console.log(err);
     });
 };
+
+
+exports.getRestraunts = (req,res,next) =>{
+    
+       restaurant.findAll()
+                 .then(restaurants =>{
+                     res.render('admin/collabRestaurants',{
+                        pageTitle:'Collaborated Restarants',
+                        products:restaurants,
+                        authentication:req.authentication
+                     })
+                 })
+}

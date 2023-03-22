@@ -9,4 +9,7 @@ routes.get('/auth-login',authentication.getAuthenticationLogin);
 // get /auth-singup
 routes.get('/auth-signup',authentication.getAuthenticationSignup);
 
+// post /auth-login
+routes.post('/auth-login',authentication.postAuthenticationLogin);
+
 module.exports = routes;

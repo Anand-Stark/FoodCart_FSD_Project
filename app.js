@@ -37,7 +37,10 @@ Product.belongsToMany(Cart,{through:'cartItems'});
 app.use((req, res, next) => {
   User.findByPk(1)
     .then((user) => {
+        
       req.user = user;
+        
+      
       next();
     })
     .catch((err) => {

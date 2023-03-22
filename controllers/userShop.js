@@ -2,12 +2,14 @@ const Product = require('../models/productAdmin');
 // const Cart = require('../models/cart');
 
 exports.userHomePage = (req,res,next)=>{
-     
+        
       Product.findAll()
              .then(products =>{
+                  // console.log(req.authentication)
                   res.render('shop/userHome',{
                         pageTitle:'User Home Page',
-                        products:products
+                        products:products,
+                        authentication:req.authentication
                   });
              })
 
@@ -24,7 +26,8 @@ exports.getCart =  (req,res,next) =>{
            .then(products =>{
                res.render('shop/myCart',{
                      pageTitle:'My Cart',
-                     products:products
+                     products:products,
+                     authentication:req.authentication
                })
            })
         
