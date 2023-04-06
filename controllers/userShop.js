@@ -1,5 +1,6 @@
 const Product = require('../models/productAdmin');
 // const Cart = require('../models/cart');
+const User = require('../models/user');
 
 exports.userHomePage = (req,res,next)=>{
         
@@ -68,4 +69,50 @@ exports.postCart = (req,res,next) =>{
         })
         .catch(err =>
            console.log(err));
+}
+
+// creating a get route for the searched product : 
+exports.getSearchProduct = (req,res,next) =>{
+     
+   //   going to find the product and then render the page
+   
+   const userSearch = req.user.search.trim();
+
+   Product.findOne({where : {title : userSearch}})
+          .then(product =>{
+               if(!product){
+                   return res.render('err404',{
+                         pageTitle: 'Error 404'
+                   })
+               } 
+               console.log(product);
+               res.render('shop/searchedProduct',{
+                  pageTitle: 'Your Search',
+                  product:product
+               })
+
+          })
+          .catch(err =>{
+              throw new Error('No product Found');
+          })
+
+
+}
+
+// creating post and get routes for the searched 
+exports.postSearchProduct = (req,res,next) =>{
+     const searchItem = req.body.searchItem;
+
+   //   if(req.user.search){
+   //        req.user.search.destroy();
+   //   }
+
+     req.user.search = searchItem;
+
+     req.user.save();
+
+
+
+     res.redirect('/searched-product');
+        
 }

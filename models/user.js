@@ -8,6 +8,9 @@ const User = sequelize.define('user',{
          autoIncrement:true,
          primaryKey:true
       },
+      search:{
+          type:Sequelize.STRING
+      },
       userName :{
           type:Sequelize.STRING,
           allowNull:false

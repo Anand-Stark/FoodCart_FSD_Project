@@ -10,7 +10,11 @@
       aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
+    
+    <form class="searchForm" action="/search-bar" method="post">
+      <input type="text" placeholder="Delicious Meals Here . . ." name="searchItem" class="searchInput" autocomplete="off">
+      <button type="submit" class="searchButton">Search</button>
+    </form>
 
     <div class=" collapse navbar-collapse navbar-items" id="navbarNavDarkDropdown">
       <ul class="ms-auto navbar-nav other-items-size">
