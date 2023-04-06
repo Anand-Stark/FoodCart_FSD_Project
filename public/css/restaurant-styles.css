@@ -81,7 +81,7 @@ body {
  
  /* Dropdown button */
  .dropdown button {
-   background-color:dimgrey;
+   background-color:#4CAF50;
    border-radius: 1rem;
    color:white;
    padding: 8px 40px;
@@ -120,7 +120,7 @@ body {
  .dropdown:hover .dropdown-content {display: block;}
  
  /* Change the background color of the dropdown button when the dropdown content is shown */
- .dropdown:hover button {background-color:dimgray;}
+ .dropdown:hover button {background-color:#3e8e41;}
  
   
   .formContainer {
