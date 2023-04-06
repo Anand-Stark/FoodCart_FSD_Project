@@ -21,16 +21,12 @@
         <li class="nav-item">
           <a class="nav-link my-cart" href="/cart">My Cart</a>
         </li>
-       <% if (!authentication) { %>
+    
          <li class="nav-item">
           <a class="nav-link my-cart" href="/auth-login">Login</a>
         </li>
-       <% } %>
-       
-        <!-- <li class="nav-item">
-          <a class="nav-link my-cart" href="/auth-signup">SignUp</a>
-        </li> -->
-        <% if (!authentication) { %>
+    
+        
           <div class="dropdown">
             <button>Admin</button>
             <div class="dropdown-content">
@@ -47,10 +43,6 @@
               <a href="/admin/products">Products</a>
             </div> 
           </div>
-        <% } %>
-        
-
-       
 
       </ul>
     </div>
