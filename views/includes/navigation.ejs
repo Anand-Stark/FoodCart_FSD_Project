@@ -12,8 +12,8 @@
     </button>
     
     <form class="searchForm" action="/search-bar" method="post">
-      <input type="text" placeholder="Delicious Meals Here . . ." name="searchItem" class="searchInput" autocomplete="off">
-      <button type="submit" class="searchButton">Search</button>
+      <input type="text" placeholder="Search for Food .. " name="searchItem" class="searchInput" autocomplete="off">
+      <button type="submit" class="searchButton"><i class="fas fa-search fa-xl"></i></button>
     </form>
 
     <div class=" collapse navbar-collapse navbar-items" id="navbarNavDarkDropdown">
@@ -25,6 +25,23 @@
         <li class="nav-item">
           <a class="nav-link my-cart" href="/cart">My Cart</a>
         </li>  
+
+        <div class="dropdown">
+          <button>Products</button>
+          <div class="dropdown-content">
+            <!-- <a href="/restaurant/add-product">Add Restaurant</a>
+            <a href="/restaurant/products">Show Restaurants</a>
+            <a href="/admin/restaurants">Restaurants Collaborating</a> -->
+            <a href="">Non-Veg</a>
+                <a href="">Veg</a>
+                <a href="">Italian</a>
+                <a href="">Chinese</a>
+
+           
+
+
+          </div>
+        </div>
         
           <div class="dropdown">
             <button>Admin</button>

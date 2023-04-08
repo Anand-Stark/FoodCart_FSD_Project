@@ -86,7 +86,7 @@ exports.getSearchProduct = (req,res,next) =>{
                    })
                } 
                console.log(product);
-               res.render('shop/searchedProduct',{
+               return res.render('shop/searchedProduct',{
                   pageTitle: 'Your Search',
                   product:product
                })
@@ -101,7 +101,7 @@ exports.getSearchProduct = (req,res,next) =>{
 
 // creating post and get routes for the searched 
 exports.postSearchProduct = (req,res,next) =>{
-     const searchItem = req.body.searchItem;
+     const searchItem = req.body.searchItem.toLowerCase();
 
    //   if(req.user.search){
    //        req.user.search.destroy();

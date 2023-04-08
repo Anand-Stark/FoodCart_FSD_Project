@@ -15,28 +15,43 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <div class="formContainer">
     <form action="/admin/add-product" method="POST">
       <div class="form-floating mb-3 ">
-        <input type="text" class="form-control childLoginStyle" name="title" id="tile" placeholder="Title">
+        <input type="text" class="form-control childLoginStyle" name="title" id="tile" placeholder="Title" required>
         <label for="title">Title</label>
       </div>
       <div class="form-floating mb-3 ">
           <input type="text" name="imageUrl" class="form-control childLoginStyle" id="imageUrl"
-          placeholder="imageUrl">
+          placeholder="imageUrl" required>
         <label for="imageUrl">imageUrl</label>
         </div>
         <div class="form-floating mb-3 ">
           <input type="number" name="price" class="form-control childLoginStyle" id="price"
-          placeholder="price">
+          placeholder="price" required>
         <label for="price">Price(₹)</label>
         </div>
         <div class="form-floating mb-3 ">
           <input type="number" name="rating" class="form-control childLoginStyle" id="rating"
-          placeholder="rating">
+          placeholder="rating" required>
         <label for="rating">Rating</label>
         </div>
         <div class="form-floating mb-3 child">
-          <input type="text" name="description" class="form-control childLoginStyle" id="description" rows="5" placeholder="description">
+          <input type="text" name="description" class="form-control childLoginStyle" id="description" rows="5" placeholder="description" required>
           <label for="description">Description</label>
         </div>
+
+        
+
+        <select class="form-select" name = "categoryName" aria-label="Default select example" style="margin-bottom: 1rem; height: 3.5rem;">
+          <option selected>Choose Category</option>
+          <option value="1" >Non-Veg</option>
+          <option value="2">Veg</option>
+          <option value="3">Chinese</option>
+          <option value="4">Italian</option>
+        </select>
+
+
+
+
+
       <div class="form-floating ">
         <button type="submit" class="btn btn-outline-warning btn-addproduct buttonMain">Add Product</button>
       </div>

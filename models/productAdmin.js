@@ -27,6 +27,10 @@ const Product = sequelize.define('product',{
       rating:{
          type: Sequelize.INTEGER,
          allowNull:false
+      },
+      foodCategory:{
+         type: Sequelize.INTEGER,
+         allowNull:false
       }
 })
 

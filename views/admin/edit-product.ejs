@@ -16,29 +16,29 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       <div class="formContainer">
         <form action="/admin/edit-product" method="POST">
           <div class="form-floating mb-3 ">
-            <input type="text" class="form-control childLoginStyle" value="<%= product.title %>" name="title" id="tile" placeholder="Title">
+            <input type="text" class="form-control childLoginStyle" value="<%= product.title %>" name="title" id="tile" placeholder="Title" required>
             <label for="title">Title</label>
           </div>
           <div class="form-floating mb-3 " role="status">
               <input type="text" name="imageUrl" class="form-control childLoginStyle" value="<%= product.imageUrl %>" id="imageUrl"
-              placeholder="imageUrl">
+              placeholder="imageUrl" required>
             <label for="imageUrl">imageUrl</label>
             </div>
             <div class="form-floating mb-3 ">
               <input type="number" name="price" value="<%= product.price %>" class="form-control childLoginStyle" id="price"
-              placeholder="price">
+              placeholder="price" required>
             <label for="price">Price</label>
             </div>
             <div class="form-floating mb-3 ">
               <input type="number" name="rating" value="<%= product.rating %>" class="form-control childLoginStyle" id="rating"
-              placeholder="rating">
+              placeholder="rating" required>
             <label for="rating">Rating</label>
             </div>
             <div class="form-floating mb-3 child">
-              <input type="text" name="description" value="<%= product.description %>" class="form-control childLoginStyle" id="description" rows="5" placeholder="description">
+              <input type="text" name="description" value="<%= product.description %>" class="form-control childLoginStyle" id="description" rows="5" placeholder="description" required>
               <label for="description">Description</label>
             </div>
-            <input type="hidden" value="<%= product.id %> " name = 'productId'>
+            <input type="hidden" value="<%= product.id %> " name = 'productId' required>
           <div class="form-floating ">
             <button type="submit" class="btn btn-outline-warning btn-addproduct buttonMain">Update</button>
           </div>

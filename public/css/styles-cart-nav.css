@@ -30,13 +30,17 @@ body{
      padding-left: 4px; */
      align-items: center;
      padding-top: 2.8rem !important;
-     
+     color: #ffac1c;
+ }
+
+ .navbar-text:hover{
+  color: #ffac1c;
  }
  /* .navbar-items{
      display: flex;
      /* justify-content:right; */
  .navbar-main{
-    background-color: 			#ffde66!important;
+    background-color: 			transparent;
     margin: 0 !important;
     height: 5rem;
     
@@ -73,7 +77,7 @@ body{
  
  /* Dropdown button */
  .dropdown button {
-   background-color:#4CAF50;
+   background-color:#ffac1c;
    border-radius: 1rem;
    color:white;
    padding: 8px 40px;
@@ -112,5 +116,5 @@ body{
  .dropdown:hover .dropdown-content {display: block;}
  
  /* Change the background color of the dropdown button when the dropdown content is shown */
- .dropdown:hover button {background-color:#3e8e41;}
+ .dropdown:hover button {background-color:#f28c28;}
  

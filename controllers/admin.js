@@ -20,7 +20,9 @@ exports.postAddProduct = (req, res, next) => {
   const price = req.body.price;
   const rating = req.body.rating;
   const description = req.body.description;
-  
+  const category = req.body.categoryName;
+
+  console.log(category);
 
   Product.create({
     title: title,
@@ -29,6 +31,7 @@ exports.postAddProduct = (req, res, next) => {
     rating: rating,
     description: description,
     userId: req.user.id,
+    foodCategory : category
   })
     .then((result) => {
       console.log("product saved successfully");

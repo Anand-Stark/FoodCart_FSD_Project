@@ -15,32 +15,34 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <div class="formContainer">
     <form action="/restaurant/add-product" method="POST">
       <div class="form-floating mb-3 "> 
-        <input type="text" class="form-control childLoginStyle" name="name" id="name" placeholder="Restaurant Name">
+        <input type="text" class="form-control childLoginStyle" name="name" id="name" placeholder="Restaurant Name" required>
         <label for="name">Restaurant Name</label>
       </div>
       <div class="form-floating mb-3 ">
           <input type="text" name="imageUrl" class="form-control childLoginStyle" id="imageUrl"
-          placeholder="imageUrl">
+          placeholder="imageUrl" required>
         <label for="imageUrl">imageUrl</label>
         </div>
         <div class="form-floating mb-3 ">
           <input type="text" name="location" class="form-control childLoginStyle" id="location"
-          placeholder="location">
+          placeholder="location" required>
         <label for="location">Location</label>
         </div>
         <div class="form-floating mb-3 ">
           <input type="number" name="employee" class="form-control childLoginStyle" id="employee"
-          placeholder="rating">
+          placeholder="rating" required>
         <label for="employee">No of Employees</label>
         </div>
         <div class="form-floating mb-3 child">
-          <input type="number" name="foodItemsVeg" class="form-control childLoginStyle" id="foodItemsVeg" rows="5" placeholder="foodItemsVeg">
+          <input type="number" name="foodItemsVeg" class="form-control childLoginStyle" id="foodItemsVeg" rows="5" placeholder="foodItemsVeg" required>
           <label for="foodItemsVeg">Veg Food(No.)</label>
         </div>
         <div class="form-floating mb-3 child">
-          <input type="number" name="foodItemsNonVeg" class="form-control childLoginStyle" id="foodItemsNonVeg" rows="5" placeholder="foodItemsNonVeg">
+          <input type="number" name="foodItemsNonVeg" class="form-control childLoginStyle" id="foodItemsNonVeg" rows="5" placeholder="foodItemsNonVeg" required>
           <label for="foodItemsNonVeg">NonVeg Food(No.)</label>
         </div>
+
+
       <div class="form-floating ">
         <button type="submit" class="btn btn-outline-warning btn-addproduct buttonMain">Add Restaurant</button>
       </div>
