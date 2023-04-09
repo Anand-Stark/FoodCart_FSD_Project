@@ -38,11 +38,18 @@ exports.postAddProduct = (req,res,next)=>{
 exports.getProducts =(req,res,next)=>{
         restaurant.findAll()
                   .then(restraunts =>{
-                      res.render('restaurant/product',{
+                     if(restraunts.length > 0){
+                      return res.render('restaurant/product',{
                              pageTitle:'Restaurants',
                              products:restraunts,
                              authentication:req.authentication
                       })
+                     }
+
+                     return res.render('err404',{
+                         pageTitle:'Error'
+                     })
+                     
                   })
                   .catch(err =>{
                      console.log(err);
