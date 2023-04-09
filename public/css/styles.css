@@ -75,7 +75,8 @@ body {
 
 /* Dropdown button */
 .dropdown button {
-  background-color:#ffac1c;
+  background: rgb(255,172,28);
+background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%);
   border-radius: 1rem;
   color:white;
   padding: 8px 40px;
