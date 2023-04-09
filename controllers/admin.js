@@ -48,11 +48,20 @@ exports.getProducts = (req, res, next) => {
   //   here , we will try to get all the possible products
   Product.findAll()
     .then((products) => {
-      res.render("admin/product", {
+
+      if(products.length > 0){
+        return res.render("admin/product", {
         pageTitle: "Admin Product Page",
         products: products,
         authentication:req.authentication
       });
+
+      }
+
+      return res.render('err404',{
+         pageTitle:'Error'
+      })
+      
     })
     .catch((err) => {
       console.log(err);
@@ -123,10 +132,24 @@ exports.getRestraunts = (req,res,next) =>{
     
        restaurant.findAll()
                  .then(restaurants =>{
-                     res.render('admin/collabRestaurants',{
+
+                  if(restaurants.length> 0 ){
+return  res.render('admin/collabRestaurants',{
                         pageTitle:'Collaborated Restarants',
                         products:restaurants,
                         authentication:req.authentication
                      })
+                  }
+
+                  return res.render('err404',{
+                     pageTitle:'No Product'
+                  });
+                    
+                 })
+                 .then(result =>{
+                   console.log(result);
+                 })
+                 .catch(err =>{
+                   console.log(err);
                  })
 }
