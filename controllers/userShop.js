@@ -160,6 +160,7 @@ exports.postDecreaseQuantity = (req,res,next) =>{
      const prodId = req.body.prodId;
      let userCart;
      let newQuantity =1;
+     let newprice = 1;
 
      console.log(prodId);
   
@@ -183,9 +184,13 @@ exports.postDecreaseQuantity = (req,res,next) =>{
 
             if(product){
                const oldQuantity = product.cartItems.quantity;
+               // const OldPrice = product.cartItems.price;
+            
               //  console.log(oldQuantity);
                newQuantity = oldQuantity - 1;
-              
+
+               // newprice = OldPrice*newQuantity;
+
                return product;
             }
            

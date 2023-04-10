@@ -228,7 +228,7 @@ background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%
           <figcaption>
             <%= product.title %>
           </figcaption>
-          <figcaption>Price : <%= product.price %>
+          <figcaption>Price : <%= product.price*product.cartItems.quantity %>
           </figcaption>
           <figcaption>Added Quantity : <%= product.cartItems.quantity %>
 
