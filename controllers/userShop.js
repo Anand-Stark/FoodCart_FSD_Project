@@ -177,9 +177,9 @@ exports.postDecreaseQuantity = (req,res,next) =>{
                    product = products[0];
             }
             
-            // if(product.cartItems.quantity <= 0){
-            //     return product.destroy();
-            // }
+            if(product.cartItems.quantity <= 0){
+                return product.cartItems.destroy();
+            }
 
             if(product){
                const oldQuantity = product.cartItems.quantity;
@@ -193,7 +193,12 @@ exports.postDecreaseQuantity = (req,res,next) =>{
         })
         .then(product =>{
                console.log(newQuantity);
-               return userCart.addProduct(product,{
+               if(!product){
+                  return res.redirect('/cart');
+               }
+
+
+                return userCart.addProduct(product,{
                 through: { quantity: newQuantity }
               })
              
