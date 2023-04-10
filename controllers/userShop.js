@@ -156,5 +156,54 @@ exports.postAddQuantity = (req,res,next) =>{
 
 
 exports.postDecreaseQuantity = (req,res,next) =>{
-    
+  
+     const prodId = req.body.prodId;
+     let userCart;
+     let newQuantity =1;
+
+     console.log(prodId);
+  
+     req.user
+        .getCart()
+        .then(cart =>{
+           userCart = cart;
+           return cart.getProducts({where:{id:prodId}})
+        })
+        .then(products =>{
+
+           let product;
+
+            if(products.length > 0){
+                   product = products[0];
+            }
+            
+            // if(product.cartItems.quantity <= 0){
+            //     return product.destroy();
+            // }
+
+            if(product){
+               const oldQuantity = product.cartItems.quantity;
+              //  console.log(oldQuantity);
+               newQuantity = oldQuantity - 1;
+              
+               return product;
+            }
+           
+        
+        })
+        .then(product =>{
+               console.log(newQuantity);
+               return userCart.addProduct(product,{
+                through: { quantity: newQuantity }
+              })
+             
+        })
+        .then(result =>{
+            
+            return  res.redirect('/cart');
+        })
+        .catch(err =>{
+           console.log(err);
+        })
+
 }
