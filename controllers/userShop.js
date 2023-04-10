@@ -116,3 +116,45 @@ exports.postSearchProduct = (req,res,next) =>{
      res.redirect('/searched-product');
         
 }
+
+exports.postAddQuantity = (req,res,next) =>{
+      const productId = req.body.prodId;
+      let userCart;
+      let newQuantity = 1;
+      req.user
+         .getCart()
+         .then(cart =>{
+              userCart = cart;
+              return cart.getProducts({where:{id:productId}});
+         })
+         .then(products =>{
+            let product;
+              if(products.length > 0){
+                 product = products[0];
+              }
+
+              if(product){
+                const oldQuantity = product.cartItems.quantity;
+                newQuantity = oldQuantity + 1;
+                return product
+              }
+
+            
+         })
+         .then(product =>{
+             return userCart.addProduct(product,{
+               through: { quantity: newQuantity }
+             })
+         })
+         .then(result =>{
+             res.redirect('/cart');
+         })
+         .catch(err =>{
+             console.log(err);
+         })
+}
+
+
+exports.postDecreaseQuantity = (req,res,next) =>{
+    
+}

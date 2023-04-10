@@ -17,5 +17,11 @@ routes.get('/searched-product',userShop.getSearchProduct);
 // creating a post route for a search bar sort of thing:
 routes.post('/search-bar',userShop.postSearchProduct);
 
+// creating a post route for adding quantity
+routes.post('/add-quantity',userShop.postAddQuantity);
+
+// creating a post route for deleting quantity
+routes.post('/decrease-quantity',userShop.postDecreaseQuantity)
+
 module.exports = routes;
 

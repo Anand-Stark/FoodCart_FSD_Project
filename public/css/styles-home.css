@@ -442,7 +442,8 @@ a{
     border-radius: 0.5rem;
     width: 100%;
     text-align: center;
-    background-color: rgb(239, 239, 171);
+    background: rgb(255,172,28);
+background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%);
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }

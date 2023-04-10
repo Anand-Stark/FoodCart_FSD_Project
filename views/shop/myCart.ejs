@@ -194,6 +194,20 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       transform: translateY(0px);
     }
   }
+  .quantity{
+     display: flex;
+     justify-content: center;
+     gap: 16.5rem;
+     margin-top: 1rem;
+  }
+  .btnQuantity{
+          height: 3.5rem;
+          width: 3.5rem;
+  }
+  .btnQuantity:hover{
+    background: rgb(255,172,28);
+background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%);
+  }
 </style>
 </head>
 
@@ -217,11 +231,20 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
           <figcaption>Added Quantity : <%= product.cartItems.quantity %>
 
           </figcaption>
-          <p>
-            <%= product.description %>
-          </p>
-          
+          <div class="quantity">
 
+          <form action="/add-quantity"  method="post">
+            <input type="hidden" value="<%= product.id %> " name="prodId">
+              <button type="submit" class="btn btn-outline-warning btnQuantity">+</button>
+          </form>
+          
+          <form action="/decrease-quantity"  method="post">
+              <input type="hidden" value="<%= product.id %> " name="prodId">
+              <button type="submit" class="btn btn-outline-warning btnQuantity">-</button>
+          </form>
+
+          </div>
+          
         </div>
         <% } %>
     </div>

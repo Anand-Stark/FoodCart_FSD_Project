@@ -29,7 +29,7 @@ const Product = sequelize.define('product',{
          allowNull:false
       },
       foodCategory:{
-         type: Sequelize.INTEGER,
+         type: Sequelize.STRING,
          allowNull:false
       }
 })
