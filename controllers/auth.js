@@ -36,7 +36,7 @@ exports.postSignup = (req,res,next) =>{
 
           console.log(user);
 
-         if(user){
+         if(user.email === email){
           // console.log('12');
            return res.redirect('/auth-signup');
          }
@@ -50,7 +50,8 @@ exports.postSignup = (req,res,next) =>{
                            password:hashedPassword
                       })
                 })
-                .then(result =>{
+                .then(user =>{
+                         //  user.createCart();
                           res.redirect('/auth-login') ; 
                 })
 
@@ -69,9 +70,42 @@ exports.postSignup = (req,res,next) =>{
 }
 
 exports.postLogin = (req,res,next) =>{
-      
+      const email = req.body.email;
+      const password = req.body.password ; 
+
+      console.log(password)
+
+      User.findAll({where:{email:email}})
+          .then(user =>{ 
+                    // console.log(user[0].password)
+                         bcrypt
+                        .compare(password,user[0].password)
+                        .then(value =>{
+                           
+                         // console.log(value)
+
+                           if(value){
+                               req.session.isLoggedIn =true;
+                               req.session.user = user[0];
+                               console.log(req.session.user.id);
+                               return req.session.save(err =>{
+                                    
+                                    res.redirect('/');
+                               })
+                           }
+
+                           res.redirect('/auth-login');
+                        })
+                        .catch(err => {
+                         console.log(err);
+                         res.redirect('/auth-login');
+                       });
+          })
+          .catch(err =>{
+                console.log(err);
+          })
 }
 
 exports.postLogOut = (req,res,next) =>{
-
+        
 }

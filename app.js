@@ -28,6 +28,7 @@ const Product = require("./models/productAdmin");
 const Cart = require('./models/cart');
 const cartItems = require('./models/cartItems');
 const { default: mongoose } = require("mongoose");
+const { log } = require("console");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -59,11 +60,18 @@ app.use((req, res, next) => {
        return next();
     }
 
-    User.findByPk(req.session.user.id)
-        .then(user =>{
-            req.user = user;
-        })
+    // console.log(req.session.user.dataValues.id)
 
+    User.findByPk(req.session.user.dataValues.id)
+        .then(user =>{
+          console.log('yesss');
+            req.user = user;
+             
+            console.log(user)
+
+            next();
+        })
+    
 });
 app.use((req,res,next) =>{
 
