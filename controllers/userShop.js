@@ -10,7 +10,7 @@ exports.userHomePage = (req,res,next)=>{
                   res.render('shop/userHome',{
                         pageTitle:'User Home Page',
                         products:products,
-                        authentication:req.authentication
+                           
                   });
              })
 
@@ -28,7 +28,7 @@ exports.getCart =  (req,res,next) =>{
                res.render('shop/myCart',{
                      pageTitle:'My Cart',
                      products:products,
-                     authentication:req.authentication
+                        
                })
            })
         

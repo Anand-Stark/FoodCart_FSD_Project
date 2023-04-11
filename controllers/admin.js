@@ -10,7 +10,7 @@ exports.getAddProduct = (req, res, next) => {
   
   res.render("admin/add-product", {
     pageTitle: "Add Product",
-    authentication:req.authentication
+     
   });
 };
 
@@ -30,7 +30,6 @@ exports.postAddProduct = (req, res, next) => {
     price: price,
     rating: rating,
     description: description,
-    userId: req.user.id,
     foodCategory : category
   })
     .then((result) => {
@@ -53,7 +52,7 @@ exports.getProducts = (req, res, next) => {
         return res.render("admin/product", {
         pageTitle: "Admin Product Page",
         products: products,
-        authentication:req.authentication
+         
       });
 
       }
@@ -76,7 +75,7 @@ exports.getEditProduct = (req, res, next) => {
       res.render("admin/edit-product", {
         product: product,
         pageTitle: "Edit Products",
-        authentication:req.authentication
+         
       });
     })
     .catch((err) => {
@@ -137,7 +136,7 @@ exports.getRestraunts = (req,res,next) =>{
 return  res.render('admin/collabRestaurants',{
                         pageTitle:'Collaborated Restarants',
                         products:restaurants,
-                        authentication:req.authentication
+                         
                      })
                   }
 
