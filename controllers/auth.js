@@ -53,7 +53,7 @@ exports.postSignup = (req,res,next) =>{
                       })
                 })
                 .then(user =>{
-                         //  user.createCart();
+                          user.createCart();
                           res.redirect('/auth-login') ; 
                 })
 
