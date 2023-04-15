@@ -8,14 +8,30 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="/css/styles-home.css">
 
 </head>
+
+
     
-   <form action="/auth-login" method="post">
-    
+   <form  action="/<% if (adminPage) { %>auth-admin-login<% } else { %>auth-login<% } %>" method="post">
+      <!-- <form  action="/auth-login" method="post"> -->
+      
+         <div class="container-fluid justify-content-start">
+            <a href="/auth-login" class="btn " style="background: rgb(255,172,28);
+            background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%);" role="button" data-bs-toggle="button">User</a>
+            <a href="/auth-admin-login" class="btn btn-dark " role="button" data-bs-toggle="button" aria-pressed="true">Admin</a>
+         </div>
+            
+      
+       
       
       <input type="email" name="email" placeholder="email">
       <input type="password" name="password" placeholder="password">
-      <button type="submit">login</button>
-    
+      <button class="btn btn-outline-success" type="submit">login</button>
+      
+      <% if (!adminPage) { %>
+       <p>don't have an account , Signup <a href="/auth-signup">here</a></p>
+      <% } %>
+
+      
    </form>
 
 <body>

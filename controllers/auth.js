@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
+const Admin = require('../models/admin');
 
 exports.getLogin = (req,res,next) =>{
       // let message = req.flash('error');
@@ -9,7 +10,8 @@ exports.getLogin = (req,res,next) =>{
       //        message = null;
       // }
        res.render('authentication/auth-login',{
-             pageTitle:'Login Page'
+             pageTitle:'Login Page',
+             adminPage:false
        });
 }
 
@@ -107,5 +109,47 @@ exports.postLogin = (req,res,next) =>{
 }
 
 exports.postLogOut = (req,res,next) =>{
-        
+        req.session.destroy(err =>{
+          
+          // console loggig an error if there was any of it . 
+
+          res.redirect('/auth-login');
+
+        })
+                   
 }
+
+// for authentication and getting the admin page
+exports.getAdminLogin = (req,res,next) =>{
+     const adminPage =true;
+          res.render('authentication/auth-login',{
+            pageTitle:'Admin Login',
+            adminPage:adminPage
+          })
+   }
+
+   exports.postAdminLogin = (req,res,next) =>{
+       const email = req.body.email;
+       const password = req.body.password;
+       
+       Admin.findAll({where:{
+                email:email
+           }})
+            .then(admin =>{
+                 if(!admin){
+                    return res.redirect('/auth-admin-login');
+                 }
+                
+                 req.session.isAdminLogged =true;
+                 req.session.admin = admin[0];
+                 console.log(req.session.admin);  
+                 return req.session.save(err =>{
+                                    
+                    res.redirect('/');
+               })
+            })
+            .catch(err =>{
+                 console.log(err);
+            })
+       
+   }

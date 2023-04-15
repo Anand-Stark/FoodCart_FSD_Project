@@ -18,30 +18,41 @@
 
     <div class=" collapse navbar-collapse navbar-items" id="navbarNavDarkDropdown">
       <ul class="ms-auto navbar-nav other-items-size">
-        <li class="nav-item">
-          <a class="nav-link home" href="/">Home</a>
-        </li>
         
-        <li class="nav-item">
-          <a class="nav-link my-cart" href="/cart">My Cart</a>
-        </li>  
 
-        <div class="dropdown">
-          <button>Products</button>
-          <div class="dropdown-content">
-            <!-- <a href="/restaurant/add-product">Add Restaurant</a>
-            <a href="/restaurant/products">Show Restaurants</a>
-            <a href="/admin/restaurants">Restaurants Collaborating</a> -->
-            <a href="">Non-Veg</a>
-                <a href="">Veg</a>
-                <a href="">Italian</a>
-                <a href="">Chinese</a>
-
-           
-
-
+        <% if (isAuthenticated) { %>
+          <li class="nav-item">
+            <a class="nav-link home" href="/">Home</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link my-cart" href="/cart">My Cart</a>
+          </li>  
+  
+  
+  
+          <div class="dropdown">
+            <button>Products</button>
+            <div class="dropdown-content">
+             
+              <!-- <a href="/restaurant/add-product">Add Restaurant</a>
+              <a href="/restaurant/products">Show Restaurants</a>
+              <a href="/admin/restaurants">Restaurants Collaborating</a> -->
+              <a href="">Non-Veg</a>
+                  <a href="">Veg</a>
+                  <a href="">Italian</a>
+                  <a href="">Chinese</a>
+  
+             
+  
+  
+            </div>
           </div>
-        </div>
+  
+          
+
+        <% } else if(isAdminAuthenticated) { %>
+         
         
           <div class="dropdown">
             <button>Admin</button>
@@ -59,6 +70,12 @@
               <a href="/admin/products">Products</a>
             </div> 
           </div>
+
+          <% } %>
+
+          <form style="padding-top: 1.95%;" action="/auth-logout" method="post">
+            <button class="btn btn-dark" >Logout</button>
+          </form>
 
       </ul>
     </div>

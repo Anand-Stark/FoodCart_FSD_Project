@@ -64,7 +64,7 @@ app.use((req, res, next) => {
 
     User.findByPk(req.session.user.dataValues.id)
         .then(user =>{
-          console.log('yesss');
+          // console.log('yesss');
             req.user = user;
              
             console.log(user)
@@ -75,8 +75,11 @@ app.use((req, res, next) => {
 });
 app.use((req,res,next) =>{
 
-     res.locals.isAuthenticated = req.session.isLoggedIn;
+    //  basically through res.locals , the value of any variable can be directly used whenever required
+    // here in this case, isAuthenticated can be used 
 
+     res.locals.isAuthenticated = req.session.isLoggedIn;
+     res.locals.isAdminAuthenticated = req.session.isAdminLogged;
      next();
 })
 
@@ -114,6 +117,7 @@ sequelize
         if (!admin) {
           Admin.create({
             adminName: "Anand",
+            password:"ANANd#2021",
             email: "anand.s21@iiits.in",
           });
         }

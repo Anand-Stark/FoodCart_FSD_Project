@@ -2,6 +2,7 @@ const Product = require("../models/productAdmin");
 const mongo = require("mongodb");
 const mongoose = require("mongoose");
 const restaurant = require('../models/restaurant');
+
 // just for animation
 
 //    ---------------------------------------
@@ -152,3 +153,4 @@ return  res.render('admin/collabRestaurants',{
                    console.log(err);
                  })
 }
+

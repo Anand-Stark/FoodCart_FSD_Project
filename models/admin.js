@@ -8,6 +8,9 @@ const Admin = sequelize.define('admin',{
          autoIncrement:true,
          primaryKey:true
       },
+      password:{
+           type:Sequelize.STRING
+      },
       adminName :{
           type:Sequelize.STRING,
           allowNull:false
