@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const Admin = require('../models/admin');
+const Owner = require('../models/restaurantOwner');
 
 exports.getLogin = (req,res,next) =>{
       // let message = req.flash('error');
@@ -10,14 +11,17 @@ exports.getLogin = (req,res,next) =>{
       //        message = null;
       // }
        res.render('authentication/auth-login',{
-             pageTitle:'Login Page',
-             adminPage:false
+             pageTitle:'User Login Page',
+             adminPage:false,
+             restaurantPage:false
        });
+
 }
 
 exports.getsignup = (req,res,next) =>{
      res.render('authentication/auth-signup',{
-          pageTitle:'Signup Page'
+          pageTitle:'Signup Page',
+          restaurantPage:false
      })
      
 }
@@ -36,11 +40,12 @@ exports.postSignup = (req,res,next) =>{
      User.findAll({where:{email:email}})
      .then(user =>{
 
-          console.log(user);
+          
 
-         if(user.email === email){
+         if(user.length !== 0){
           // console.log('12');
            return res.redirect('/auth-signup');
+
          }
          
          return bcrypt
@@ -124,7 +129,8 @@ exports.getAdminLogin = (req,res,next) =>{
      const adminPage =true;
           res.render('authentication/auth-login',{
             pageTitle:'Admin Login',
-            adminPage:adminPage
+            adminPage:adminPage,
+            restaurantPage:false
           })
    }
 
@@ -153,3 +159,104 @@ exports.getAdminLogin = (req,res,next) =>{
             })
        
    }
+
+exports.getRestaurantLogin = (req,res,next) =>{
+      const restaurantPage = true;
+      res.render('authentication/auth-login',{
+            pageTitle:'Owner Login',
+            restaurantPage:restaurantPage,
+            adminPage:false
+      })
+}   
+
+exports.postRestaurantLogin = (req,res,next) =>{
+     const email = req.body.email;
+     const password = req.body.password ; 
+
+     // console.log(password)
+
+     Owner.findAll({where:{email:email}})
+         .then(owner =>{ 
+               //     console.log(owner[0].password)
+                        bcrypt
+                       .compare(password,owner[0].password)
+                       .then(value =>{
+                          
+                        console.log('value is' + value);
+
+                          if(value){
+                              req.session.isOwnerLoggedIn =true;
+                              req.session.owner = owner[0];
+                             
+                              return req.session.save(err =>{
+                                   
+                                   res.redirect('/');
+                              })
+                          }
+
+                          res.redirect('/auth-restaurant-login');
+                       })
+                       .catch(err => {
+                        console.log(err);
+                        res.redirect('/auth-restaurant-login');
+                      });
+         })
+         .catch(err =>{
+               console.log(err);
+         })
+}
+
+exports.getRestaurantSignup = (req,res,next) =>{
+        const restaurantPage = true;
+        res.render('authentication/auth-signup',{
+           pageTitle:'Restaurant Register',
+           restaurantPage:restaurantPage
+        })
+}
+
+exports.postRestaurantSignup = (req,res,next) =>{
+       const email = req.body.email;
+       const password = req.body.password;
+       const confirmPassword = req.body.confirmPassword;
+      
+  
+  
+     if(password === confirmPassword){
+            
+       Owner.findAll({where:{email:email}})
+       .then(owner =>{
+  
+            
+  
+           if(owner.length !== 0){
+            // console.log('12');
+             return res.redirect('/auth-restaurant-signup');
+  
+           }
+           
+           return bcrypt
+                  .hash(password,12)
+                  .then(hashedPassword =>{
+                       return Owner.create({
+                             email:email,
+                             password:hashedPassword
+                        })
+                  })
+                  .then(owner=>{
+                         //    owner.createProduct();
+                            res.redirect('/auth-restaurant-login') ; 
+                  })
+  
+       })
+       .catch(err =>{
+          console.log(err);
+       })
+  
+     }
+     else{
+         res.redirect('/auth-restaurant-signup');
+     }
+  
+      
+       
+}

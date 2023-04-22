@@ -13,6 +13,14 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
 <%- include('../includes/navigation.ejs') %>
 
+<!-- Now I have to include isAdminAuthenticated to render a specific part of the code -->
+
+<% if(isAdminAuthenticated) { %>
+  
+     <h1 style="text-align: center;">Dashboard</h1>
+
+<% } else { %>
+ 
 <section class="grid">
     <div class="content">
       <div class="content-left">
@@ -148,84 +156,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <% } %>  
 
       </div>
-
-      
-     
-      
-        
-        <!-- <div class="food">
-          <div class="order">
-            <img src="/css/images/french-fries.jpg">
-          </div>
-          <div class="or-des">
-            <h3>French fries</h3>
-            <i class="fa-solid fa-location-dot"></i>6391 Elign St Celina Delware 10299
-            <b>$87</b>
-          </div>
-          <div class="shop">
-            <button class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
-          </div>
-        </div> -->
       </div>
-      <!-- <div class="most">
-        <div class="food">
-          <div class="order">
-            <img src="/css/images/pudding.jpg">
-          </div>
-          <div class="or-des">
-            <h3>Pudding</h3>
-            <i class="fa-solid fa-location-dot"></i>6391 Elign St Celina Delware 10299
-            <b>$87</b>
-          </div>
-          <div class="shop">
-            <button class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
-          </div>
-        </div>
-        <div class="food">
-          <div class="order">
-            <img src="/css/images/vegetable-salad.jpg">
-          </div>
-          <div class="or-des">
-            <h3>Vegetable-salad</h3>
-            <i class="fa-solid fa-location-dot"></i>6391 Elign St Celina Delware 10299
-            <b>$87</b>
-          </div>
-          <div class="shop">
-            <button class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
-          </div>
-        </div>
-      </div>
-      <div class="most">
-        <div class="food">
-          <div class="order">
-            <img src="/css/images/pasta.jpg">
-          </div>
-          <div class="or-des">
-            <h3>Pasta</h3>
-            <i class="fa-solid fa-location-dot"></i>6391 Elign St Celina Delware 10299
-            <b>$87</b>
-          </div>
-          <div class="shop">
-            <button class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
-          </div>
-        </div>
-        <div class="food">
-          <div class="order">
-            <img src="/css/images/Pizza.jpg">
-          </div>
-          <div class="or-des">
-            <h3>Chicken pizza</h3>
-            <i class="fa-solid fa-location-dot"></i>6391 Elign St Celina Delware 10299
-            <b>$87</b>
-          </div>
-          <div class="shop">
-            <button class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
-          </div>
-        </div>
-      </div> -->
-
-      
-    </div>
+       </div>
   
   <section>
     <div class="container container2">
@@ -386,6 +318,6 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </div>
   </div>
 
-
+ <% } %>
 
 <%- include('../includes/end.ejs') %>

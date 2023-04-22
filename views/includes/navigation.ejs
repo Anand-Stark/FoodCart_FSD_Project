@@ -19,11 +19,11 @@
     <div class=" collapse navbar-collapse navbar-items" id="navbarNavDarkDropdown">
       <ul class="ms-auto navbar-nav other-items-size">
         
-
-        <% if (isAuthenticated) { %>
-          <li class="nav-item">
+<li class="nav-item">
             <a class="nav-link home" href="/">Home</a>
           </li>
+        <% if (isAuthenticated) { %>
+          
           
           <li class="nav-item">
             <a class="nav-link my-cart" href="/cart">My Cart</a>
@@ -63,7 +63,10 @@
             </div>
           </div>
           
-          <div class="dropdown">
+         
+
+          <% } else if (isOwnerAuthenticated) { %>
+               <div class="dropdown">
             <button>Restaurants</button>
             <div class="dropdown-content">
               <a href="/admin/add-product">Add Products</a>
@@ -71,7 +74,7 @@
             </div> 
           </div>
 
-          <% } %>
+        <% } %>
 
           <form style="padding-top: 1.95%;" action="/auth-logout" method="post">
             <button class="btn btn-dark" >Logout</button>

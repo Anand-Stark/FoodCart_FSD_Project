@@ -17,14 +17,16 @@ exports.postAddProduct = (req,res,next)=>{
       const noEmployees = req.body.employee;
       const foodItemsVeg = req.body.foodItemsVeg;
       const foodItemsNonVeg = req.body.foodItemsNonVeg;
-      
+      // const ownerId = req.owner.id
+
        restaurant.create({
            restaurantName:name,
            imageUrl:imageUrl,
            location:location,
            employees:noEmployees,
            foodItemsVeg:foodItemsVeg,
-           foodItemsNonVeg:foodItemsNonVeg
+           foodItemsNonVeg:foodItemsNonVeg,
+          
        })
        .then(result =>{
           res.redirect('/restaurant/products');
@@ -80,7 +82,9 @@ exports.postEditProduct = (req,res,next)=>{
           const updatedEmpNo = req.body.employee;
           const updatedfoodItemsVeg = req.body.foodItemsVeg;
           const updatedfoodItemsNonVeg = req.body.foodItemsNonVeg;
+          
 
+          
           restaurant.findByPk(restaurantId)
                     .then(restaurant =>{
                          restaurant.restaurantName= updatedName;

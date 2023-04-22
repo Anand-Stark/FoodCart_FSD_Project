@@ -26,6 +26,8 @@ const Admin = require("./models/admin");
 const User = require("./models/user");
 const Product = require("./models/productAdmin");
 const Cart = require('./models/cart');
+const Owner = require('./models/restaurantOwner');
+const Restaurant = require('./models/restaurant');
 const cartItems = require('./models/cartItems');
 const { default: mongoose } = require("mongoose");
 const { log } = require("console");
@@ -50,8 +52,13 @@ Product.belongsTo(User, {constraints: true, onDelete: 'CASCADE'})
 User.hasMany(Product);
 User.hasOne(Cart);
 Cart.hasOne(User);
+Product.belongsTo(Owner, {constraints:true, onDelete: 'CASCADE'})
+Owner.hasMany(Product);
+Owner.hasOne(Restaurant);
+Restaurant.hasOne(Owner);
 Cart.belongsToMany(Product, {through: 'cartItems'});
 Product.belongsToMany(Cart,{through:'cartItems'});
+
 
 
 app.use((req, res, next) => {
@@ -67,17 +74,39 @@ app.use((req, res, next) => {
           // console.log('yesss');
             req.user = user;
              
-            console.log(user)
+            // console.log(user)
 
             next();
         })
     
 });
+
+app.use((req, res, next) => {
+  
+  if(!req.session.owner){
+     return next();
+  }
+
+  // console.log(req.session.user.dataValues.id)
+
+  Owner.findByPk(req.session.owner.dataValues.id)
+      .then(owner =>{
+        // console.log('yesss');
+          req.owner = owner;
+           
+          console.log(owner)
+
+          next();
+      })
+  
+});
+
+
 app.use((req,res,next) =>{
 
     //  basically through res.locals , the value of any variable can be directly used whenever required
     // here in this case, isAuthenticated can be used 
-
+     res.locals.isOwnerAuthenticated = req.session.isOwnerLoggedIn;
      res.locals.isAuthenticated = req.session.isLoggedIn;
      res.locals.isAdminAuthenticated = req.session.isAdminLogged;
      next();
@@ -111,7 +140,7 @@ sequelize
   // .sync({force:true})
   .sync()
   .then((result) => {
-  
+    
       // if no admin exits then create one
       Admin.findByPk(1).then((admin) => {
         if (!admin) {

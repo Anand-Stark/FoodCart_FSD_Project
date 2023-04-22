@@ -8,7 +8,7 @@ exports.userHomePage = (req,res,next)=>{
              .then(products =>{
                   // console.log(req.authentication)
                   res.render('shop/userHome',{
-                        pageTitle:'User Home Page',
+                        pageTitle:'Home Page',
                         products:products,
                            
                   });

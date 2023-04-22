@@ -4,24 +4,26 @@ const routes = express.Router();
 const adminControl = require('../controllers/admin');
 
 // midelleware for the protection of the routes
-const routeProtection = require('../middleware/protection');
+const adminRouteProtection = require('../middleware/adminProtection');
+const restaurantProtection = require('../middleware/restaurantProtection');
+const userProtection = require('../middleware/userProtection');
 
 //get /admin/add-product
-routes.get('/add-product',routeProtection,adminControl.getAddProduct);
+routes.get('/add-product',restaurantProtection,adminControl.getAddProduct);
 
 //post /admin/post-product
-routes.post('/add-product',routeProtection,adminControl.postAddProduct);
+routes.post('/add-product',restaurantProtection, adminControl.postAddProduct);
 
 // /get /admin/products
-routes.get('/products',routeProtection,adminControl.getProducts);
+routes.get('/products',restaurantProtection,adminControl.getProducts);
 
 // /get /admin/edit-product
-routes.get('/edit-product/:productId',routeProtection,adminControl.getEditProduct);
-routes.post('/edit-product',routeProtection,adminControl.postEditProduct);
+routes.get('/edit-product/:productId',restaurantProtection,adminControl.getEditProduct);
+routes.post('/edit-product',restaurantProtection,adminControl.postEditProduct);
 
 // post /admin/delete-products
-routes.post('/delete-product',routeProtection,adminControl.postDeleteProduct);
-routes.get('/restaurants',routeProtection,adminControl.getRestraunts);
+routes.post('/delete-product',restaurantProtection,adminControl.postDeleteProduct);
+routes.get('/restaurants',adminRouteProtection,adminControl.getRestraunts);
 
 
 

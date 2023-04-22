@@ -22,6 +22,7 @@ exports.postAddProduct = (req, res, next) => {
   const rating = req.body.rating;
   const description = req.body.description;
   const category = req.body.categoryName;
+  const ownerId = req.owner.id
 
   console.log(category);
 
@@ -31,7 +32,8 @@ exports.postAddProduct = (req, res, next) => {
     price: price,
     rating: rating,
     description: description,
-    foodCategory : category
+    foodCategory : category,
+    ownerId:ownerId
   })
     .then((result) => {
       console.log("product saved successfully");
@@ -46,8 +48,10 @@ exports.postAddProduct = (req, res, next) => {
 
 exports.getProducts = (req, res, next) => {
   //   here , we will try to get all the possible products
-  Product.findAll()
-    .then((products) => {
+  console.log(req.owner);
+  req.owner
+     .getProducts()
+     .then((products) => {
 
       if(products.length > 0){
         return res.render("admin/product", {
@@ -91,6 +95,7 @@ exports.postEditProduct = (req, res, next) => {
   const updatedrating = req.body.rating;
   const updateddescription = req.body.description;
   const prodId = req.body.productId.trim();
+  const ownerId = req.owner.id
 
   Product.findByPk(prodId)
     .then((product) => {
@@ -99,7 +104,7 @@ exports.postEditProduct = (req, res, next) => {
       product.price = updatedprice;
       product.rating = updatedrating;
       product.description = updateddescription;
-
+      product.ownerId = ownerId;
       // method for deleting the given product
       return product.save();
     })
