@@ -31,5 +31,11 @@ routes.post('/decrease-quantity',userProtection,userShop.postDecreaseQuantity)
 // creating a post route for deleting the cart products:
 routes.post('delete-cart-product',userProtection,userShop.postDeleteCartProduct);
 
+// creating get routes for all kind of foods:
+routes.get('/non-veg',userProtection,userShop.getNonVeg);
+routes.get('/veg',userProtection,userShop.getVeg);
+routes.get('/italian',userProtection,userShop.getItalian);
+routes.get('/chinese',userProtection,userShop.getChinese);
+
 module.exports = routes;
 

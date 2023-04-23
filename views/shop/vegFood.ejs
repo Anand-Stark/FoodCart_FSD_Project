@@ -1,0 +1,79 @@
+<%- include('../includes/start') %>
+  
+    <link rel="stylesheet" href="/css/adminProducts.css">
+  <link rel="stylesheet" href="/css/productPage.css">
+  </head>
+  
+   <style>
+    
+
+    .buttonForm.button{
+      width: 30%;
+    }
+
+    .cartButton{
+      margin: 1rem 0;
+      width: 10rem;
+      background-color: #ffac1c;
+      border-radius: 1rem;
+      border-color: #ffac1c;
+      padding: 0.5rem;
+    }
+    .cartButton:hover{
+      background-color: #f28c28;
+    }
+
+   </style>
+
+  <body>
+
+    <%- include('../includes/navigation') %>     
+         
+
+          <% if( products.length> 0) { %>
+            <div class="ok-image">
+            <div class="ok-container">
+  
+              <% for(let product of products ) { %>
+                <div class="ok-product">
+                  <img src="<%= product.imageUrl %>" alt="products" >
+                  <figcaption>
+                    <%= product.title %>
+                  </figcaption>
+                  <figcaption>Price - <%= product.price %>
+                  </figcaption>
+                  <figcaption>Rating - <%= product.rating %>
+                  </figcaption>
+                  <figcaption>
+                         Category - <%= product.foodCategory %>
+                  </figcaption>
+                  <p>
+                    <%= product.description %>
+                  </p>
+                  <div>
+                    <form action="/add-to-cart" method="post" class = "buttonForm">
+                      <input type="hidden" name='productId' value='<%= product.id %>'>
+                      <button type="submit" class="cartButton" onclick="window.location.href=''"><i
+                          class="fa-solid fa-cart-shopping fa-xl"></i></button>
+                    </form>
+                  </div>
+  
+                </div>
+                <% } %>
+            </div>
+          </div>
+            <% } else { %>
+  
+              
+              <%- include('../err404') %>
+            
+              <% } %>
+  
+  
+  
+  
+            
+     
+
+
+      <%- include('../includes/end') %>
