@@ -8,7 +8,7 @@ const restaurantProtection = require('../middleware/restaurantProtection');
 const userProtection = require('../middleware/userProtection');
 const homeRouteProtection = require('../middleware/homeRouteProtection');
 
-routes.get('/',userShop.userHomePage);
+routes.get('/',homeRouteProtection,userShop.userHomePage);
 
 // creating the cart routes here
 routes.get('/cart',userProtection,userShop.getCart);
