@@ -1,421 +1,542 @@
 <%- include('../includes/start.ejs') %>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js"
-integrity="sha512-E378bwaeZf1nwXeJGIwTB58A5gPt5jFU3u6aTGja4ZdRFJeo/N/REKnBgNZOZlH6JdnOPO98vg2AnSGaNfCMFQ=="
-crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<link rel="stylesheet" href="/css/homePage.css">
-<link rel="stylesheet" href="/css/styles-home.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js"
+    integrity="sha512-E378bwaeZf1nwXeJGIwTB58A5gPt5jFU3u6aTGja4ZdRFJeo/N/REKnBgNZOZlH6JdnOPO98vg2AnSGaNfCMFQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="/css/homePage.css">
+  <link rel="stylesheet" href="/css/styles-home.css">
 
-<style>
+  <style>
+    h1.adminHeading {
+      margin: 3rem;
+    }
 
-  h1.adminHeading{
-    margin: 3rem;
-  }
-  .box{
-    background-color: purple;
-    width: 40%;
-    height: 13rem;
-    border-radius: 0.75rem;
-    box-shadow: -3px 5px 15px rgba(0, 0, 0, 0.47);
-    color: white;
-  }
+    .box {
+      background-color: purple;
+      width: 40%;
+      height: 13rem;
+      border-radius: 0.75rem;
+      box-shadow: -3px 5px 15px rgba(0, 0, 0, 0.47);
+      color: white;
+    }
 
-  .firstRow{
-    display: flex;
-    /* justify-content: space-between ; */
-    justify-content: center;
-    gap: 5rem;
-  }
+    .firstRow {
+      display: flex;
+      /* justify-content: space-between ; */
+      justify-content: center;
+      gap: 5rem;
+    }
 
-  .mainDiv{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
+    .mainDiv {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
 
-  .graph-image img{
-    margin-top: 5rem;
-    height: 80rem;
-    width: 76rem;
-  }
-</style>
+    .graph-image img {
+      margin-top: 5rem;
+      height: 80rem;
+      width: 76rem;
+    }
 
-</head>
+    .feedbackImage img {
+      height: 30rem;
+      width: 30rem;
+    }
 
-<body>
-  
-<%- include('../includes/navigation.ejs') %>
+    .feedback {
+      display: flex;
+      justify-content: space-evenly;
+    }
 
-<!-- Now I have to include isAdminAuthenticated to render a specific part of the code -->
+    .rate {
+      float: left;
+      height: 46px;
+      padding: 0 10px;
+    }
 
-<% if(isAdminAuthenticated) { %>
-  
-     <h1 style="text-align: center;" class="adminHeading">Dashboard</h1>
+    .rate:not(:checked)>input {
+      position: absolute;
+      top: -9999px;
+    }
 
-     <div class="mainDiv">
-      <div class="firstRow">
-        <div class="box">
-          <div class="upper">
-            <h1>Total No of Restaurants</h1>
+    .rate:not(:checked)>label {
+      float: right;
+      width: 1em;
+      overflow: hidden;
+      white-space: nowrap;
+      cursor: pointer;
+      font-size: 30px;
+      color: #ccc;
+    }
+
+    .rate:not(:checked)>label:before {
+      content: '★ ';
+    }
+
+    .rate>input:checked~label {
+      color: #ffc700;
+    }
+
+    .rate:not(:checked)>label:hover,
+    .rate:not(:checked)>label:hover~label {
+      color: #deb217;
+    }
+
+    .rate>input:checked+label:hover,
+    .rate>input:checked+label:hover~label,
+    .rate>input:checked~label:hover,
+    .rate>input:checked~label:hover~label,
+    .rate>label:hover~input:checked~label {
+      color: #c59b08;
+    }
+
+    .feedbackText {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .stars {
+      margin-top: -7rem;
+      margin-left: -3rem;
+    }
+
+    .rate label {
+      margin-left: 3rem;
+    }
+  </style>
+
+  </head>
+
+  <body>
+
+    <%- include('../includes/navigation.ejs') %>
+
+      <!-- Now I have to include isAdminAuthenticated to render a specific part of the code -->
+
+      <% if(isAdminAuthenticated) { %>
+
+        <h1 style="text-align: center;" class="adminHeading">Dashboard</h1>
+
+        <div class="mainDiv">
+          <div class="firstRow">
+            <div class="box">
+              <div class="upper">
+                <h1>Total No of Restaurants</h1>
+              </div>
+              <div class="lower">
+                <h3>110</h3>
+              </div>
+            </div>
+            <div class="box">
+              <div class="upper">
+                <h1>Total No of <br> Users</h1>
+              </div>
+              <div class="lower">
+                <h3>594210</h3>
+              </div>
+            </div>
           </div>
-          <div class="lower">
-            <h3>110</h3>
+          <div class="firstRow">
+            <div class="box">
+              <div class="upper">
+                <h1>Total No of <br>Locations </h1>
+              </div>
+              <div class="lower">
+                <h3>90</h3>
+              </div>
+            </div>
+            <div class="box">
+              <div class="upper">
+                <h1>Total No of <br> Orders</h1>
+              </div>
+              <div class="lower">
+                <h3>75413654</h3>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="box">
-          <div class="upper">
-            <h1>Total No of <br> Users</h1>
-          </div>
-          <div class="lower">
-            <h3>594210</h3>
-          </div>
-        </div>
-      </div>
-      <div class="firstRow">
-        <div class="box">
-          <div class="upper">
-            <h1>Total No of <br>Locations </h1>
-          </div>
-          <div class="lower">
-            <h3>90</h3>
-          </div>
-        </div>
-        <div class="box">
-          <div class="upper">
-            <h1>Total No of <br> Orders</h1>
-          </div>
-          <div class="lower">
-            <h3>75413654</h3>
-          </div>
-        </div>
-      </div>
-     </div>
-     
-     <div class="graph-image">
-      <img src="css/images/res-graph.jpg" alt="">
-     </div>
 
-<% } else { %>
- 
-<section class="grid">
-    <div class="content">
-      <div class="content-left">
-        <div class="top-content">
-          <div class="info">
-            
-            <% if (isOwnerAuthenticated) { %>
-              <h1>Add your Food Products </h1>
-              <p>We make your delicious Products available to our Customers<br>
-                Search for the food to check if it is registered</p>
-            <% } else {%>
-              <h1>Fastest Online <br>Food Delivery Service</h1>
-              <p>we are most fastest and favourite food delivery service all over the india.<br>
-                Search for your favourite food in your area</p>
+        <div class="graph-image">
+          <img src="css/images/res-graph.jpg" alt="">
+        </div>
+
+        <% } else { %>
+
+          <section class="grid">
+            <div class="content">
+              <div class="content-left">
+                <div class="top-content">
+                  <div class="info">
+
+                    <% if (isOwnerAuthenticated) { %>
+                      <h1>Add your Food Products </h1>
+                      <p>We make your delicious Products available to our Customers<br>
+                        Search for the food to check if it is registered</p>
+                      <% } else {%>
+                        <h1>Fastest Online <br>Food Delivery Service</h1>
+                        <p>we are most fastest and favourite food delivery service all over the india.<br>
+                          Search for your favourite food in your area</p>
+                        <% } %>
+
+                  </div>
+                  <div class="deliver">
+                    <img src="/css/images/delivery-guy.png" alt="">
+                  </div>
+                </div>
+
+
+                <div class="large-image">
+                  <img src="/css/images/hamburger.jpg" alt="burger-image">
+                </div>
+
+                <div class="content-right">
+                </div>
+          </section>
+          <section>
+            <div class="container">
+              <div class="content-left">
+                <div class="info ">
+                  <div class="info2">
+                    <h1>Limited Offer<br>Using Promocode<br>Only<b>$10</b></h1>
+                    <div class="copyfield">
+                      <form>
+                        <input type="text" name="promo" placeholder="Promo" id="promocode">
+                        <button type="submit">Apply</button>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="discount-image">
+                    <img src="/css/images/Discount-bro.svg" alt="discount-image">
+                  </div>
+
+                  <script>
+                    var copybtn = document.getElementById("copy-btn");
+                    var link = document.getElementById("link");
+
+                    copybtn.onclick = function () {
+                      navigator.clipbord.writeText(link.innerHTML);
+                    }
+
+                  </script>
+                </div>
+          </section>
+          <section>
+            <% if (!isOwnerAuthenticated) { %>
+              <div class="container food-section">
+                <h2>Explore Your Nearby Restaurants' Favourite Dish</h2>
+                <div class="food-list">
+                  <div class="gallery">
+                    <img src="/css/images/Pizza.jpg">
+                    <div class="desc"> pizza </div>
+                  </div>
+                  <div class="gallery">
+                    <img src="/css/images/butter chicken">
+                    <div class="desc"> Chicken Biryani </div>
+                  </div>
+                  <div class="gallery">
+                    <img src="/css/images/butter-chicken.jpg">
+                    <div class="desc"> Butter Chicken </div>
+                  </div>
+                  <div class="gallery">
+                    <img src="/css/images/burger.jpg">
+                    <div class="desc"> Burger </div>
+                  </div>
+                  <div class="gallery">
+                    <img src="/css/images/pasta.jpg">
+                    <div class="desc"> Pasta </div>
+                  </div>
+                  <div class="gallery">
+                    <img src="/css/images/chicken-curry.jpg">
+                    <div class="desc"> Chicken Curry </div>
+                  </div>
+                </div>
+                <% } %>
+
+
+
+          </section>
+          <section>
+            <% if (!isOwnerAuthenticated) { %>
+              <div class="page-2">
+                <div class="order-image">
+                  <img src="/css/images/order-via-phone.svg" alt="image">
+                </div>
+                <div class="content" style="padding-left:100px">
+                  <p>
+                  <h2>Place your order by following these steps</h2>
+                  </p>
+                  <div class="steps">
+                    <ul>
+                      <li><i class="fa-solid fa-location-dot"></i>Set your location first</li>
+                      <li><i class="fa-solid fa-circle-check"></i>Choose the food you want to order</li>
+                      <li><i class="fa-sharp fa-solid fa-circle-dollar-to-slot"></i>Confirm order with payment method
+                      </li>
+                      <li><i class="fa-solid fa-bowl-food"></i>Within 30 minutes you will get your food</li>
+                      <button class="buttons"
+                        onClick="window.location.href='https://www.apple.com/in/app-store/';">Place your
+                        order</button>
+                    </ul>
+                  </div>
+                </div>
+              </div>
               <% } %>
-            
-          </div>
-          <div class="deliver">
-            <img src="/css/images/delivery-guy.png" alt="">
-          </div>
-        </div>
+
+          </section>
+
+          <% if (!isOwnerAuthenticated) { %>
+            <div class="page-3">
+              <h2>Most Ordered Food</h2>
+              <div class="container">
+
+                <div class="most">
+
+                  <% for(let product of products){ %>
+
+                    <div class="food">
+                      <div class="foodDescription">
+                        <div class="order">
+                          <img src="<%= product.imageUrl %>">
+                        </div>
+                        <div class="or-des" style="align-items: center">
+                          <h3>
+                            <%= product.title %>
+                          </h3>
+                          <i class="fa-solid fa-location-dot"></i>224 Baker Street
+                          <strong>
+                            <%= product.price %>
+                          </strong>
+                        </div>
+                      </div>
+                      <div class="shop">
+
+                        <form action="/add-to-cart" method="post">
+                          <!-- <button type="submit" class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button> -->
+                          <input type="hidden" name='productId' value='<%= product.id %>'>
+                          <button type="submit" class="cartButton" onclick="window.location.href=''"><i
+                              class="fa-solid fa-cart-shopping"></i></button>
+                        </form>
 
 
-        <div class="large-image">
-          <img src="/css/images/hamburger.jpg" alt="burger-image">
-        </div>
-
-        <div class="content-right">
-        </div>
-  </section>
-  <section>
-    <div class="container">
-      <div class="content-left">
-        <div class="info ">
-          <div class="info2">
-            <h1>Limited Offer<br>Using Promocode<br>Only<b>$10</b></h1>
-            <div class="copyfield">
-              <form>
-                <input type="text" name="promo" placeholder="Promo" id="promocode">
-                <button type="submit">Apply</button>
-              </form>
+                      </div>
+                    </div>
+                    <% } %>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="discount-image">
-            <img src="/css/images/Discount-bro.svg" alt="discount-image">
-          </div>
 
-          <script>
-            var copybtn = document.getElementById("copy-btn");
-            var link = document.getElementById("link");
+            <% } %>
 
-            copybtn.onclick = function () {
-              navigator.clipbord.writeText(link.innerHTML);
-            }
-            
-          </script>
-        </div>
-  </section>
-  <section>
-     <% if (!isOwnerAuthenticated) { %>
-      <div class="container food-section">
-        <h2>Explore Your Nearby Restaurants' Favourite Dish</h2>
-        <div class="food-list">
-          <div class="gallery">
-            <img src="/css/images/Pizza.jpg">
-            <div class="desc"> pizza </div>
-          </div>
-          <div class="gallery">
-            <img src="/css/images/butter chicken">
-            <div class="desc"> Chicken Biryani </div>
-          </div>
-          <div class="gallery">
-            <img src="/css/images/butter-chicken.jpg">
-              <div class="desc"> Butter Chicken </div>
-          </div>
-          <div class="gallery">
-            <img src="/css/images/burger.jpg">
-              <div class="desc"> Burger </div>
-          </div>
-          <div class="gallery">
-            <img src="/css/images/pasta.jpg">
-              <div class="desc"> Pasta </div>
-          </div>
-          <div class="gallery">
-            <img src="/css/images/chicken-curry.jpg">
-              <div class="desc"> Chicken Curry </div>
-          </div>
-        </div>
-     <% } %>
-    
-      
-      
-</section>
-  <section>
-    <% if (!isOwnerAuthenticated) { %>
-      <div class="page-2">
-        <div class="order-image">
-          <img src="/css/images/order-via-phone.svg" alt="image">
-        </div>
-        <div class="content" style="padding-left:100px">
-          <p>
-          <h2>Place your order by following these steps</h2>
-          </p>
-         <div class="steps">
-          <ul>
-            <li><i class="fa-solid fa-location-dot"></i>Set your location first</li>
-            <li><i class="fa-solid fa-circle-check"></i>Choose the food you want to order</li>
-            <li><i class="fa-sharp fa-solid fa-circle-dollar-to-slot"></i>Confirm order with payment method</li>
-            <li><i class="fa-solid fa-bowl-food"></i>Within 30 minutes you will get your food</li>
-            <button class="buttons" onClick="window.location.href='https://www.apple.com/in/app-store/';">Place your
-              order</button>
-          </ul>
-         </div>
-        </div>
-      </div>
-    <% } %>
-    
-  </section>
-  
-    <% if (!isOwnerAuthenticated) { %>
-      <div class="page-3">
-      <h2>Most Ordered Food</h2>
-      <div class="container">
-  
-        <div class="most">
-  
-         <% for(let product of products){ %> 
-          
-         <div class="food">
-          <div class="foodDescription">
-            <div class="order">
-              <img src="<%= product.imageUrl %>">
-            </div>
-            <div class="or-des" style="align-items: center">
-              <h3><%= product.title %></h3>
-              <i class="fa-solid fa-location-dot"></i>224 Baker Street
-              <strong><%= product.price %></strong>
-            </div>
-          </div>
-          <div class="shop">
-          
-             <form action="/add-to-cart" method="post">
-              <!-- <button type="submit" class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button> -->
-              <input type="hidden" name = 'productId' value = '<%= product.id %>'>
-              <button type="submit" class="cartButton" onclick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
-            </form>    
-           
-            
-          </div>
-        </div>
-    <% } %>
-     </div>
-      </div>
-       </div>
 
-    <% } %>  
 
-     
-  
-  <section>
-    <div class="container container2">
-      <div class="content-left content-left2">
-        <div class="info">
-          <h1>Want To Earn <br> Extra ! Register Your Delivery boys with us</h1>
-          <div class="recruit">
-            <p>We are most fastest and favourite food delivery service all over the india.Search for your favourite
-              food or restaurant in your area</p>
-            <div>
-              <input class="ApplyNow" type="submit" value="Apply Now" name="Apply Now">
-            </div>
-          </div>
-        </div>
-        <div class="content-right">
-        </div>
-  </section>
-  <div class="page-4">
-    <div class="content" style="text-align: center">
-      <h2>it is more easy to order by using our apps</h2>
-      <p>All you need to do is download one of the best food delivery apps, make a and most companies are opting for
-        mobile app development for food delivery </p>
-      <button type="button" class="btn btn-dark btn-lg download-button"
-        onClick="window.location.href='https://www.apple.com/in/app-store/';"><i class="fa-brands fa-apple fa-2xl"></i>
-      </button>
-      <button type="button" class="btn btn-outline-light btn-lg download-button"
-        onClick="window.location.href='https://play.google.com/';"><i class="fa-brands fa-google-play fa-2xl"></i> </button>
-    </div>
+              <section>
+                <div class="container container2">
+                  <div class="content-left content-left2">
+                    <div class="info">
+                      <h1>Want To Earn <br> Extra ! Register Your Delivery boys with us</h1>
+                      <div class="recruit">
+                        <p>We are most fastest and favourite food delivery service all over the india.Search for your
+                          favourite
+                          food or restaurant in your area</p>
+                        <div>
+                          <input class="ApplyNow" type="submit" value="Apply Now" name="Apply Now">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="content-right">
+                    </div>
+              </section>
+              <div class="page-4">
+                <div class="content" style="text-align: center">
+                  <h2>it is more easy to order by using our apps</h2>
+                  <p>All you need to do is download one of the best food delivery apps, make a and most companies are
+                    opting for
+                    mobile app development for food delivery </p>
+                  <button type="button" class="btn btn-dark btn-lg download-button"
+                    onClick="window.location.href='https://www.apple.com/in/app-store/';"><i
+                      class="fa-brands fa-apple fa-2xl"></i>
+                  </button>
+                  <button type="button" class="btn btn-outline-light btn-lg download-button"
+                    onClick="window.location.href='https://play.google.com/';"><i
+                      class="fa-brands fa-google-play fa-2xl"></i> </button>
+                </div>
 
-    <div class="mobile-image">
-      <img src="/css/images/mobile-app.svg">
-    </div>
-  </div>
-  <div class="page-5">
-    <h2>We are available in</h2>
-    <div class="avail">
-      <div class="available">
-        <div class="city">
-          <div class="city-icon">
-            <i class="fa-solid fa-location-dot fa-2xl"></i>
-          </div>
-          <div class="city-name">
-            <h3>Amravati</h3>
-          </div>
-        </div>
-        <div class="city">
-          <div class="city-icon">
-            <i class="fa-solid fa-location-dot fa-2xl"></i>
-          </div>
-          <div class="city-name">
-            <h3>Ahmedabad</h3>
-          </div>
-        </div>
-        <div class="city">
-          <div class="city-icon">
-            <i class="fa-solid fa-location-dot fa-2xl"></i>
-          </div>
-          <div class="city-name">
-            <h3>Banglore</h3>
-          </div>
-        </div>
-        <div class="city">
-          <div class="city-icon">
-            <i class="fa-solid fa-location-dot fa-2xl"></i>
-          </div>
-          <div class="city-name">
-            <h3>Chennai</h3>
-          </div>
-        </div>
-        <div class="city">
-          <div class="city-icon">
-            <i class="fa-solid fa-location-dot fa-2xl"></i>
-          </div>
-          <div class="city-name">
-            <h3>Delhi</h3>
-          </div>
-        </div>
-      </div>
-      <div class="available">
-        <div class="city">
-          <div class="city-icon">
-            <i class="fa-solid fa-location-dot fa-2xl"></i>
-          </div>
-          <div class="city-name">
-            <h3>Guwahati</h3>
-          </div>
-        </div>
-        <div class="city">
-          <div class="city-icon">
-            <i class="fa-solid fa-location-dot fa-2xl"></i>
-          </div>
-          <div class="city-name">
-            <h3>Hyderabad</h3>
-          </div>
-        </div>
-        <div class="city">
-          <div class="city-icon">
-            <i class="fa-solid fa-location-dot fa-2xl"></i>
-          </div>
-          <div class="city-name">
-            <h3>Kolkata</h3>
-          </div>
-        </div>
-        <div class="city">
-          <div class="city-icon">
-            <i class="fa-solid fa-location-dot fa-2xl"></i>
-          </div>
-          <div class="city-name">
-            <h3>Mumbai</h3>
-          </div>
-        </div>
-        <div class="city">
-          <div class="city-icon">
-            <i class="fa-solid fa-location-dot fa-2xl"></i>
-          </div>
-          <div class="city-name">
-            <h3>Lucknow</h3>
-          </div>
-        </div>
+                <div class="mobile-image">
+                  <img src="/css/images/mobile-app.svg">
+                </div>
+              </div>
 
-      </div>
-    </div>
-  </div>
-  <div class="footer">
-    <div class="part-1">
-      <p>Connect With Us !</p>
-      <div class="icons" style="display:flex">
-        <i class="fa-brands fa-facebook facebook-class" ></i>
-        <i class="fa-brands fa-square-twitter twitter-class"></i>
-        <i class="fa-brands fa-square-instagram instagram-class"></i>
-        <i class="fa-brands fa-youtube youtube-class" ></i>
-      </div>
-    </div>
-    <div class="part-2">
-      <h3>Service</h3>
-      <p>Online Order</p>
-      <p>Pre-Reservation</p>
-      <p>24/7 Services</p>
-    </div>
-    <div class="part-3">
-      <h3>Quick Links</h3>
-      <p>Restaurants</p>
-      <p>Reviews</p>
-      <p>Blogs</p>
-      <p>Order Foods</p>
-    </div>
-    <div class="part-4">
-      <h3>About</h3>
-      <p>Our Story</p>
-      <p>Benifits</p>
-      <p>Careers</p>
-    </div>
-    <div class="part-5">
-      <h3>Help</h3>
-      <p>Contact</p>
-      <p>Support</p>
-      <p>FAQ</p>
-    </div>
-  </div>
 
- <% } %>
 
-<%- include('../includes/end.ejs') %>
+              <div class="feedback">
+                <div class="feedbackImage">
+                  <img src="css/images/feedback-image.svg" alt="">
+                </div>
+
+                <div class="feedbackText">
+                  <h1>Share Your Experience</h1>
+
+                  <form class="rate stars"
+                    style="display : flex; flex-direction: column; justify-content: space-around;">
+                    <div class="stars rate">
+                      <input type="radio" id="star5" name="rate" value="5" />
+                      <label for="star5" title="text">5 stars</label>
+                      <input type="radio" id="star4" name="rate" value="4" />
+                      <label for="star4" title="text">4 stars</label>
+                      <input type="radio" id="star3" name="rate" value="3" />
+                      <label for="star3" title="text">3 stars</label>
+                      <input type="radio" id="star2" name="rate" value="2" />
+                      <label for="star2" title="text">2 stars</label>
+                      <input type="radio" id="star1" name="rate" value="1" />
+                      <label for="star1" title="text">1 star</label>
+                    </div>
+                    <button type="button" class="btn btn-outline-success rate-button">Rate</button>
+                   
+
+
+                  </form>
+
+                </div>
+              </div>
+
+
+
+
+              <div class="page-5">
+                <h2>We are available in</h2>
+                <div class="avail">
+                  <div class="available">
+                    <div class="city">
+                      <div class="city-icon">
+                        <i class="fa-solid fa-location-dot fa-2xl"></i>
+                      </div>
+                      <div class="city-name">
+                        <h3>Amravati</h3>
+                      </div>
+                    </div>
+                    <div class="city">
+                      <div class="city-icon">
+                        <i class="fa-solid fa-location-dot fa-2xl"></i>
+                      </div>
+                      <div class="city-name">
+                        <h3>Ahmedabad</h3>
+                      </div>
+                    </div>
+                    <div class="city">
+                      <div class="city-icon">
+                        <i class="fa-solid fa-location-dot fa-2xl"></i>
+                      </div>
+                      <div class="city-name">
+                        <h3>Banglore</h3>
+                      </div>
+                    </div>
+                    <div class="city">
+                      <div class="city-icon">
+                        <i class="fa-solid fa-location-dot fa-2xl"></i>
+                      </div>
+                      <div class="city-name">
+                        <h3>Chennai</h3>
+                      </div>
+                    </div>
+                    <div class="city">
+                      <div class="city-icon">
+                        <i class="fa-solid fa-location-dot fa-2xl"></i>
+                      </div>
+                      <div class="city-name">
+                        <h3>Delhi</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="available">
+                    <div class="city">
+                      <div class="city-icon">
+                        <i class="fa-solid fa-location-dot fa-2xl"></i>
+                      </div>
+                      <div class="city-name">
+                        <h3>Guwahati</h3>
+                      </div>
+                    </div>
+                    <div class="city">
+                      <div class="city-icon">
+                        <i class="fa-solid fa-location-dot fa-2xl"></i>
+                      </div>
+                      <div class="city-name">
+                        <h3>Hyderabad</h3>
+                      </div>
+                    </div>
+                    <div class="city">
+                      <div class="city-icon">
+                        <i class="fa-solid fa-location-dot fa-2xl"></i>
+                      </div>
+                      <div class="city-name">
+                        <h3>Kolkata</h3>
+                      </div>
+                    </div>
+                    <div class="city">
+                      <div class="city-icon">
+                        <i class="fa-solid fa-location-dot fa-2xl"></i>
+                      </div>
+                      <div class="city-name">
+                        <h3>Mumbai</h3>
+                      </div>
+                    </div>
+                    <div class="city">
+                      <div class="city-icon">
+                        <i class="fa-solid fa-location-dot fa-2xl"></i>
+                      </div>
+                      <div class="city-name">
+                        <h3>Lucknow</h3>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="footer">
+                <div class="part-1">
+                  <p>Connect With Us !</p>
+                  <div class="icons" style="display:flex">
+                    <i class="fa-brands fa-facebook facebook-class"></i>
+                    <i class="fa-brands fa-square-twitter twitter-class"></i>
+                    <i class="fa-brands fa-square-instagram instagram-class"></i>
+                    <i class="fa-brands fa-youtube youtube-class"></i>
+                  </div>
+                </div>
+                <div class="part-2">
+                  <h3>Service</h3>
+                  <p>Online Order</p>
+                  <p>Pre-Reservation</p>
+                  <p>24/7 Services</p>
+                </div>
+                <div class="part-3">
+                  <h3>Quick Links</h3>
+                  <p>Restaurants</p>
+                  <p>Reviews</p>
+                  <p>Blogs</p>
+                  <p>Order Foods</p>
+                </div>
+                <div class="part-4">
+                  <h3>About</h3>
+                  <p>Our Story</p>
+                  <p>Benifits</p>
+                  <p>Careers</p>
+                </div>
+                <div class="part-5">
+                  <h3>Help</h3>
+                  <p>Contact</p>
+                  <p>Support</p>
+                  <p>FAQ</p>
+                </div>
+              </div>
+
+              <% } %>
+
+              <script>
+                $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+              </script>
+
+                <%- include('../includes/end.ejs') %>

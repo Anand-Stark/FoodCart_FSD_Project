@@ -94,7 +94,17 @@ background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%
   margin-left: 5px;
   
 }
-
+.rate-button{
+  background: white;
+  color: #ffac1c;
+  border: 1px solid #ffac1c;
+  transition: all 0.3s ease-in-out;
+  margin-left: 4rem;
+}
+.rate-button:hover{
+  background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%);
+  border: none;
+}
 /* Dropdown content (hidden by default) */
 .dropdown-content {
   display: none;
