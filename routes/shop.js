@@ -28,5 +28,8 @@ routes.post('/add-quantity',userProtection,userShop.postAddQuantity);
 // creating a post route for deleting quantity
 routes.post('/decrease-quantity',userProtection,userShop.postDecreaseQuantity)
 
+// creating a post route for deleting the cart products:
+routes.post('delete-cart-product',userProtection,userShop.postDeleteCartProduct);
+
 module.exports = routes;
 

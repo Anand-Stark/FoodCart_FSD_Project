@@ -197,14 +197,14 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   .quantity{
      display: flex;
      justify-content: center;
-     gap: 16.5rem;
+     gap: 8rem;
      margin-top: 1rem;
   }
   .btnQuantity{
           height: 3.5rem;
           width: 3.5rem;
-          font-size: 30px;
-          
+          font-size: 15px;
+          min-width:fit-content;
   }
   .btnQuantity:hover{
     background: rgb(255,172,28);
@@ -238,6 +238,11 @@ background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%
           <form action="/add-quantity"  method="post">
             <input type="hidden" value="<%= product.id %> " name="prodId">
               <button type="submit" class="btn btn-outline-warning btnQuantity">+</button>
+          </form>
+
+          <form action="/add-quantity"  method="post">
+            <input type="hidden" value="<%= product.id %> " name="prodId">
+              <button type="submit" class="btn btn-outline-warning btnQuantity">Delete</button>
           </form>
           
           <form action="/decrease-quantity"  method="post">

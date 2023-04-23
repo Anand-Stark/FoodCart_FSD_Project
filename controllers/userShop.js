@@ -217,3 +217,7 @@ exports.postDecreaseQuantity = (req,res,next) =>{
         })
 
 }
+
+exports.postDeleteCartProduct = (req,res,next) =>{
+          
+}

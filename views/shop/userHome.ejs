@@ -26,9 +26,17 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       <div class="content-left">
         <div class="top-content">
           <div class="info">
-            <h1>Fastest Online <br>Food Delivery Service</h1>
-            <p>we are most fastest and favourite food delivery service all over the india.<br>
-              Search for your favourite food in your area</p>
+            
+            <% if (isOwnerAuthenticated) { %>
+              <h1>Add your Food Products </h1>
+              <p>We make your delicious Products available to our Customers<br>
+                Search for the food to check if it is registered</p>
+            <% } else {%>
+              <h1>Fastest Online <br>Food Delivery Service</h1>
+              <p>we are most fastest and favourite food delivery service all over the india.<br>
+                Search for your favourite food in your area</p>
+              <% } %>
+            
           </div>
           <div class="deliver">
             <img src="/css/images/delivery-guy.png" alt="">
@@ -72,98 +80,111 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         </div>
   </section>
   <section>
-    <div class="container food-section">
-      <h2>Explore Your Nearby Restaurants' Favourite Dish</h2>
-      <div class="food-list">
-        <div class="gallery">
-          <img src="/css/images/Pizza.jpg">
-          <div class="desc"> pizza </div>
+     <% if (!isOwnerAuthenticated) { %>
+      <div class="container food-section">
+        <h2>Explore Your Nearby Restaurants' Favourite Dish</h2>
+        <div class="food-list">
+          <div class="gallery">
+            <img src="/css/images/Pizza.jpg">
+            <div class="desc"> pizza </div>
+          </div>
+          <div class="gallery">
+            <img src="/css/images/butter chicken">
+            <div class="desc"> Chicken Biryani </div>
+          </div>
+          <div class="gallery">
+            <img src="/css/images/butter-chicken.jpg">
+              <div class="desc"> Butter Chicken </div>
+          </div>
+          <div class="gallery">
+            <img src="/css/images/burger.jpg">
+              <div class="desc"> Burger </div>
+          </div>
+          <div class="gallery">
+            <img src="/css/images/pasta.jpg">
+              <div class="desc"> Pasta </div>
+          </div>
+          <div class="gallery">
+            <img src="/css/images/chicken-curry.jpg">
+              <div class="desc"> Chicken Curry </div>
+          </div>
         </div>
-        <div class="gallery">
-          <img src="/css/images/butter chicken">
-          <div class="desc"> Chicken Biryani </div>
-        </div>
-        <div class="gallery">
-          <img src="/css/images/butter-chicken.jpg">
-            <div class="desc"> Butter Chicken </div>
-        </div>
-        <div class="gallery">
-          <img src="/css/images/burger.jpg">
-            <div class="desc"> Burger </div>
-        </div>
-        <div class="gallery">
-          <img src="/css/images/pasta.jpg">
-            <div class="desc"> Pasta </div>
-        </div>
-        <div class="gallery">
-          <img src="/css/images/chicken-curry.jpg">
-            <div class="desc"> Chicken Curry </div>
-        </div>
-      </div>
+     <% } %>
+    
       
       
 </section>
   <section>
-    <div class="page-2">
-      <div class="order-image">
-        <img src="/css/images/order-via-phone.svg" alt="image">
+    <% if (!isOwnerAuthenticated) { %>
+      <div class="page-2">
+        <div class="order-image">
+          <img src="/css/images/order-via-phone.svg" alt="image">
+        </div>
+        <div class="content" style="padding-left:100px">
+          <p>
+          <h2>Place your order by following these steps</h2>
+          </p>
+         <div class="steps">
+          <ul>
+            <li><i class="fa-solid fa-location-dot"></i>Set your location first</li>
+            <li><i class="fa-solid fa-circle-check"></i>Choose the food you want to order</li>
+            <li><i class="fa-sharp fa-solid fa-circle-dollar-to-slot"></i>Confirm order with payment method</li>
+            <li><i class="fa-solid fa-bowl-food"></i>Within 30 minutes you will get your food</li>
+            <button class="buttons" onClick="window.location.href='https://www.apple.com/in/app-store/';">Place your
+              order</button>
+          </ul>
+         </div>
+        </div>
       </div>
-      <div class="content" style="padding-left:100px">
-        <p>
-        <h2>Place your order by following these steps</h2>
-        </p>
-       <div class="steps">
-        <ul>
-          <li><i class="fa-solid fa-location-dot"></i>Set your location first</li>
-          <li><i class="fa-solid fa-circle-check"></i>Choose the food you want to order</li>
-          <li><i class="fa-sharp fa-solid fa-circle-dollar-to-slot"></i>Confirm order with payment method</li>
-          <li><i class="fa-solid fa-bowl-food"></i>Within 30 minutes you will get your food</li>
-          <button class="buttons" onClick="window.location.href='https://www.apple.com/in/app-store/';">Place your
-            order</button>
-        </ul>
-       </div>
-      </div>
-    </div>
+    <% } %>
+    
   </section>
-  <div class="page-3">
-    <h2>Most Ordered Food</h2>
-    <div class="container">
-
-      <div class="most">
-
-       <% for(let product of products){ %> 
-        
-       <div class="food">
-        <div class="foodDescription">
-          <div class="order">
-            <img src="<%= product.imageUrl %>">
+  
+    <% if (!isOwnerAuthenticated) { %>
+      <div class="page-3">
+      <h2>Most Ordered Food</h2>
+      <div class="container">
+  
+        <div class="most">
+  
+         <% for(let product of products){ %> 
+          
+         <div class="food">
+          <div class="foodDescription">
+            <div class="order">
+              <img src="<%= product.imageUrl %>">
+            </div>
+            <div class="or-des" style="align-items: center">
+              <h3><%= product.title %></h3>
+              <i class="fa-solid fa-location-dot"></i>224 Baker Street
+              <strong><%= product.price %></strong>
+            </div>
           </div>
-          <div class="or-des" style="align-items: center">
-            <h3><%= product.title %></h3>
-            <i class="fa-solid fa-location-dot"></i>224 Baker Street
-            <strong><%= product.price %></strong>
+          <div class="shop">
+          
+             <form action="/add-to-cart" method="post">
+              <!-- <button type="submit" class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button> -->
+              <input type="hidden" name = 'productId' value = '<%= product.id %>'>
+              <button type="submit" class="cartButton" onclick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
+            </form>    
+           
+            
           </div>
         </div>
-        <div class="shop">
-          <form action="/add-to-cart" method="post">
-            <!-- <button type="submit" class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button> -->
-            <input type="hidden" name = 'productId' value = '<%= product.id %>'>
-            <button type="submit" class="cartButton" onclick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button>
-          </form>    
-        </div>
+    <% } %>
+     </div>
       </div>
+       </div>
 
     <% } %>  
 
-      </div>
-      </div>
-       </div>
+     
   
   <section>
     <div class="container container2">
       <div class="content-left content-left2">
         <div class="info">
-          <h1>Want To Earn <br> Extra ! Join as a Delivery Boy With Us </h1>
+          <h1>Want To Earn <br> Extra ! Register Your Delivery boys with us</h1>
           <div class="recruit">
             <p>We are most fastest and favourite food delivery service all over the india.Search for your favourite
               food or restaurant in your area</p>
