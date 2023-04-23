@@ -258,3 +258,21 @@ exports.getChinese = (req,res,next) =>{
                  });
             })
 }
+
+exports.postFeedback = (req, res, next) =>{
+
+     const feedback = req.body.rate;
+     req.user.feedback = feedback;
+
+     req.user.save()
+             .then(result =>{
+     
+                  res.redirect('/');
+             })
+             .catch(err =>{
+                 console.log(err);
+             })
+     
+     
+     
+}

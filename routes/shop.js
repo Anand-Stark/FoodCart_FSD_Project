@@ -37,5 +37,8 @@ routes.get('/veg',userProtection,userShop.getVeg);
 routes.get('/italian',userProtection,userShop.getItalian);
 routes.get('/chinese',userProtection,userShop.getChinese);
 
+// creatring post route for user feedback
+
+routes.post('/feedback',userShop.postFeedback);
 module.exports = routes;
 

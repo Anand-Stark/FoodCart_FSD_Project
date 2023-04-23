@@ -378,7 +378,7 @@
                 <div class="feedbackText">
                   <h1>Share Your Experience</h1>
 
-                  <form class="rate stars"
+                  <form class="rate stars" action="/feedback" method="post"
                     style="display : flex; flex-direction: column; justify-content: space-around;">
                     <div class="stars rate">
                       <input type="radio" id="star5" name="rate" value="5" />
@@ -392,7 +392,7 @@
                       <input type="radio" id="star1" name="rate" value="1" />
                       <label for="star1" title="text">1 star</label>
                     </div>
-                    <button type="button" class="btn btn-outline-success rate-button">Rate</button>
+                    <button type="submit" onClick = "alertMessage()" class="btn btn-outline-success rate-button">Rate</button>
                    
 
 
@@ -534,9 +534,9 @@
               <% } %>
 
               <script>
-                $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})
+                alertMessage = ()=>{
+                  alert("Thank you for your feedback");
+                }
               </script>
 
                 <%- include('../includes/end.ejs') %>
