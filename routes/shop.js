@@ -29,7 +29,7 @@ routes.post('/add-quantity',userProtection,userShop.postAddQuantity);
 routes.post('/decrease-quantity',userProtection,userShop.postDecreaseQuantity)
 
 // creating a post route for deleting the cart products:
-routes.post('delete-cart-product',userProtection,userShop.postDeleteCartProduct);
+routes.post('/delete-cart-product',userProtection,userShop.postDeleteCartProduct);
 
 // creating get routes for all kind of foods:
 routes.get('/non-veg',userProtection,userShop.getNonVeg);
@@ -38,7 +38,13 @@ routes.get('/italian',userProtection,userShop.getItalian);
 routes.get('/chinese',userProtection,userShop.getChinese);
 
 // creatring post route for user feedback
+routes.post('/feedback',userProtection,userShop.postFeedback);
 
-routes.post('/feedback',userShop.postFeedback);
+// creating get route for user feedback
+routes.get('/feedback',userProtection,userShop.getFeedback);
+
+// creating post route for user written feedbacks:
+routes.post('/feedback-user-product',userProtection,userShop.postUserFeedback);
+
 module.exports = routes;
 

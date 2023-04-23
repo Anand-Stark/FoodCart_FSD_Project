@@ -1,7 +1,9 @@
 const Product = require('../models/productAdmin');
 // const Cart = require('../models/cart');
 const User = require('../models/user');
+const Feedback = require('../models/feedback');
 const { Op } = require("sequelize");
+const feedback = require('../models/feedback');
 
 exports.userHomePage = (req,res,next)=>{
         
@@ -9,14 +11,19 @@ exports.userHomePage = (req,res,next)=>{
           [Op.gte]: 7.5}}})
              .then(products =>{
                   // console.log(req.authentication)
-                  res.render('shop/userHome',{
-                        pageTitle:'Home Page',
-                        products:products,
-                           
+                  Feedback.findAll()
+                          .then(feedbacks =>{
+                              return res.render('shop/userHome',{
+                               pageTitle:'Home Page',
+                               products:products,
+                               feedbacks:feedbacks
+                          })
+                  
+                        
                   });
              })
 
-     
+      
 }; 
 
 exports.getCart =  (req,res,next) =>{
@@ -180,7 +187,7 @@ exports.postDecreaseQuantity = (req,res,next) =>{
                    product = products[0];
             }
             
-            if(product.cartItems.quantity <= 0){
+            if(product.cartItems.quantity < 2){
                 return product.cartItems.destroy();
             }
 
@@ -221,7 +228,27 @@ exports.postDecreaseQuantity = (req,res,next) =>{
 }
 
 exports.postDeleteCartProduct = (req,res,next) =>{
-          
+       
+     // first we have to get the cart then destroy that particular product in it
+     const prodId = req.body.prodId;
+
+     req.user
+        .getCart()
+        .then(cart =>{
+             return cart.getProducts({where:{id:prodId}})
+        })
+        .then(products =>{
+               const product = products[0];
+             return product.cartItems.destroy();
+        })
+        .then(result =>{
+            console.log('Product removed from cart successfully');
+            res.redirect('/cart');
+        })
+        .catch(err =>{
+            console.log(err);
+        })
+
 }
 
 exports.getNonVeg = (req,res,next) =>{
@@ -277,4 +304,27 @@ exports.postFeedback = (req, res, next) =>{
      
      
      
+}
+
+exports.getFeedback = (req,res,next) =>{
+       res.render('shop/feedbackPage',{
+           pageTitle:'FeedBack Form'
+       })
+}
+
+exports.postUserFeedback = (req,res,next) =>{
+       const userName = req.user.userName;
+       const feedback = req.body.feedback.trim();
+       console.log(feedback);
+       Feedback.create({
+           userName:userName,
+           text:feedback
+       })
+       .then(result =>{
+            console.log('feedback recieved');
+            res.redirect('/');
+       })
+       .catch(err =>{
+           console.log(err);
+       })
 }

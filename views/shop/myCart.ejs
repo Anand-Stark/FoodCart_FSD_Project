@@ -197,18 +197,31 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   .quantity{
      display: flex;
      justify-content: center;
-     gap: 8rem;
+     gap: 3rem;
      margin-top: 1rem;
   }
   .btnQuantity{
           height: 3.5rem;
           width: 3.5rem;
-          font-size: 15px;
+          font-size: 30px;
+          padding-bottom: 20px;
           min-width:fit-content;
+  }
+  .btnQuantityDelete{
+    height: 3rem;
+    width: 15rem;
+    border-radius: 0.5rem;
+  }
+  .btnQuantityDelete:hover{
+    background: rgb(255,172,28);
+background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%);
   }
   .btnQuantity:hover{
     background: rgb(255,172,28);
 background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%);
+  }
+  .oni{
+    padding-top: 0.25rem;
   }
 </style>
 </head>
@@ -235,19 +248,19 @@ background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%
           </figcaption>
           <div class="quantity">
 
-          <form action="/add-quantity"  method="post">
-            <input type="hidden" value="<%= product.id %> " name="prodId">
-              <button type="submit" class="btn btn-outline-warning btnQuantity">+</button>
-          </form>
-
-          <form action="/add-quantity"  method="post">
-            <input type="hidden" value="<%= product.id %> " name="prodId">
-              <button type="submit" class="btn btn-outline-warning btnQuantity">Delete</button>
-          </form>
-          
           <form action="/decrease-quantity"  method="post">
               <input type="hidden" value="<%= product.id %> " name="prodId">
               <button type="submit" class="btn btn-outline-warning btnQuantity">-</button>
+          </form>
+
+          <form class="oni" action="/delete-cart-product"  method="post">
+            <input type="hidden" value="<%= product.id %> " name="prodId">
+              <button type="submit" class="btn btn-outline-warning btnQuantityDelete">Delete</button>
+          </form>
+          
+          <form action="/add-quantity"  method="post">
+            <input type="hidden" value="<%= product.id %> " name="prodId">
+              <button type="submit" class="btn btn-outline-warning btnQuantity">+</button>
           </form>
 
           </div>

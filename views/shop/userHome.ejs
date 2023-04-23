@@ -276,7 +276,7 @@
                       </li>
                       <li><i class="fa-solid fa-bowl-food"></i>Within 30 minutes you will get your food</li>
                       <button class="buttons"
-                        onClick="window.location.href='https://www.apple.com/in/app-store/';">Place your
+                        onClick="window.location.href='/';">Place your
                         order</button>
                     </ul>
                   </div>
@@ -327,7 +327,7 @@
               </div>
             </div>
 
-            <% } %>
+            
 
 
 
@@ -413,11 +413,44 @@
 
 
                   </form>
-
                 </div>
               </div>
 
+              
+                
 
+                  <div class="page-3">
+                    <h2>User Feedbacks !</h2>
+                    <div class="container">
+      
+                      <div class="most">
+      
+                        <% for(let feedback of feedbacks){ %>
+      
+                          <div class="food">
+                            <div class="foodDescription">
+                              
+                              <div class="or-des" style="align-items: center">
+                                <h6>
+                                  <i class="far fa-user"></i><%= feedback.userName %>
+                                </h6>
+                                <!-- <i class="fa-solid fa-location-dot"></i> -->
+                                <strong>
+                                  <%= feedback.text %>
+                                </strong>
+                              </div>
+                            </div>
+                            
+                          </div>
+                          <% } %>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+                
+
+              <% } %>
 
 
               <div class="page-5">
@@ -529,7 +562,7 @@
                 <div class="part-3">
                   <h3>Quick Links</h3>
                   <p>Restaurants</p>
-                  <p>Reviews</p>
+                  <p><a href="/feedback">feedback</a></p>
                   <p>Blogs</p>
                   <p>Order Foods</p>
                 </div>
