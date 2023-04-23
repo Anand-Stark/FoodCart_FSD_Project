@@ -287,49 +287,48 @@
           </section>
 
           <% if (!isOwnerAuthenticated) { %>
-            <div class="page-3">
-              <h2>Most Ordered Food</h2>
-              <div class="container">
-
-                <div class="most">
-
-                  <% for(let product of products){ %>
-
-                    <div class="food">
-                      <div class="foodDescription">
-                        <div class="order">
-                          <img src="<%= product.imageUrl %>">
+            <% if (products.length>0) { %>
+              <div class="page-3">
+                <h2>Most Ordered Food</h2>
+                <div class="container">
+  
+                  <div class="most">
+  
+                    <% for(let product of products){ %>
+  
+                      <div class="food">
+                        <div class="foodDescription">
+                          <div class="order">
+                            <img src="<%= product.imageUrl %>">
+                          </div>
+                          <div class="or-des" style="align-items: center">
+                            <h3>
+                              <%= product.title %>
+                            </h3>
+                            <i class="fa-solid fa-location-dot"></i>224 Baker Street
+                            <strong>
+                              <%= product.price %>
+                            </strong>
+                          </div>
                         </div>
-                        <div class="or-des" style="align-items: center">
-                          <h3>
-                            <%= product.title %>
-                          </h3>
-                          <i class="fa-solid fa-location-dot"></i>224 Baker Street
-                          <strong>
-                            <%= product.price %>
-                          </strong>
+                        <div class="shop">
+  
+                          <form action="/add-to-cart" method="post">
+                            <!-- <button type="submit" class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button> -->
+                            <input type="hidden" name='productId' value='<%= product.id %>'>
+                            <button type="submit" class="cartButton" onclick="window.location.href=''"><i
+                                class="fa-solid fa-cart-shopping"></i></button>
+                          </form>
+  
+  
                         </div>
                       </div>
-                      <div class="shop">
-
-                        <form action="/add-to-cart" method="post">
-                          <!-- <button type="submit" class="buttons" onClick="window.location.href=''"><i class="fa-solid fa-cart-shopping"></i></button> -->
-                          <input type="hidden" name='productId' value='<%= product.id %>'>
-                          <button type="submit" class="cartButton" onclick="window.location.href=''"><i
-                              class="fa-solid fa-cart-shopping"></i></button>
-                        </form>
-
-
-                      </div>
-                    </div>
-                    <% } %>
+                      <% } %>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            
-
-
+  
+            <% } %>
 
               <section>
                 <div class="container container2">
@@ -417,8 +416,8 @@
               </div>
 
               
-                
-
+                <% if (feedbacks.length > 0) { %>
+                  
                   <div class="page-3">
                     <h2>User Feedbacks !</h2>
                     <div class="container">
@@ -446,6 +445,9 @@
                       </div>
                     </div>
                   </div>
+                  
+                <% } %>
+          
                   
                   
                 
