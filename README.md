@@ -1,2 +1,2 @@
-# FoodCart-MYsql
-This is a food cart web application made using MySql
+# FoodCart_FFSD_Group5
+This is a food cart web application .
