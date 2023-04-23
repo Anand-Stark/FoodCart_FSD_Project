@@ -7,6 +7,40 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="/css/homePage.css">
 <link rel="stylesheet" href="/css/styles-home.css">
 
+<style>
+
+  h1.adminHeading{
+    margin: 3rem;
+  }
+  .box{
+    background-color: purple;
+    width: 40%;
+    height: 13rem;
+    border-radius: 0.75rem;
+    box-shadow: -3px 5px 15px rgba(0, 0, 0, 0.47);
+    color: white;
+  }
+
+  .firstRow{
+    display: flex;
+    /* justify-content: space-between ; */
+    justify-content: center;
+    gap: 5rem;
+  }
+
+  .mainDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .graph-image img{
+    margin-top: 5rem;
+    height: 80rem;
+    width: 76rem;
+  }
+</style>
+
 </head>
 
 <body>
@@ -17,7 +51,50 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <% if(isAdminAuthenticated) { %>
   
-     <h1 style="text-align: center;">Dashboard</h1>
+     <h1 style="text-align: center;" class="adminHeading">Dashboard</h1>
+
+     <div class="mainDiv">
+      <div class="firstRow">
+        <div class="box">
+          <div class="upper">
+            <h1>Total No of Restaurants</h1>
+          </div>
+          <div class="lower">
+            <h3>110</h3>
+          </div>
+        </div>
+        <div class="box">
+          <div class="upper">
+            <h1>Total No of <br> Users</h1>
+          </div>
+          <div class="lower">
+            <h3>594210</h3>
+          </div>
+        </div>
+      </div>
+      <div class="firstRow">
+        <div class="box">
+          <div class="upper">
+            <h1>Total No of <br>Locations </h1>
+          </div>
+          <div class="lower">
+            <h3>90</h3>
+          </div>
+        </div>
+        <div class="box">
+          <div class="upper">
+            <h1>Total No of <br> Orders</h1>
+          </div>
+          <div class="lower">
+            <h3>75413654</h3>
+          </div>
+        </div>
+      </div>
+     </div>
+     
+     <div class="graph-image">
+      <img src="css/images/res-graph.jpg" alt="">
+     </div>
 
 <% } else { %>
  
