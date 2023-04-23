@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
+const { Double } = require('mongodb');
 
 const Product = sequelize.define('product',{
    id:{
@@ -25,7 +26,7 @@ const Product = sequelize.define('product',{
          allowNull:false
       },
       rating:{
-         type: Sequelize.INTEGER,
+         type: Sequelize.DOUBLE,
          allowNull:false
       },
       foodCategory:{

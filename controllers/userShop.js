@@ -1,10 +1,12 @@
 const Product = require('../models/productAdmin');
 // const Cart = require('../models/cart');
 const User = require('../models/user');
+const { Op } = require("sequelize");
 
 exports.userHomePage = (req,res,next)=>{
         
-      Product.findAll()
+      Product.findAll({where:{rating:{
+          [Op.gte]: 7.5}}})
              .then(products =>{
                   // console.log(req.authentication)
                   res.render('shop/userHome',{
