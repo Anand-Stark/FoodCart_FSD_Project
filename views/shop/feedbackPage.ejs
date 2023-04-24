@@ -6,6 +6,28 @@ integrity="sha512-E378bwaeZf1nwXeJGIwTB58A5gPt5jFU3u6aTGja4ZdRFJeo/N/REKnBgNZOZl
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="/css/styles.css">
 
+<style>
+  .userName{
+    margin-right: 2rem;
+    
+  }
+
+  .userIcon{
+    margin-right: 0.7rem !important;
+    margin-top: 0.5rem;
+  }
+
+  textarea {
+        width: 35rem !important;
+        height: 300px !important;
+      }
+
+      .buttonMain{
+        margin-top: 2rem !important;
+      }
+
+</style>
+
 </head>
 
 <body>
@@ -15,17 +37,17 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <div class="formContainer">
     <form action="/feedback-user-product" method="POST">
       <div class="form-floating mb-3 ">
-        <textarea class="form-control childLoginStyle" name="feedback" id="feedback" placeholder="Feedback !" required></textarea>
-        <label for="feedback">Feedback</label>
+        <textarea class="form-control childLoginStyle" rows="50" cols="50" name="feedback" id="feedback" placeholder="Feedback !" required></textarea>
+        <label for="feedback">Please write here ...</label>
       </div>
 
       <div class="form-floating ">
-        <button type="submit" class="btn btn-outline-warning btn-addproduct buttonMain">FeedBack</button>
+        <button type="submit" class="btn btn-outline-warning btn-addproduct buttonMain"><strong>Send</strong></button>
       </div>
     </form>
   </div>
   <div> 
-    <!-- <img src="css/images/4676729.jpg" alt="form-image"> -->
+   
     <p style="color:white; font-size: 4rem; padding-top: 10rem;">Please Provide your FeedBacks.They are very valuable for us.😊</p>
   </div>
   
