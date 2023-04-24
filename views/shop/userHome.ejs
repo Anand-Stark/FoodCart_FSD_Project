@@ -106,6 +106,36 @@
     .rate label {
       margin-left: 3rem;
     }
+
+    .ratingbtn{
+      display: flex;
+      flex-direction: row;
+      
+      background: linear-gradient(to bottom, #4CAF50, #2E7D32);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  
+  font-size: 14px;
+  font-weight: bold;
+  padding: 1px 4px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-left: 2rem;
+  
+   
+    }
+    .ratingbt:hover{
+      background: #43A047;
+    }
+    .rate-des{
+      flex-basis:75%;
+   display: flex;
+   flex-direction: row;
+   gap:0.5rem;
+    }
   </style>
 
   </head>
@@ -429,14 +459,18 @@
                           <div class="food">
                             <div class="foodDescription">
                               
-                              <div class="or-des" style="align-items: center">
-                                <h6>
-                                  <i class="far fa-user"></i><%= feedback.userName %>
+                              <div class="rate-des" style="align-items: center">
+                                <h6 style="display: flex; text-align: column;">
+                                  <i style="font-size: 30px; margin-right: 0;" class="fas fa-user-circle"></i><p style="margin-left: 0; margin-top: 0.75rem;"><%= feedback.userName %></p>
                                 </h6>
                                 <!-- <i class="fa-solid fa-location-dot"></i> -->
-                                <strong>
+                                
+                                <strong style="width: 20rem;">
                                   <%= feedback.text %>
                                 </strong>
+                               
+                                <button class="ratingbtn"><i style="margin-top: 1.2rem;" class="fas fa-star"></i><p style="margin-top: 1rem;margin-left: 0.25rem;"><%=feedback.ratingUser%></p></button>
+
                               </div>
                             </div>
                             
@@ -564,7 +598,7 @@
                 <div class="part-3">
                   <h3>Quick Links</h3>
                   <p>Restaurants</p>
-                  <p><a href="/feedback">feedback</a></p>
+                  <% if (!isOwnerAuthenticated) { %><p><a href="/feedback">feedback</a></p><%}%>
                   <p>Blogs</p>
                   <p>Order Foods</p>
                 </div>

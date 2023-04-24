@@ -315,10 +315,12 @@ exports.getFeedback = (req,res,next) =>{
 exports.postUserFeedback = (req,res,next) =>{
        const userName = req.user.userName;
        const feedback = req.body.feedback.trim();
+       const rating = req.user.feedback;
        console.log(feedback);
        Feedback.create({
            userName:userName,
-           text:feedback
+           text:feedback,
+           ratingUser:rating
        })
        .then(result =>{
             console.log('feedback recieved');

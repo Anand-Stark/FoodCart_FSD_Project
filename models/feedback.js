@@ -13,6 +13,9 @@ const feedback = sequelize.define('feedback',{
       },
       userName:{
          type:Sequelize.STRING
+      },
+      ratingUser:{
+          type:Sequelize.INTEGER
       }
 })
 
