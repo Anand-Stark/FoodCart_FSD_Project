@@ -136,6 +136,9 @@
    flex-direction: row;
    gap:0.5rem;
     }
+
+
+    
   </style>
 
   </head>
@@ -437,7 +440,8 @@
                       <input type="radio" id="star1" name="rate" value="1" />
                       <label for="star1" title="text">1 star</label>
                     </div>
-                    <button type="submit" onClick = "alertMessage()" class="btn btn-outline-success rate-button">Rate</button>
+                    <button type="submit" class="btn btn-outline-success rate-button"> <a style="text-decoration: none; color: orange;" onMouseOver="this.style.color='white'" onMouseOut="this.style.color='orange'" href="/feedback" >Rate</a></button>
+                    <!-- onMouseOver="this.style.color='white'" onMouseOut="this.style.color='orange'" -->
                    
 
 
@@ -618,10 +622,10 @@
 
               <% } %>
 
-              <script>
-                alertMessage = ()=>{
-                  alert("Thank you for your feedback");
+              <!-- <script>
+               function alertMessage(url){
+                  window.location.href = url;
                 }
-              </script>
+              </script> -->
 
                 <%- include('../includes/end.ejs') %>
