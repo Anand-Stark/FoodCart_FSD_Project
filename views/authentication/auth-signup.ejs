@@ -131,12 +131,14 @@
          .card-ok form {
             width: 100%;
          }
+
       }
    </style>
    </head>
 
    <body>
       <div class="container-ok">
+         <h1>Signup</h1>
          <div class="card-ok">
             <img src="css/images/signup.jpg" alt="login image">
 
@@ -168,12 +170,12 @@
 
                <div class="form-floating mb-3">
                   <input required="true" type="password" class="form-control childLoginStyle" name="password" id="password"
-                     placeholder="password">
+                     placeholder="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$">
                   <label for="password">Password</label>
                </div>
                <div class="form-floating mb-3">
                   <input required="true" type="password" class="form-control childLoginStyle" name="confirmPassword" id="confirmPassword"
-                     placeholder="confirmPassword">
+                     placeholder="confirmPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$">
                   <label for="confirmPassword">Confirm Password</label>
                </div>
 
