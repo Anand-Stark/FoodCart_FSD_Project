@@ -13,13 +13,21 @@ exports.userHomePage = (req,res,next)=>{
                   // console.log(req.authentication)
                   Feedback.findAll()
                           .then(feedbacks =>{
+                              if(req.user){
+                                   return res.render('shop/userHome',{
+                                        pageTitle:'Home Page',
+                                        products:products,
+                                        feedbacks:feedbacks,
+                                        userName:req.user.userName
+                                   })
+                              }
+                              
                               return res.render('shop/userHome',{
-                               pageTitle:'Home Page',
-                               products:products,
-                               feedbacks:feedbacks,
-                               userName:req.user.userName
-                          })
-                  
+                                   pageTitle:'Home Page',
+                                   products:products,
+                                   feedbacks:feedbacks,
+                                   userName:req.admin.adminName
+                              })
                         
                   });
              })
