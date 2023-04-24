@@ -32,6 +32,11 @@
 
       }
 
+      .admin-user a.active{
+         background: rgb(255,172,28) !important;
+                  background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%) !important;
+      }
+
       .container-ok {
          display: flex;
          flex-direction: column;
@@ -140,14 +145,18 @@
                <!-- <form  action="/auth-login" method="post"> -->
 
                <div class="container-fluid justify-content-start admin-user">
-                  <a href="/auth-login" class="btn " style="background: rgb(255,172,28);
-                  background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%);" role="button"
+                  <a href="/auth-login" class=" btn <%= path === 'user' ? 'active' : '' %>" style="background: rgb(0,0,0);
+                     background: linear-gradient(90deg, rgba(0,0,0,1) 5%, rgba(40,44,53,1) 77%); color: white;" role="button"
                      data-bs-toggle="button">User</a>
+
+
                   <a href="/auth-admin-login" style="background: rgb(0,0,0);
-                  background: linear-gradient(90deg, rgba(0,0,0,1) 5%, rgba(40,44,53,1) 77%);" class="btn btn-dark " role="button" data-bs-toggle="button"
+                  background: linear-gradient(90deg, rgba(0,0,0,1) 5%, rgba(40,44,53,1) 77%); color: white;" class="btn <%= path === 'admin' ? 'active' : '' %>" role="button" data-bs-toggle="button"
                      aria-pressed="true">Admin</a>
+
+
                      <a href="/auth-restaurant-login" style="background: rgb(0,0,0);
-                     background: linear-gradient(90deg, rgba(0,0,0,1) 5%, rgba(40,44,53,1) 77%);" class="btn btn-dark " role="button" data-bs-toggle="button"
+                     background: linear-gradient(90deg, rgba(0,0,0,1) 5%, rgba(40,44,53,1) 77%); color: white;" class=" btn <%= path === 'owner' ? 'active' : '' %>" role="button" data-bs-toggle="button"
                      aria-pressed="true">Restaurants</a>
                </div>
 

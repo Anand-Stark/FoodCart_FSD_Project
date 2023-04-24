@@ -13,7 +13,8 @@ exports.getLogin = (req,res,next) =>{
        res.render('authentication/auth-login',{
              pageTitle:'User Login Page',
              adminPage:false,
-             restaurantPage:false
+             restaurantPage:false,
+             path:'user'
        });
 
 }
@@ -124,13 +125,14 @@ exports.postLogOut = (req,res,next) =>{
                    
 }
 
-// for authentication and getting the admin page
+// for authentication and getting the admin path
 exports.getAdminLogin = (req,res,next) =>{
      const adminPage =true;
           res.render('authentication/auth-login',{
             pageTitle:'Admin Login',
             adminPage:adminPage,
-            restaurantPage:false
+            restaurantPage:false,
+            path:'admin'
           })
    }
 
@@ -165,7 +167,8 @@ exports.getRestaurantLogin = (req,res,next) =>{
       res.render('authentication/auth-login',{
             pageTitle:'Owner Login',
             restaurantPage:restaurantPage,
-            adminPage:false
+            adminPage:false,
+            path:'owner'
       })
 }   
 
