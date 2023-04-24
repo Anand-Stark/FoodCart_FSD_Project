@@ -86,6 +86,9 @@ exports.postLogin = (req,res,next) =>{
       User.findAll({where:{email:email}})
           .then(user =>{ 
                     // console.log(user[0].password)
+                    if(user.length===0){
+                         return res.redirect('/auth-login')
+                    }
                          bcrypt
                         .compare(password,user[0].password)
                         .then(value =>{
@@ -144,7 +147,7 @@ exports.getAdminLogin = (req,res,next) =>{
                 email:email
            }})
             .then(admin =>{
-                 if(!admin){
+                 if(admin.length === 0){
                     return res.redirect('/auth-admin-login');
                  }
                 
@@ -180,6 +183,9 @@ exports.postRestaurantLogin = (req,res,next) =>{
 
      Owner.findAll({where:{email:email}})
          .then(owner =>{ 
+          if(owner.length===0){
+               return res.redirect('/auth-restaurant-login')
+          }
                //     console.log(owner[0].password)
                         bcrypt
                        .compare(password,owner[0].password)
