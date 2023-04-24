@@ -9,16 +9,20 @@
 
   <style>
     h1.adminHeading {
-      margin: 3rem;
+      margin-bottom: 2rem;
     }
+    
 
     .box {
-      background-color: purple;
+      /* background-color: #71C9CE; */
+      background: rgb(255,172,28);
+  background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%);
       width: 40%;
       height: 13rem;
       border-radius: 0.75rem;
       box-shadow: -3px 5px 15px rgba(0, 0, 0, 0.47);
       color: white;
+      
     }
 
     .firstRow {
@@ -137,6 +141,19 @@
    gap:0.5rem;
     }
 
+    .rating-div{
+      width: 85%;
+      height: 4rem;
+      background: rgb(255,172,28);
+  background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%);
+      border-radius: 0.75rem;
+      margin-left: 5.8rem;
+      color: white;
+      box-shadow: -3px 5px 15px rgba(0, 0, 0, 0.47);
+      margin-top: 2rem;
+      padding: 0.3rem;
+    }
+
 
     
   </style>
@@ -155,7 +172,7 @@
 
         <div class="mainDiv">
           <div class="firstRow">
-            <div class="box">
+            <div class="box box1">
               <div class="upper">
                 <h1>Total No of Restaurants</h1>
               </div>
@@ -163,7 +180,7 @@
                 <h3><%= restaurantCount %></h3>
               </div>
             </div>
-            <div class="box">
+            <div class="box box2">
               <div class="upper">
                 <h1>Total No of <br> Users</h1>
               </div>
@@ -173,7 +190,7 @@
             </div>
           </div>
           <div class="firstRow">
-            <div class="box">
+            <div class="box box3">
               <div class="upper">
                 <h1>Total No of <br>Locations </h1>
               </div>
@@ -181,7 +198,7 @@
                 <h3>90</h3>
               </div>
             </div>
-            <div class="box">
+            <div class="box box4">
               <div class="upper">
                 <h1>Total No of <br> Products</h1>
               </div>
@@ -191,7 +208,9 @@
             </div>
           </div>
         </div>
-        <h3>Overall rating by <%=userCount%> users is <%=avgRating%></h3>
+        <div class="rating-div">
+            <h1>Overall rating by <%=ratedUser%> users is <%=avgRating%><i class="fas fa-star fa-xs"></i> </h1>
+        </div>
         <div class="graph-image">
           <img src="css/images/res-graph.jpg" alt="">
         </div>

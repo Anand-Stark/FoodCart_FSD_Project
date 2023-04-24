@@ -25,7 +25,7 @@ exports.userHomePage = (req,res,next)=>{
                               }
                               
                               var countRestaurants = 10 ;
-                              var userCount = 100;
+                              var userCount = 0;
                               var productCount = 0;
                               Restaurant.count()
                                         .then(count =>{
@@ -42,20 +42,29 @@ exports.userHomePage = (req,res,next)=>{
                                                                          .then(users =>{
                                                                            let avgRating=0;
                                                                            let totalRatings=0;
-                                                                            for(let user of users){
-                                                                                totalRatings = totalRatings + user.feedback;
+                                                                           let ratedUser=0;
+                                                                            for(let user of users){                    
+                                                                                     totalRatings = totalRatings + user.feedback;
                                                                             }
-                                                                            console.log(totalRatings);
-                                                                            avgRating = totalRatings/userCount;
+                                                                             
+                                                                            User.count({where:{feedback:{
+                                                                                [Op.gt]: 0}}})
+                                                                                .then(count =>{
+                                                                                     ratedUser=count;
+                                                                                     avgRating = totalRatings/ratedUser;
 
-                                                                             console.log(avgRating);
-                                                                            res.render('shop/userHome',{
-                                                                                pageTitle:'Admin Dashboard',
-                                                                                userName:req.admin.adminName,
-                                                                                restaurantCount:countRestaurants,
-                                                                                userCount:userCount,
-                                                                                productCount:productCount,
-                                                                                avgRating:avgRating
+                                                                                     console.log(avgRating);
+                                                                                        res.render('shop/userHome',{
+                                                                                        pageTitle:'Admin Dashboard',
+                                                                                        userName:req.admin.adminName,
+                                                                                        restaurantCount:countRestaurants,
+                                                                                        userCount:userCount,
+                                                                                        productCount:productCount,
+                                                                                        avgRating:avgRating,
+                                                                                        ratedUser:ratedUser
+                                                                                })
+                                                                           //  console.log(totalRatings);
+                                                                           
                                                                          })
                                                                
                                                              })
