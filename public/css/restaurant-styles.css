@@ -143,6 +143,15 @@ body {
   .buttonMain:hover {
     animation: wiggle 2s linear infinite;
   }
+
+  .buttonMain{
+    margin-top: 2rem;
+
+  }
+
+  .formDiv{
+    margin-bottom: 2rem !important;
+  }
   
   /* Keyframes */
   @keyframes wiggle {

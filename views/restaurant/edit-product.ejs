@@ -15,21 +15,21 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <div class="formContainer">
     <form action="/restaurant/edit-product" method="POST">
       <div class="form-floating mb-3 "> 
-        <input type="text" class="form-control childLoginStyle"value="<%= restaurant.restaurantName %>" name="name" id="name" placeholder="Restaurant Name" required>
+        <input type="text" class="form-control childLoginStyle formDiv"value="<%= restaurant.restaurantName %>" name="name" id="name" placeholder="Restaurant Name" required>
         <label for="name">Restaurant Name</label>
       </div>
       <div class="form-floating mb-3 ">
-          <input type="text" name="imageUrl" value="<%= restaurant.imageUrl %>" class="form-control childLoginStyle" id="imageUrl"
+          <input type="text" name="imageUrl" value="<%= restaurant.imageUrl %>" class="form-control childLoginStyle formDiv" id="imageUrl"
           placeholder="imageUrl" required>
         <label for="imageUrl">imageUrl</label>
         </div>
         <div class="form-floating mb-3 ">
-          <input type="text" name="location" value="<%= restaurant.location %>" class="form-control childLoginStyle" id="location"
+          <input type="text" name="location" value="<%= restaurant.location %>" class="form-control childLoginStyle formDiv" id="location"
           placeholder="location" required>
         <label for="location">Location</label>
         </div>
         <div class="form-floating mb-3 ">
-          <input type="number" name="employee" value="<%= restaurant.employees %>" class="form-control childLoginStyle" id="employee"
+          <input type="number" name="employee" value="<%= restaurant.employees %>" class="form-control childLoginStyle formDiv" id="employee"
           placeholder="rating" required>
         <label for="employee">No of Employees</label>
         </div>
