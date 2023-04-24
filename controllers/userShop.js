@@ -38,13 +38,26 @@ exports.userHomePage = (req,res,next)=>{
                                                    Products.count()
                                                            .then(count =>{
                                                                productCount = productCount + count;
+                                                                     User.findAll()
+                                                                         .then(users =>{
+                                                                           let avgRating=0;
+                                                                           let totalRatings=0;
+                                                                            for(let user of users){
+                                                                                totalRatings = totalRatings + user.feedback;
+                                                                            }
+                                                                            console.log(totalRatings);
+                                                                            avgRating = totalRatings/userCount;
 
-                                                                res.render('shop/userHome',{
-                                                                 pageTitle:'Admin Dashboard',
-                                                                 userName:req.admin.adminName,
-                                                                 restaurantCount:countRestaurants,
-                                                                 userCount:userCount,
-                                                                 productCount:productCount
+                                                                             console.log(avgRating);
+                                                                            res.render('shop/userHome',{
+                                                                                pageTitle:'Admin Dashboard',
+                                                                                userName:req.admin.adminName,
+                                                                                restaurantCount:countRestaurants,
+                                                                                userCount:userCount,
+                                                                                productCount:productCount,
+                                                                                avgRating:avgRating
+                                                                         })
+                                                               
                                                              })
 
                                                            })
