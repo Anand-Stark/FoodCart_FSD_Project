@@ -16,7 +16,8 @@ exports.userHomePage = (req,res,next)=>{
                               return res.render('shop/userHome',{
                                pageTitle:'Home Page',
                                products:products,
-                               feedbacks:feedbacks
+                               feedbacks:feedbacks,
+                               userName:req.user.userName
                           })
                   
                         
@@ -256,7 +257,8 @@ exports.getNonVeg = (req,res,next) =>{
             .then(products =>{
                  return res.render('shop/nonVegFood',{
                       pageTitle:'Non Veg Food',
-                      products:products
+                      products:products,
+                      userName:req.user.userName
                  });
             })
 }
@@ -265,7 +267,8 @@ exports.getVeg = (req,res,next) =>{
    .then(products =>{
         return res.render('shop/vegFood',{
              pageTitle:'Veg Food',
-             products:products
+             products:products,
+             userName:req.user.userName
         });
    })
 }
@@ -274,7 +277,8 @@ exports.getItalian = (req,res,next) =>{
             .then(products =>{
                  return res.render('shop/italianFood',{
                       pageTitle:'Italian Food',
-                      products:products
+                      products:products,
+                      userName:req.user.userName
                  });
             })
 }
@@ -283,7 +287,8 @@ exports.getChinese = (req,res,next) =>{
             .then(products =>{
                  return res.render('shop/chineseFood',{
                       pageTitle:'Chinese Food',
-                      products:products
+                      products:products,
+                      userName:req.user.userName
                  });
             })
 }

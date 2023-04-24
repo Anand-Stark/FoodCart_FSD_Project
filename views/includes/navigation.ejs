@@ -43,13 +43,12 @@
                   <a href="/italian">Italian</a>
                   <a href="/chinese">Chinese</a>
   
-             
-  
-  
             </div>
           </div>
   
-          
+          <li style="display: flex; text-align: column;">
+            <i style="font-size: 30px; margin-right: 0; padding-top: 0.4rem;" class="fas fa-user-circle"></i><p style=" padding-top:0.4rem;margin-left: 0; margin-top: 0.75rem;"><%=userName%></p>
+          </li>
 
         <% } else if(isAdminAuthenticated) { %>
          
@@ -76,7 +75,7 @@
 
         <% } %>
 
-          <form style="padding-top: 1.95%;" action="/auth-logout" method="post">
+          <form style="padding-top: 1.5%;" action="/auth-logout" method="post">
             <button class="btn btn-dark" >Logout</button>
           </form>
 
