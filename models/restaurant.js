@@ -22,15 +22,8 @@ const restaurantModel = sequelize.define('restaurant',{
       employees:{
           type:Sequelize.INTEGER,
           allowNull:false
-      },
-      foodItemsVeg:{
-          type:Sequelize.INTEGER,
-          allowNull:false
-      },
-      foodItemsNonVeg:{
-         type:Sequelize.INTEGER,
-         allowNull:false
       }
+      
    }
 
 );

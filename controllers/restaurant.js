@@ -15,8 +15,8 @@ exports.postAddProduct = (req,res,next)=>{
       const imageUrl = req.body.imageUrl;
       const location = req.body.location;
       const noEmployees = req.body.employee;
-      const foodItemsVeg = req.body.foodItemsVeg;
-      const foodItemsNonVeg = req.body.foodItemsNonVeg;
+      // const foodItemsVeg = req.body.foodItemsVeg;
+      // const foodItemsNonVeg = req.body.foodItemsNonVeg;
       // const ownerId = req.owner.id
 
        restaurant.create({
@@ -24,8 +24,7 @@ exports.postAddProduct = (req,res,next)=>{
            imageUrl:imageUrl,
            location:location,
            employees:noEmployees,
-           foodItemsVeg:foodItemsVeg,
-           foodItemsNonVeg:foodItemsNonVeg,
+           
           
        })
        .then(result =>{
@@ -80,8 +79,8 @@ exports.postEditProduct = (req,res,next)=>{
           const updatedImg = req.body.imageUrl;
           const updatedLocation = req.body.location;
           const updatedEmpNo = req.body.employee;
-          const updatedfoodItemsVeg = req.body.foodItemsVeg;
-          const updatedfoodItemsNonVeg = req.body.foodItemsNonVeg;
+         //  const updatedfoodItemsVeg = req.body.foodItemsVeg;
+         //  const updatedfoodItemsNonVeg = req.body.foodItemsNonVeg;
           
 
           
@@ -91,8 +90,7 @@ exports.postEditProduct = (req,res,next)=>{
                          restaurant.imageUrl = updatedImg;
                          restaurant.location = updatedLocation;
                          restaurant.employees = updatedEmpNo;
-                         restaurant.foodItemsVeg = updatedfoodItemsVeg;
-                         restaurant.foodItemsNonVeg = updatedfoodItemsNonVeg;
+                         
 
                          return restaurant.save();
                     })

@@ -11,10 +11,13 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <form class="searchForm" action="/search-bar" method="post">
-      <input type="text" placeholder="Search for Food .. " name="searchItem" class="searchInput" autocomplete="off">
-      <button type="submit" class="searchButton"><i class="fas fa-search fa-xl"></i></button>
-    </form>
+    <% if (!isAdminAuthenticated) { %>
+      <form class="searchForm" action="/search-bar" method="post">
+        <input type="text" placeholder="Search for Food .. " name="searchItem" class="searchInput" autocomplete="off">
+        <button type="submit" class="searchButton"><i class="fas fa-search fa-xl"></i></button>
+      </form>
+    <% } %>
+    
 
     <div class=" collapse navbar-collapse navbar-items" id="navbarNavDarkDropdown">
       <ul class="ms-auto navbar-nav other-items-size">
