@@ -1,7 +1,9 @@
 const Product = require('../models/productAdmin');
 // const Cart = require('../models/cart');
+const Restaurant = require('../models/restaurant')
 const User = require('../models/user');
 const Feedback = require('../models/feedback');
+const Products = require('../models/productAdmin')
 const { Op } = require("sequelize");
 const feedback = require('../models/feedback');
 
@@ -22,12 +24,34 @@ exports.userHomePage = (req,res,next)=>{
                                    })
                               }
                               
-                              return res.render('shop/userHome',{
-                                   pageTitle:'Home Page',
-                                   products:products,
-                                   feedbacks:feedbacks,
-                                   userName:req.admin.adminName
-                              })
+                              var countRestaurants = 10 ;
+                              var userCount = 100;
+                              var productCount = 0;
+                              Restaurant.count()
+                                        .then(count =>{
+                                              countRestaurants = countRestaurants  + count;
+
+                                           User.count()
+                                               .then(count =>{
+
+                                                   userCount = userCount + count;
+                                                   Products.count()
+                                                           .then(count =>{
+                                                               productCount = productCount + count;
+
+                                                                res.render('shop/userHome',{
+                                                                 pageTitle:'Admin Dashboard',
+                                                                 userName:req.admin.adminName,
+                                                                 restaurantCount:countRestaurants,
+                                                                 userCount:userCount,
+                                                                 productCount:productCount
+                                                             })
+
+                                                           })
+                                               })
+                                             
+                                             })
+                                             
                         
                   });
              })
@@ -46,7 +70,7 @@ exports.getCart =  (req,res,next) =>{
                res.render('shop/myCart',{
                      pageTitle:'My Cart',
                      products:products,
-                        
+                     userName:req.user.userName
                })
            })
         
@@ -106,7 +130,8 @@ exports.getSearchProduct = (req,res,next) =>{
                console.log(product);
                return res.render('shop/searchedProduct',{
                   pageTitle: 'Your Search',
-                  product:product
+                  product:product,
+                  userName:req.user.userName
                })
 
           })
