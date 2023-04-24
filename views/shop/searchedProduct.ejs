@@ -11,27 +11,30 @@
       text-align: center;
       margin: 3rem;
     }
-    img {
-      height: 20rem;
-      width: 30rem;
-      border-radius: 2rem;
+    
+    .outer img{
+       max-width:400px;
+       max-height: 400px;
+       padding-left: 1rem;
+
     }
 
     .outer{
-      min-width: 45%;
+      width: 50%;
       box-shadow: -3px 5px 15px rgba(0, 0, 0, 0.47);
-      border-radius: 2rem;
+      border-radius: 0.5rem;
       display: flex;
-      justify-content: space-evenly;
       flex-direction: column;
+      justify-content: center;
       margin: 3rem;
       min-height: fit-content;
     }
 
     .main{
       display: flex;
-      justify-content: space-evenly;
+      justify-content: center;
       align-items: center;
+      gap: 1rem;
     }
 
     
@@ -41,10 +44,12 @@
       justify-content: space-around;
       flex-direction: column;
       height: 20rem;
+      width: 80%;
+      text-align: center;
     }
 
     .buttonForm{
-      margin-left: 37rem;
+      margin-left: 18rem;
       margin-top: 2rem;
       margin-bottom: 2rem;
     }
@@ -56,9 +61,10 @@
     .cartButton{
       margin: 1rem 0;
       width: 10rem;
-      background-color: #ffac1c;
+      background: rgb(255,172,28);
+      background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%);
       border-radius: 1rem;
-      border-color: #ffac1c;
+      
       padding: 0.5rem;
     }
     .cartButton:hover{
@@ -75,9 +81,20 @@
       margin-right : 20px;
     }
 
-
+    .userName{
+    margin-right: 2rem;
     
+  }
 
+  .userIcon{
+    margin-right: 0.7rem !important;
+    margin-top: 0.5rem;
+  }
+    
+  .dividivi{
+    display: flex;
+    justify-content: center;
+  }
   </style>
 
   </head>
@@ -90,7 +107,7 @@
 
 
 
-
+    <div class="dividivi">
       <div class="outer">
         <h1 class="search">Your Search Result</h1>
         
@@ -100,27 +117,30 @@
           </div>
           <div class="details">
             <h4>
-              <%= product.title %>
+              <strong><%= product.title %></strong>
             </h4>
             <h4>Price - <%= product.price %>
             </h4>
-            <h4>Rating - <%= product.rating %>
+            <h4>Rating - <i class="far fa-star"></i><%= product.rating %>
             </h4>
             <h5>
               <%= product.description %>
             </h5>
+
           </div>
         </div>
 
         <div>
           <form action="/add-to-cart" method="post" class = "buttonForm">
             <input type="hidden" name='productId' value='<%= product.id %>'>
-            <button type="submit" class="cartButton" onclick="window.location.href=''"><i
+            <button type="submit" class="cartButton " onclick="window.location.href=''"><i
                 class="fa-solid fa-cart-shopping fa-xl"></i></button>
           </form>
         </div>
 
       </div>
+    </div>
+      
 
 
 
