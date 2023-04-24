@@ -52,7 +52,7 @@ exports.userHomePage = (req,res,next)=>{
                                                                                 .then(count =>{
                                                                                      ratedUser=count;
                                                                                      avgRating = totalRatings/ratedUser;
-
+                                                                                     avgRating = Math.round(avgRating*100)/100;
                                                                                      console.log(avgRating);
                                                                                         res.render('shop/userHome',{
                                                                                         pageTitle:'Admin Dashboard',
