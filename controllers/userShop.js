@@ -321,7 +321,8 @@ exports.postFeedback = (req, res, next) =>{
 
 exports.getFeedback = (req,res,next) =>{
        res.render('shop/feedbackPage',{
-           pageTitle:'FeedBack Form'
+           pageTitle:'FeedBack Form',
+           userName:req.user.userName
        })
 }
 
