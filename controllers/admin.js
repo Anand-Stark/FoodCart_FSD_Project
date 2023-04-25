@@ -1,17 +1,15 @@
 const Product = require("../models/productAdmin");
 const mongo = require("mongodb");
 const mongoose = require("mongoose");
-const restaurant = require('../models/restaurant');
+const restaurant = require("../models/restaurant");
 
 // just for animation
 
 //    ---------------------------------------
 
 exports.getAddProduct = (req, res, next) => {
-  
   res.render("admin/add-product", {
     pageTitle: "Add Product",
-     
   });
 };
 
@@ -22,7 +20,7 @@ exports.postAddProduct = (req, res, next) => {
   const rating = req.body.rating;
   const description = req.body.description;
   const category = req.body.categoryName;
-  const ownerId = req.owner.id
+  const ownerId = req.owner.id;
 
   console.log(category);
 
@@ -32,8 +30,8 @@ exports.postAddProduct = (req, res, next) => {
     price: price,
     rating: rating,
     description: description,
-    foodCategory : category,
-    ownerId:ownerId
+    foodCategory: category,
+    ownerId: ownerId,
   })
     .then((result) => {
       console.log("product saved successfully");
@@ -50,22 +48,18 @@ exports.getProducts = (req, res, next) => {
   //   here , we will try to get all the possible products
   console.log(req.owner);
   req.owner
-     .getProducts()
-     .then((products) => {
-
-      if(products.length > 0){
+    .getProducts()
+    .then((products) => {
+      if (products.length > 0) {
         return res.render("admin/product", {
-        pageTitle: "Admin Product Page",
-        products: products,
-         
-      });
-
+          pageTitle: "Admin Product Page",
+          products: products,
+        });
       }
 
-      return res.render('err404',{
-         pageTitle:'Error'
-      })
-      
+      return res.render("err404", {
+        pageTitle: "Error",
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -80,7 +74,6 @@ exports.getEditProduct = (req, res, next) => {
       res.render("admin/edit-product", {
         product: product,
         pageTitle: "Edit Products",
-         
       });
     })
     .catch((err) => {
@@ -95,7 +88,7 @@ exports.postEditProduct = (req, res, next) => {
   const updatedrating = req.body.rating;
   const updateddescription = req.body.description;
   const prodId = req.body.productId.trim();
-  const ownerId = req.owner.id
+  const ownerId = req.owner.id;
 
   Product.findByPk(prodId)
     .then((product) => {
@@ -120,7 +113,7 @@ exports.postEditProduct = (req, res, next) => {
 exports.postDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
   Product.findByPk(prodId)
-    .then(product => {
+    .then((product) => {
       return product.destroy();
     })
     .then((result) => {
@@ -132,30 +125,25 @@ exports.postDeleteProduct = (req, res, next) => {
     });
 };
 
+exports.getRestraunts = (req, res, next) => {
+  restaurant
+    .findAll()
+    .then((restaurants) => {
+      if (restaurants.length > 0) {
+        return res.render("admin/collabRestaurants", {
+          pageTitle: "Collaborated Restarants",
+          products: restaurants,
+        });
+      }
 
-exports.getRestraunts = (req,res,next) =>{
-    
-       restaurant.findAll()
-                 .then(restaurants =>{
-
-                  if(restaurants.length> 0 ){
-return  res.render('admin/collabRestaurants',{
-                        pageTitle:'Collaborated Restarants',
-                        products:restaurants,
-                         
-                     })
-                  }
-
-                  return res.render('err404',{
-                     pageTitle:'No Product'
-                  });
-                    
-                 })
-                 .then(result =>{
-                   console.log(result);
-                 })
-                 .catch(err =>{
-                   console.log(err);
-                 })
-}
-
+      return res.render("err404", {
+        pageTitle: "No Product",
+      });
+    })
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

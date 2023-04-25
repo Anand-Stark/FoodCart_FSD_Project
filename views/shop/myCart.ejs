@@ -223,6 +223,14 @@ background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%
   .oni{
     padding-top: 0.25rem;
   }
+  .userName{
+      margin-right: 1rem !important;
+    }
+    .userIcon
+    {
+      margin-right: 1rem !important;
+      margin-top: 0.5rem;
+    }
 </style>
 </head>
 
@@ -267,7 +275,11 @@ background: linear-gradient(90deg, rgba(255,172,28,1) 2%, rgba(242,140,40,1) 89%
           
         </div>
         <% } %>
+         
     </div>
+    <form action="/orders" method="post">
+      <button type="submit" style="padding-left:10px;" class="btn btn-outline-success">Order Now</button>
+    </form>
   </div>
     <% } else { %>
 

@@ -46,5 +46,9 @@ routes.get('/feedback',userProtection,userShop.getFeedback);
 // creating post route for user written feedbacks:
 routes.post('/feedback-user-product',userProtection,userShop.postUserFeedback);
 
+// creating routes for get and post orders:
+routes.get('/orders',userProtection,userShop.getOrder);
+routes.post('/orders',userProtection,userShop.postOrder);
+
 module.exports = routes;
 

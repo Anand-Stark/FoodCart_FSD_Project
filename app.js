@@ -28,6 +28,8 @@ const Product = require("./models/productAdmin");
 const Cart = require('./models/cart');
 const Owner = require('./models/restaurantOwner');
 const Restaurant = require('./models/restaurant');
+const Order = require('./models/order');
+const OrderItem = require('./models/orderItems');
 const cartItems = require('./models/cartItems');
 const { default: mongoose } = require("mongoose");
 const { log } = require("console");
@@ -58,8 +60,9 @@ Owner.hasOne(Restaurant);
 Restaurant.hasOne(Owner);
 Cart.belongsToMany(Product, {through: 'cartItems'});
 Product.belongsToMany(Cart,{through:'cartItems'});
-
-
+Order.belongsTo(User);
+User.hasMany(Order);
+Order.belongsToMany(Product, { through:OrderItem});
 
 app.use((req, res, next) => {
   
