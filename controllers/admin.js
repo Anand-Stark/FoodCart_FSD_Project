@@ -22,7 +22,7 @@ exports.postAddProduct = (req, res, next) => {
   const category = req.body.categoryName;
   const ownerId = req.owner.id;
 
-  console.log(category);
+  console.log("Posted the Product : " + title, imageUrl, price, rating , category);
 
   Product.create({
     title: title,

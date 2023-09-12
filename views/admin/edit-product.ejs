@@ -14,9 +14,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <div class="form-image">
     
       <div class="formContainer">
-        <form action="/admin/edit-product" method="POST">
+        <form id="editProduct">
           <div class="form-floating mb-3 ">
-            <input type="text" class="form-control childLoginStyle" value="<%= product.title %>" name="title" id="tile" placeholder="Title" required>
+            <input type="text" class="form-control childLoginStyle" value="<%= product.title %>" name="title" id="title" placeholder="Title" required>
             <label for="title">Title</label>
           </div>
           <div class="form-floating mb-3 " role="status">
@@ -38,7 +38,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
               <input type="text" name="description" value="<%= product.description %>" class="form-control childLoginStyle" id="description" rows="5" placeholder="description" required>
               <label for="description">Description</label>
             </div>
-            <input type="hidden" value="<%= product.id %> " name = 'productId' required>
+            <input type="hidden" value="<%= product.id %> " name = 'productId' id='productId' required>
           <div class="form-floating ">
             <button type="submit" class="btn btn-outline-warning btn-addproduct buttonMain">Update</button>
           </div>
@@ -58,3 +58,25 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </main>
 
 <%- include('../includes/end.ejs') %>
+<script>
+    document.getElementById("editProduct").onsubmit = (e) => {
+            e.preventDefault()
+            const xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function () {
+              if (this.readyState === 4 && this.status === 200) {
+                window.location.href = "http://localhost:3000/admin/products";
+              }
+              if (this.readyState === 4 && this.status === 404) {
+                console.log("2nd if condition Error")
+              }
+              if (this.readyState === 4 && this.status === 403) {
+                console.log("3rd if condition Error")
+              }
+            }
+
+            xhr.open("POST", "http://localhost:3000/admin/edit-product", true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.send(`title=${document.getElementById("title").value}&imageUrl=${document.getElementById("imageUrl").value}&price=${document.getElementById("price").value}&rating=${document.getElementById("rating").value}&description=${document.getElementById("description").value}&productId=${document.getElementById("productId").value}`);
+          }
+</script>

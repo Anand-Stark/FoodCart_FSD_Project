@@ -94,8 +94,9 @@ exports.postEditProduct = (req, res, next) => {
 };
 
 exports.postDeleteProduct = (req, res, next) => {
-  const restaurantId = req.body.restaurantId;
-
+  const restaurantId = req.params.restaurantId;
+  console.log(restaurantId);
+  
   restaurant
     .findByPk(restaurantId)
     .then((restaurant) => {
@@ -103,9 +104,11 @@ exports.postDeleteProduct = (req, res, next) => {
     })
     .then((result) => {
       console.log("Restaurant deleted successfully");
-      res.redirect("/restaurant/products");
+      // res.redirect("/restaurant/products");
+      res.status(200).json({message: "success"});
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
+      res.status(500).json({message: "Deletion failed"});
     });
 };

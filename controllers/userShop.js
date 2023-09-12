@@ -281,12 +281,20 @@ exports.postDeleteCartProduct = (req, res, next) => {
 exports.getNonVeg = (req, res, next) => {
   Product.findAll({ where: { foodCategory: "Non-Veg" } }).then((products) => {
     return res.render("shop/nonVegFood", {
+      products : products,
       pageTitle: "Non Veg Food",
-      products: products,
       userName: req.user.userName,
     });
   });
+  
 };
+
+exports.getNonVegItems = (req, res, next) => {
+  Product.findAll({ where: { foodCategory: "Non-Veg" } }).then((products) => {
+    res.status(200).json(products);
+  });
+};
+
 exports.getVeg = (req, res, next) => {
   Product.findAll({ where: { foodCategory: "Veg" } }).then((products) => {
     return res.render("shop/vegFood", {
@@ -296,6 +304,13 @@ exports.getVeg = (req, res, next) => {
     });
   });
 };
+
+exports.getVegItems = (req,res,next) =>{
+  Product.findAll({ where: { foodCategory: "Veg" } }).then((products) => {
+    res.status(200).json(products);
+  });
+}
+
 exports.getItalian = (req, res, next) => {
   Product.findAll({ where: { foodCategory: "Italian" } }).then((products) => {
     return res.render("shop/italianFood", {

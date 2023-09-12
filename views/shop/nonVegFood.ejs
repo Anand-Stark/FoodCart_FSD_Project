@@ -1,17 +1,15 @@
 <%- include('../includes/start') %>
-  
-    <link rel="stylesheet" href="/css/adminProducts.css">
+
+  <link rel="stylesheet" href="/css/adminProducts.css">
   <link rel="stylesheet" href="/css/productPage.css">
   </head>
-  
-   <style>
-    
 
-    .buttonForm.button{
+  <style>
+    .buttonForm.button {
       width: 30%;
     }
 
-    .cartButton{
+    .cartButton {
       margin: 1rem 0;
       width: 10rem;
       background-color: #ffac1c;
@@ -19,72 +17,94 @@
       border-color: #ffac1c;
       padding: 0.5rem;
     }
-    .cartButton:hover{
+
+    .cartButton:hover {
       background-color: #f28c28;
     }
 
-    .userName{
+    .userName {
       margin-right: 1rem !important;
     }
-    .userIcon
-    {
+
+    .userIcon {
       margin-right: 1rem !important;
       margin-top: 0.5rem;
     }
-
-    
-
-   </style>
+  </style>
 
   <body>
 
-    <%- include('../includes/navigation') %>     
-         
+    <%- include('../includes/navigation') %>
 
-          <% if( products.length> 0) { %>
-            <div class="ok-image">
-            <div class="ok-container">
-  
-              <% for(let product of products ) { %>
-                <div class="ok-product">
-                  <img src="<%= product.imageUrl %>" alt="products" >
-                  <figcaption>
-                    <%= product.title %>
-                  </figcaption>
-                  <figcaption>Price - <%= product.price %>
-                  </figcaption>
-                  <figcaption>Rating - <%= product.rating %>
-                  </figcaption>
-                  <figcaption>
-                         Category - <%= product.foodCategory %>
-                  </figcaption>
-                  <p>
-                    <%= product.description %>
-                  </p>
-                  <div>
-                    <form action="/add-to-cart" method="post" class = "buttonForm">
-                      <input type="hidden" name='productId' value='<%= product.id %>'>
-                      <button type="submit" class="cartButton" onclick="window.location.href=''"><i
-                          class="fa-solid fa-cart-shopping fa-xl"></i></button>
-                    </form>
-                  </div>
-  
-                </div>
-                <% } %>
-            </div>
+
+      <% if( products.length> 0) { %>
+        <div class="ok-image">
+          <div class="ok-container">
+
           </div>
-            <% } else { %>
-  
-              
-              <%- include('../err404') %>
-            
-              <% } %>
-  
-  
-  
-  
-            
-     
+        </div>
+        <% } else { %>
 
 
-      <%- include('../includes/end') %>
+          <%- include('../err404') %>
+
+            <% } %>
+
+              <%- include('../includes/end') %>
+
+                <script>
+                  var xhr = new XMLHttpRequest();
+
+                  xhr.open("GET", "http://localhost:3000/non-veg-items", true)
+                  xhr.setRequestHeader('Content-Type', 'application/json');
+
+                  xhr.onload = function () {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                      // Parsing the JSON response
+                      var iresponse = JSON.parse(xhr.responseText);
+                      var data = iresponse;
+
+                      // Loop through the data and creating the HTML elements
+                      var parent = document.querySelector(".ok-container");
+
+                      data.forEach(function (element, i) {
+                        var card = document.createElement('div');
+                        card.classList = 'ok-product';
+
+                        var newCard = `
+                        <img src=${data[i].imageUrl} alt="products">
+                      <figcaption>
+                        ${data[i].title}
+                    </figcaption>
+                <figcaption>Price - ${data[i].price}
+                </figcaption>
+                <figcaption>Rating - ${data[i].rating}
+                </figcaption>
+                <figcaption>
+                  Category - ${data[i].foodCategory}
+                </figcaption>
+                <p>
+                  ${data[i].description}
+                </p>
+                <div>
+                  <form action="/add-to-cart" method="post" class="buttonForm">
+                    <input type="hidden" name='productId' value='${data[i].id}'>
+                    <button type="submit" class="cartButton" onclick="window.location.href=''"><i
+                        class="fa-solid fa-cart-shopping fa-xl"></i></button>
+                  </form>
+                </div>`
+                        card.innerHTML += newCard
+                        parent.appendChild(card);
+                      });
+                    } else {
+                      console.log("Request failed with status: " + xhr.status);
+                    }
+                  };
+
+                  xhr.onerror = function () {
+                    console.log("Request failed");
+                  };
+                  xhr.send();
+
+
+                </script>

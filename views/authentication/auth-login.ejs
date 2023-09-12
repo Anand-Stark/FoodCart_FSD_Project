@@ -169,9 +169,11 @@
 
                <div class="form-floating mb-3">
                   <input required="true" type="password" class="form-control childLoginStyle" name="password" id="password"
-                     placeholder="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$">
+                     placeholder="password">
                   <label for="password">Password</label>
                </div>
+
+               <p style="color: red;"><%= errorLog %></p>
 
                <button class="btn btn-outline-success" type="submit">login</button>
 
@@ -179,7 +181,7 @@
                   <p style="margin-top: 1rem;">Login To see Admin Dashboard</a></p>
             
                   <% } else if(restaurantPage){ %>
-                     <p style="margin-top: 1rem;">Not Registered as a Restaurant, Signup <a href="/auth-restaurant-signup">here</a></p>
+                     <p style="margin-top: 1rem;">Not a Registered Restaurant, Signup <a href="/auth-restaurant-signup">here</a></p>
                  
                   <% } else { %>
                      <p style="margin-top: 1rem;">Don't have an account , Signup <a href="/auth-signup">here</a></p>

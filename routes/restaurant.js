@@ -21,6 +21,6 @@ routes.get('/edit-product/:restaurantId',adminRouteProtection,restaurants.getEdi
 routes.post('/edit-product',adminRouteProtection,restaurants.postEditProduct);
 
 // post /restaurant/delete-products
-routes.post('/delete-product',adminRouteProtection,restaurants.postDeleteProduct);
-
+routes.delete('/product/:restaurantId',adminRouteProtection,restaurants.postDeleteProduct);
+    
 module.exports = routes;

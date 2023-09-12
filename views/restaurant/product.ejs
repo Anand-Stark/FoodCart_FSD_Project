@@ -10,6 +10,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <body>
 
+
   <%- include('../includes/navigation') %>     
    
 
@@ -31,11 +32,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                 </p>
                 <div class="edit-delete">
                   <a href="/restaurant/edit-product/<%= product.id %>" class="btn btn-outline-warning edit-delete-btns edit-btn">edit</a>
-                  <form  action="/restaurant/delete-product" method="post">
+                  <!-- <form  action="/restaurant/delete-product" method="post"> -->
                     <input type="hidden" value="<%= product.id %>" name="restaurantId">
-                     <button class="btn btn-outline-warning edit-delete-btns delete-btn">Delete</button>
-                  </form>
-                  
+                     <button type="button" onclick="deleteRestaurant(this)" class="btn btn-outline-warning edit-delete-btns delete-btn">Delete</button>
                 </div>
 
               </div>
@@ -55,18 +54,5 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
           
             <% } %>
 
-
-
-
-          
-   
-
-
-
-
-
-
-
-
-
 <%- include('../includes/end.ejs') %>
+<script src="/js/admin.js"></script>

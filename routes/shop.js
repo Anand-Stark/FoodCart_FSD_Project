@@ -33,7 +33,11 @@ routes.post('/delete-cart-product',userProtection,userShop.postDeleteCartProduct
 
 // creating get routes for all kind of foods:
 routes.get('/non-veg',userProtection,userShop.getNonVeg);
+routes.get('/non-veg-items',userProtection,userShop.getNonVegItems);
+
 routes.get('/veg',userProtection,userShop.getVeg);
+routes.get('/veg-items',userProtection,userShop.getVegItems);
+
 routes.get('/italian',userProtection,userShop.getItalian);
 routes.get('/chinese',userProtection,userShop.getChinese);
 

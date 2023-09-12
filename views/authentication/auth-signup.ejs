@@ -170,14 +170,16 @@
 
                <div class="form-floating mb-3">
                   <input required="true" type="password" class="form-control childLoginStyle" name="password" id="password"
-                     placeholder="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$">
+                     placeholder="password" >
                   <label for="password">Password</label>
                </div>
                <div class="form-floating mb-3">
                   <input required="true" type="password" class="form-control childLoginStyle" name="confirmPassword" id="confirmPassword"
-                     placeholder="confirmPassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$">
+                     placeholder="confirmPassword" >
                   <label for="confirmPassword">Confirm Password</label>
                </div>
+
+               <p style="color: red; font-size: 13px; margin-top: -13px;"><%= errorLog %></p>
 
                <button class="btn btn-outline-success" type="submit">Signup</button>
 

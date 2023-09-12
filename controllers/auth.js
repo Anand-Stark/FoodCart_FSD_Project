@@ -4,17 +4,12 @@ const Admin = require("../models/admin");
 const Owner = require("../models/restaurantOwner");
 
 exports.getLogin = (req, res, next) => {
-  // let message = req.flash('error');
-  // if(message.length > 0){
-  //       message = message[0];
-  // } else{
-  //        message = null;
-  // }
   res.render("authentication/auth-login", {
     pageTitle: "User Login Page",
     adminPage: false,
     restaurantPage: false,
     path: "user",
+    errorLog: "",
   });
 };
 
@@ -22,6 +17,7 @@ exports.getsignup = (req, res, next) => {
   res.render("authentication/auth-signup", {
     pageTitle: "Signup Page",
     restaurantPage: false,
+    errorLog: "",
   });
 };
 
@@ -31,12 +27,35 @@ exports.postSignup = (req, res, next) => {
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
 
+  const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$/;
+  const pattern2 = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+  if (!pattern.test(password)) {
+    return res.render("authentication/auth-signup", {
+      pageTitle: "User Login Page",
+      restaurantPage: false,
+      errorLog: "The password should be atleast 8 chars long, atleast one Uppercase , lowercase char and atleast one number.",
+    });
+  }
+
+  if(!pattern2.test(email)){
+    return res.render("authentication/auth-signup", {
+      pageTitle: "User Login Page",
+      restaurantPage: false,
+      errorLog: "Invalid email format",
+    });
+  }
+ 
   if (password === confirmPassword) {
     User.findAll({ where: { email: email } })
       .then((user) => {
         if (user.length !== 0) {
           // console.log('12');
-          return res.redirect("/auth-signup");
+          return res.render("authentication/auth-signup", {
+            pageTitle: "User Login Page",
+            restaurantPage: false,
+            errorLog: "Email Already Exist",
+          });
         }
 
         return bcrypt
@@ -57,7 +76,11 @@ exports.postSignup = (req, res, next) => {
         console.log(err);
       });
   } else {
-    res.redirect("/auth-signup");
+    return res.render("authentication/auth-signup", {
+      pageTitle: "User Login Page",
+      restaurantPage: false,
+      errorLog: "Password and confirm Password do not match"
+    });
   }
 };
 
@@ -71,7 +94,13 @@ exports.postLogin = (req, res, next) => {
     .then((user) => {
       // console.log(user[0].password)
       if (user.length === 0) {
-        return res.redirect("/auth-login");
+        return res.render("authentication/auth-login", {
+          pageTitle: "User Login Page",
+          adminPage: false,
+          restaurantPage: false,
+          path: "user",
+          errorLog: "Email Doesn't Exist",
+        });
       }
       bcrypt
         .compare(password, user[0].password)
@@ -85,9 +114,15 @@ exports.postLogin = (req, res, next) => {
             return req.session.save((err) => {
               res.redirect("/");
             });
+          } else {
+            return res.render("authentication/auth-login", {
+              pageTitle: "User Login Page",
+              adminPage: false,
+              restaurantPage: false,
+              path: "user",
+              errorLog: "Invalid Password",
+            });
           }
-
-          res.redirect("/auth-login");
         })
         .catch((err) => {
           console.log(err);
@@ -115,6 +150,7 @@ exports.getAdminLogin = (req, res, next) => {
     adminPage: adminPage,
     restaurantPage: false,
     path: "admin",
+    errorLog: "",
   });
 };
 
@@ -151,21 +187,28 @@ exports.getRestaurantLogin = (req, res, next) => {
     restaurantPage: restaurantPage,
     adminPage: false,
     path: "owner",
+    errorLog: "",
   });
 };
 
 exports.postRestaurantLogin = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
-
+  
   // console.log(password)
-
+  
   Owner.findAll({ where: { email: email } })
     .then((owner) => {
       if (owner.length === 0) {
-        return res.redirect("/auth-restaurant-login");
+        return  res.render("authentication/auth-login", {
+          pageTitle: "Owner Login",
+          restaurantPage: true,
+          adminPage: false,
+          path: "owner",
+          errorLog: "Email Doesn't Exist ",
+        });
       }
-      //     console.log(owner[0].password)
+      
       bcrypt
         .compare(password, owner[0].password)
         .then((value) => {
@@ -180,7 +223,13 @@ exports.postRestaurantLogin = (req, res, next) => {
             });
           }
 
-          res.redirect("/auth-restaurant-login");
+          return res.render("authentication/auth-login", {
+            pageTitle: "Owner Login",
+            restaurantPage: true,
+            adminPage: false,
+            path: "owner",
+            errorLog: "Incorrect Password",
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -196,7 +245,8 @@ exports.getRestaurantSignup = (req, res, next) => {
   const restaurantPage = true;
   res.render("authentication/auth-signup", {
     pageTitle: "Restaurant Register",
-    restaurantPage: restaurantPage,
+    restaurantPage: true,
+    errorLog:""
   });
 };
 
@@ -204,13 +254,37 @@ exports.postRestaurantSignup = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
+  
+  const pattern1 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$/;
+  const pattern2 = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+  if(!pattern1.test(password)){
+     return res.render("authentication/auth-signup", {
+      pageTitle: "Restaurant Register",
+      restaurantPage: true,
+      errorLog:"The password should be atleast 8 chars long, atleast one Uppercase , lowercase char and atleast one number."
+    });
+  }
+
+  if(!pattern2.test(email)){
+    return res.render("authentication/auth-signup", {
+      pageTitle: "Restaurant Register",
+      restaurantPage: true,
+      errorLog:"Invalid Email"
+    });
+  }
 
   if (password === confirmPassword) {
     Owner.findAll({ where: { email: email } })
       .then((owner) => {
         if (owner.length !== 0) {
           // console.log('12');
-          return res.redirect("/auth-restaurant-signup");
+          return res.render("authentication/auth-signup", {
+            pageTitle: "Restaurant Registration",
+            restaurantPage: true,
+            errorLog:"Email already exists"
+          });
+
         }
 
         return bcrypt
@@ -222,7 +296,6 @@ exports.postRestaurantSignup = (req, res, next) => {
             });
           })
           .then((owner) => {
-            //    owner.createProduct();
             res.redirect("/auth-restaurant-login");
           });
       })
