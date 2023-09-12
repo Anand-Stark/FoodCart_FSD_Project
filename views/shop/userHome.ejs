@@ -25,6 +25,7 @@
       
     }
 
+
     .firstRow {
       display: flex;
       /* justify-content: space-between ; */
@@ -229,7 +230,7 @@
                       <p>We make your delicious Products available to our Customers<br>
                         Search for the food to check if it is registered</p>
                       <% } else {%>
-                        <h1>Fastest Online <br>Food Delivery Service</h1>
+                        <h1 class="del-head"><span class="auto-type"></span></h1>
                         <p>we are most fastest and favourite food delivery service all over the india.<br>
                           Search for your favourite food in your area</p>
                         <% } %>
@@ -647,5 +648,15 @@
                   window.location.href = url;
                 }
               </script> -->
+              <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+              <script>
+                var typed = new Typed(".auto-type", {
+                  strings : ["Online Food Portal", "Fastest Food Delievery Service"],
+                  typeSpeed : 50,
+                  backSpeed : 50,
+                  loop : true
+                })
+              </script>
 
                 <%- include('../includes/end.ejs') %>
